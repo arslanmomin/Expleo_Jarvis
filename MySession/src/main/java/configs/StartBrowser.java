@@ -35,7 +35,7 @@ public class StartBrowser {
 		sparkReporter = new ExtentSparkReporter("Report/report.html");
 		extent = new ExtentReports();
 		extent.attachReporter(sparkReporter);
-	}
+	}oioidi
 
 	@BeforeMethod
 	public void methodName(Method method) {
