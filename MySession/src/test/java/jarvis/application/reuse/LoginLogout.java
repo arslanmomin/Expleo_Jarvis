@@ -32,7 +32,6 @@ public class LoginLogout {
 		edriver.type(LoginPage.Emailtextbox, email, "username");
 		edriver.type(LoginPage.passwordtextbox, password, "password");
 		edriver.click(LoginPage.LoginButton, "LoginButton");
-		System.out.println("hello");
 		
 		
 	}
