@@ -33,7 +33,7 @@ public class LoginLogout {
 		edriver.type(LoginPage.passwordtextbox, password, "password");
 		edriver.click(LoginPage.LoginButton, "LoginButton");
 		System.out.println("hello");
-		
+		System.out.println("hello");
 		
 	}
 	public void loginwithExcelData(String url) throws Exception {
