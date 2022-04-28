@@ -12,6 +12,7 @@ public class LoginTest extends StartBrowser {
 	  LoginLogout re= new LoginLogout();
 	  re.login(cs.getProperty("url"),cs.getProperty("email") , cs.getProperty("password"));
 	  //re.loginwithExcelData(cs.getProperty("url"));
+	   //re.loginwithExcelData(cs.getProperty("url"));
 
   }
   
