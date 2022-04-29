@@ -6,6 +6,9 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import com.aventstack.extentreports.MediaEntityBuilder;
 
 import configs.StartBrowser;
@@ -91,6 +94,32 @@ public class ElementsOp {
 		}
 	}
 	
+	public void verifyeleclickable(By locator, String elementname) {
+		try {
+			WebDriverWait wt = new WebDriverWait(driver, 6);
+			wt.until(ExpectedConditions.elementToBeClickable(locator));
+			StartBrowser.childTest.pass("element is clickable  :" + elementname);
+
+		} catch (Exception e) {
+			StartBrowser.childTest.fail("element is not clickable :" + elementname);
+			StartBrowser.childTest.info(e);
+			throw e;
+		}
+
+	}
+
+	public void verifyelevisible(By locator, String elementname) {
+		try {
+			boolean t = driver.findElement(locator).isDisplayed();
+			if (t)
+				StartBrowser.childTest.pass("element is visible  :" + elementname);
+			else
+				StartBrowser.childTest.fail("element is not visible :" + elementname);
+		} catch (Exception e) {
+			StartBrowser.childTest.info(e);
+			throw e;
+		}
+	}
 
 	public String screenshot() {
 		return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
