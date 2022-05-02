@@ -11,8 +11,7 @@ public class LoginTest extends StartBrowser {
   public void loginintoApplication() throws Exception {
 	  LoginLogout re= new LoginLogout();
 	  re.login(cs.getProperty("url"),cs.getProperty("email") , cs.getProperty("password"));
-	  //re.loginwithExcelData(cs.getProperty("url"));
-	   System.out.println("hss");
+	
 
   }
   
