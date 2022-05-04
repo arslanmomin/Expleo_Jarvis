@@ -4,8 +4,8 @@ package configs;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import utilities.ConfigurationSupport;
 
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 
 import com.aventstack.extentreports.ExtentReports;
@@ -13,13 +13,15 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 import java.lang.reflect.Method;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterSuite;
 
 public class StartBrowser {
 
@@ -30,9 +32,13 @@ public class StartBrowser {
 	public static ExtentTest childTest;
 	ExtentSparkReporter sparkReporter;
 
+	
 	@BeforeTest
 	public void generateReport() {
-		sparkReporter = new ExtentSparkReporter("Report/report.html");
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		final SimpleDateFormat sdf3 = new SimpleDateFormat("yyyy-MM-dd HH_mm_ss");
+		String name=sdf3.format(timestamp);
+		sparkReporter = new ExtentSparkReporter("Report/"+name+".html");
 		extent = new ExtentReports();
 		extent.attachReporter(sparkReporter);
 	}
@@ -42,7 +48,7 @@ public class StartBrowser {
 		parentTest = extent.createTest(method.getName());
 	}
 
-	@BeforeClass
+	@BeforeSuite
 	public void beforeClass() {
 		String browser = cs.getProperty("browser");
 		switch (browser) {
@@ -71,10 +77,11 @@ public class StartBrowser {
 		}
 	}
 
-	@AfterClass
+@AfterSuite
 	public void afterClass() {
 
 		driver.close();
+		System.out.println("browser closed");
 		extent.flush();
 	}
 
