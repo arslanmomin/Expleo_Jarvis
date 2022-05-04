@@ -15,8 +15,12 @@ public class LoginTest extends StartBrowser {
   public void loginTest() throws Exception {
 	  LoginLogout re = new LoginLogout();
 	  re.login(cs.getProperty("url"),cs.getProperty("email") , cs.getProperty("password"));
+<<<<<<< HEAD
 	  //re.loginwithExcelData(cs.getProperty("url"));
 	   
+=======
+	
+>>>>>>> branch 'development' of https://github.com/arslanmomin/Expleo_Jarvis.git
 
   }
  
