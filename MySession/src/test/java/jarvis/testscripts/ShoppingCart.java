@@ -8,7 +8,7 @@ import utilities.ConfigurationSupport;
 
 public class ShoppingCart extends StartBrowser{
 	public ConfigurationSupport cs = new ConfigurationSupport("config.properties");
-	  @Test(priority=1)
+	  @Test(priority=0)
 	  public void shoppingcartTest() throws Exception { 
 		  LoginLogout re = new LoginLogout();
 		  re.logout();

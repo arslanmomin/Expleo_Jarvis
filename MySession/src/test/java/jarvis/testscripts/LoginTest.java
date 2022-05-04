@@ -11,16 +11,10 @@ public class LoginTest extends StartBrowser {
 	public ConfigurationSupport cs = new ConfigurationSupport("config.properties");
 
 
-  @Test(priority=3)
+  @Test(priority=0)
   public void loginTest() throws Exception {
 	  LoginLogout re = new LoginLogout();
 	  re.login(cs.getProperty("url"),cs.getProperty("email") , cs.getProperty("password"));
-<<<<<<< HEAD
-	  //re.loginwithExcelData(cs.getProperty("url"));
-	   
-=======
-	
->>>>>>> branch 'development' of https://github.com/arslanmomin/Expleo_Jarvis.git
 
   }
  
