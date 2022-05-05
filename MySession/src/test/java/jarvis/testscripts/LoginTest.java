@@ -8,7 +8,7 @@ import utilities.ConfigurationSupport;
 
 public class LoginTest extends StartBrowser {
 	
-	public ConfigurationSupport cs = new ConfigurationSupport("accounts.properties");
+	public ConfigurationSupport cs = new ConfigurationSupport("config files//accounts.properties");
 
 
   @Test(priority=0,groups= {"regression","login"})

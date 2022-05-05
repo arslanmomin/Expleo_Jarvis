@@ -54,7 +54,6 @@ HttpURLConnection httpConn =(HttpURLConnection)link.openConnection();
 httpConn.setConnectTimeout(2000);
 
 httpConn.connect();
-/
 if(httpConn.getResponseCode()== 200) {
 System.out.println(urlLink+" - "+httpConn.getResponseMessage());
 }

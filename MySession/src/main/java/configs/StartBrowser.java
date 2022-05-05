@@ -26,7 +26,7 @@ import org.testng.annotations.AfterSuite;
 public class StartBrowser {
 
 	public static WebDriver driver;
-	public ConfigurationSupport cs = new ConfigurationSupport("config.properties");
+	public ConfigurationSupport cs = new ConfigurationSupport("config files//global.properties");
 	public static ExtentReports extent;
 	public static ExtentTest parentTest;
 	public static ExtentTest childTest;
@@ -34,6 +34,7 @@ public class StartBrowser {
 
 	
 	@BeforeTest
+	(alwaysRun = true)
 	public void generateReport() {
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		final SimpleDateFormat sdf3 = new SimpleDateFormat("yyyy-MM-dd HH_mm_ss");
@@ -44,11 +45,13 @@ public class StartBrowser {
 	}
 
 	@BeforeMethod
+	(alwaysRun = true)
 	public void methodName(Method method) {
 		parentTest = extent.createTest(method.getName());
 	}
 
 	@BeforeSuite
+	(alwaysRun = true)
 	public void beforeClass() {
 		String browser = cs.getProperty("browser");
 		switch (browser) {
@@ -78,6 +81,7 @@ public class StartBrowser {
 	}
 
 @AfterSuite
+(alwaysRun = true)
 	public void afterClass() {
 
 		driver.close();

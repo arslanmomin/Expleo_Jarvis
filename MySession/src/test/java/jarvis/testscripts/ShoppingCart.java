@@ -7,7 +7,7 @@ import jarvis.application.reuse.LoginLogout;
 import utilities.ConfigurationSupport;
 
 public class ShoppingCart extends StartBrowser{
-	public ConfigurationSupport cs = new ConfigurationSupport("accounts.properties");
+	public ConfigurationSupport cs = new ConfigurationSupport("config files//accounts.properties");
 	  @Test(priority=0,groups= {"accounts"})
 	  public void shoppingcartTest() throws Exception { 
 		  LoginLogout re = new LoginLogout();
