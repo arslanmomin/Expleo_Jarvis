@@ -11,17 +11,21 @@ import configs.StartBrowser;
 import jarvis.objectrepo.LoginPage;
 import wdcommands.Browser;
 import wdcommands.ElementsOp;
+import wdcommands.WindowHandling;
 
 public class LoginLogout {
 	
 	public WebDriver driver;
 	public ElementsOp edriver;
 	public Browser bdriver;
+	public WindowHandling wdriver;
 	
 	public LoginLogout() {
 		driver=StartBrowser.driver;
 		edriver= new ElementsOp();
 		bdriver= new Browser();
+		edriver= new ElementsOp();
+		wdriver= new WindowHandling();
 		
 	}
 	
@@ -32,6 +36,8 @@ public class LoginLogout {
 		edriver.type(LoginPage.Emailtextbox, email, "username");
 		edriver.type(LoginPage.passwordtextbox, password, "password");
 		edriver.click(LoginPage.LoginButton, "LoginButton");
+		wdriver.maximizeWindow();
+		wdriver.WindowSize();
 		
 		
 	}

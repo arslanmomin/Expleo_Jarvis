@@ -2,39 +2,39 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-05-02T16:24:21 IST" name="Default suite" finished-at="2022-05-02T16:25:41 IST" duration-ms="80175">
+  <suite started-at="2022-05-02T16:47:21 IST" name="Default suite" finished-at="2022-05-02T16:47:53 IST" duration-ms="32456">
     <groups>
     </groups>
-    <test started-at="2022-05-02T16:24:21 IST" name="Default test" finished-at="2022-05-02T16:25:41 IST" duration-ms="80175">
-      <class name="jarvis.testscripts.BrokenScript$BLinkTest">
-        <test-method is-config="true" signature="generateReport()[pri:0, instance:jarvis.testscripts.BrokenScript$BLinkTest@1b2abca6]" started-at="2022-05-02T16:24:21 IST" name="generateReport" finished-at="2022-05-02T16:24:21 IST" duration-ms="491" status="PASS">
+    <test started-at="2022-05-02T16:47:21 IST" name="Default test" finished-at="2022-05-02T16:47:53 IST" duration-ms="32456">
+      <class name="jarvis.testscripts.LoginTest">
+        <test-method is-config="true" signature="generateReport()[pri:0, instance:jarvis.testscripts.LoginTest@e15b7e8]" started-at="2022-05-02T16:47:21 IST" name="generateReport" finished-at="2022-05-02T16:47:21 IST" duration-ms="400" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- generateReport -->
-        <test-method is-config="true" signature="beforeClass()[pri:0, instance:jarvis.testscripts.BrokenScript$BLinkTest@1b2abca6]" started-at="2022-05-02T16:24:21 IST" name="beforeClass" finished-at="2022-05-02T16:24:24 IST" duration-ms="2663" status="PASS">
+        <test-method is-config="true" signature="beforeClass()[pri:0, instance:jarvis.testscripts.LoginTest@e15b7e8]" started-at="2022-05-02T16:47:21 IST" name="beforeClass" finished-at="2022-05-02T16:47:24 IST" duration-ms="2800" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method is-config="true" signature="methodName(java.lang.reflect.Method)[pri:0, instance:jarvis.testscripts.BrokenScript$BLinkTest@1b2abca6]" started-at="2022-05-02T16:24:24 IST" name="methodName" finished-at="2022-05-02T16:24:24 IST" duration-ms="8" status="PASS">
+        <test-method is-config="true" signature="methodName(java.lang.reflect.Method)[pri:0, instance:jarvis.testscripts.LoginTest@e15b7e8]" started-at="2022-05-02T16:47:24 IST" name="methodName" finished-at="2022-05-02T16:47:24 IST" duration-ms="16" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void jarvis.testscripts.BrokenScript$BLinkTest.loginintoApplication() throws java.lang.Exception]]>
+                <![CDATA[public void jarvis.testscripts.LoginTest.loginintoApplication() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- methodName -->
-        <test-method signature="loginintoApplication()[pri:0, instance:jarvis.testscripts.BrokenScript$BLinkTest@1b2abca6]" started-at="2022-05-02T16:24:24 IST" name="loginintoApplication" finished-at="2022-05-02T16:25:40 IST" duration-ms="76232" status="PASS">
+        <test-method signature="loginintoApplication()[pri:0, instance:jarvis.testscripts.LoginTest@e15b7e8]" started-at="2022-05-02T16:47:24 IST" name="loginintoApplication" finished-at="2022-05-02T16:47:53 IST" duration-ms="28451" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginintoApplication -->
-        <test-method is-config="true" signature="afterClass()[pri:0, instance:jarvis.testscripts.BrokenScript$BLinkTest@1b2abca6]" started-at="2022-05-02T16:25:40 IST" name="afterClass" finished-at="2022-05-02T16:25:41 IST" duration-ms="733" status="PASS">
+        <test-method is-config="true" signature="afterClass()[pri:0, instance:jarvis.testscripts.LoginTest@e15b7e8]" started-at="2022-05-02T16:47:53 IST" name="afterClass" finished-at="2022-05-02T16:47:53 IST" duration-ms="727" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
-      </class> <!-- jarvis.testscripts.BrokenScript$BLinkTest -->
+      </class> <!-- jarvis.testscripts.LoginTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

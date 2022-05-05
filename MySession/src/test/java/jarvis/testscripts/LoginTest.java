@@ -1,5 +1,6 @@
 package jarvis.testscripts;
 import org.testng.annotations.Test;
+import wdcommands.*;
 
 import configs.StartBrowser;
 import jarvis.application.reuse.LoginLogout;
@@ -11,8 +12,8 @@ public class LoginTest extends StartBrowser {
   public void loginintoApplication() throws Exception {
 	  LoginLogout re= new LoginLogout();
 	  re.login(cs.getProperty("url"),cs.getProperty("email") , cs.getProperty("password"));
-	
-
+	  
+	 
   }
   
  
