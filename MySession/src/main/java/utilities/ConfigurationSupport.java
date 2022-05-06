@@ -12,6 +12,7 @@ public class ConfigurationSupport {
 	String strFileName;
 	String strValue;
 
+	
 	public String getProperty(String strKey) {
 		try {
 			File f = new File(strFileName);

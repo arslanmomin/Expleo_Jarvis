@@ -8,12 +8,14 @@ import com.codoid.products.fillo.Fillo;
 import com.codoid.products.fillo.Recordset;
 
 import configs.StartBrowser;
+import jarvis.objectrepo.HomePage;
 import jarvis.objectrepo.LoginPage;
+import utilities.ConfigurationSupport;
 import wdcommands.Browser;
 import wdcommands.ElementsOp;
 
 public class LoginLogout {
-	
+	public ConfigurationSupport cs = new ConfigurationSupport("config files//accounts.properties");
 	public WebDriver driver;
 	public ElementsOp edriver;
 	public Browser bdriver;
@@ -45,6 +47,16 @@ public class LoginLogout {
 			
 		}	
 	}
+	public void logout() throws Exception {
+		StartBrowser.childTest = StartBrowser.parentTest.createNode("logout from application");
+		edriver.click(HomePage.logoutbtn, "logout button");
+	}
+	public void shoppingcart() throws Exception {
+		StartBrowser.childTest = StartBrowser.parentTest.createNode("Shopping cart");
+		  edriver.verifyeleclickable(HomePage.shoppingcart, "cart");
+		  edriver.click(HomePage.shoppingcart, "Shopping cart");
+		  bdriver.matchurl( cs.getProperty("shoppingcarturl"));
+	  }
 
 
 }

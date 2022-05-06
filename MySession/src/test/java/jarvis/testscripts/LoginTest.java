@@ -5,16 +5,17 @@ import configs.StartBrowser;
 import jarvis.application.reuse.LoginLogout;
 import utilities.ConfigurationSupport;
 
+
 public class LoginTest extends StartBrowser {
-	public ConfigurationSupport cs = new ConfigurationSupport("config.properties");
-  @Test
-  public void loginintoApplication() throws Exception {
-	  LoginLogout re= new LoginLogout();
+	
+	public ConfigurationSupport cs = new ConfigurationSupport("config files//accounts.properties");
+
+
+  @Test(priority=0,groups= {"regression","login"})
+  public void loginTest() throws Exception {
+	  LoginLogout re = new LoginLogout();
 	  re.login(cs.getProperty("url"),cs.getProperty("email") , cs.getProperty("password"));
-	  //re.loginwithExcelData(cs.getProperty("url"));
-	   System.out.println("hss");
 
   }
-  
  
 }
