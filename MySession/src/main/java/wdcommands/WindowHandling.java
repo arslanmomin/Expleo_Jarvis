@@ -23,7 +23,7 @@ public class WindowHandling {
 		driver = StartBrowser.driver;
 	}
 	
-//aKNAIOA
+
 
 	/**
 	 * used to perform click operation
