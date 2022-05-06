@@ -1,16 +1,18 @@
 package wdcommands;
 
-import org.openqa.selenium.Dimension;
+import java.util.Iterator;
 import java.util.Set;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import wdcommands.*;
+
 import com.aventstack.extentreports.MediaEntityBuilder;
 
 import configs.StartBrowser;
@@ -25,13 +27,65 @@ public class WindowHandling {
 	
 
 
-	/**
-	 * used to perform click operation
-	 * @param locator --get it from object repository
-	 * @param elementName--name of the element
-	 * @throws Exception 
-	 */
+	
+	public void SwitchToChild()  {
+		try {
+			String mainWindowHandle = driver.getWindowHandle();
+	        Set<String> allWindowHandles = driver.getWindowHandles();
+	        Iterator<String> iterator = allWindowHandles.iterator();
 
+	        // Here we will check if child window has other child windows and will fetch the heading of the child window
+	        while (iterator.hasNext()) {
+	            String ChildWindow = iterator.next();
+	                if (!mainWindowHandle.equalsIgnoreCase(ChildWindow)) {
+	                driver.switchTo().window(ChildWindow);
+	                WebElement text = driver.findElement(By.id("sampleHeading"));
+	                System.out.println("Heading of child window is " + text.getText());
+	       
+				StartBrowser.childTest.pass("Switched To Child Window");
+				
+			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
+	                }}	
+		} 
+	                catch (Exception e) {
+			StartBrowser.childTest.fail("can to switch to child window ");
+			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
+			StartBrowser.childTest.info(e);
+			throw e;
+			
+		}
+	}
+	
+	public void SwitchBack()  {
+		try {
+			  String mainwindow = driver.getWindowHandle();
+		        Set<String> s1 = driver.getWindowHandles();
+		        Iterator<String> i1 = s1.iterator();
+		        
+		        while (i1.hasNext()) {
+		            String ChildWindow = i1.next();
+		                if (!mainwindow.equalsIgnoreCase(ChildWindow)) {
+		                driver.switchTo().window(ChildWindow);
+		                WebElement text = driver.findElement(By.id("sampleHeading"));
+		                System.out.println("Heading of child window is " + text.getText());
+		                driver.close();
+		                System.out.println("Child window closed");
+		            	StartBrowser.childTest.pass("Switched To Main  Window");
+		            }
+		        }    
+		  
+		        //  Switch back to the main window which is the parent window.
+		        driver.switchTo().window(mainwindow);	
+		} 
+	                catch (Exception e) {
+			StartBrowser.childTest.fail("Cannot Switch Back to Main Window ");
+			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
+			StartBrowser.childTest.info(e);
+			throw e;
+			
+		}
+	}
+	
 	public void maximizeWindow() throws Exception {
 		try {
 			driver.manage().window().maximize();
@@ -43,33 +97,8 @@ public class WindowHandling {
 			throw e;
 		}
 	}
-	/**
-	 * 
-	 * used to type text in textbox, search
-	 * @param locator-- get it from object repository
-	 * @param testData -- the data which have to passed, can get from external file
-	 * @param elementName
-	 */
-	public void WindowSize() {
-		try {
-			String sizz=driver.manage().window().getSize().toString();
-			StartBrowser.childTest.pass("success in typing in   with testdata" +sizz);
-			System.out.println("My Window"+sizz);
-			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
-			
-		} catch (Exception e) {
-			StartBrowser.childTest.fail("can not  type in :");
-			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
-			StartBrowser.childTest.info(e);
-			throw e;
-			
-		}
-	}
-	/**
-	 * used to build mouseHover action on WebElement
-	 * @param locator can get it from object repository
-	 * @param elementname -name of element
-	 */
+
+	 
 	public void WindowHandle() {
 		try {
 			String wh=driver.getWindowHandle();
@@ -102,11 +131,7 @@ public class WindowHandling {
 			
 		}
 	}
-	/**
-	 * used to retrieve text from WebElement
-	 * @param label webelement from object repository
-	 * @param elemnt -element name
-	 */
+	
 	public void getSize() {
 		try {
 		Dimension winSize=driver.manage().window().getSize();
@@ -174,32 +199,9 @@ public class WindowHandling {
 		}
 	}
 	
-	public void verifyeleclickable(By locator, String elementname) {
-		try {
-			WebDriverWait wt = new WebDriverWait(driver, 6);
-			wt.until(ExpectedConditions.elementToBeClickable(locator));
-			StartBrowser.childTest.pass("element is clickable  :" + elementname);
-
-		} catch (Exception e) {
-			StartBrowser.childTest.fail("element is not clickable :" + elementname);
-			StartBrowser.childTest.info(e);
-			throw e;
-		}
-
-	}
-
-	public void verifyelevisible(By locator, String elementname) {
-		try {
-			boolean t = driver.findElement(locator).isDisplayed();
-			if (t)
-				StartBrowser.childTest.pass("element is visible  :" + elementname);
-			else
-				StartBrowser.childTest.fail("element is not visible :" + elementname);
-		} catch (Exception e) {
-			StartBrowser.childTest.info(e);
-			throw e;
-		}
-	}
+	
+	
+	
 
 	public String screenshot() {
 		return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
