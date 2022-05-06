@@ -170,7 +170,6 @@ public class WindowHandling {
 			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
 			StartBrowser.childTest.info(e);
 			throw e;
-		//HAOIA
 			
 		}
 	}
