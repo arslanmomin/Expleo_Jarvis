@@ -39,8 +39,8 @@ public class WindowHandling {
 	            String ChildWindow = iterator.next();
 	                if (!mainWindowHandle.equalsIgnoreCase(ChildWindow)) {
 	                driver.switchTo().window(ChildWindow);
-	                WebElement text = driver.findElement(By.id("sampleHeading"));
-	                System.out.println("Heading of child window is " + text.getText());
+	               // WebElement text = driver.findElement(By.id("sampleHeading"));
+	              //  System.out.println("Heading of child window is " + text.getText());
 	       
 				StartBrowser.childTest.pass("Switched To Child Window");
 				
@@ -66,8 +66,8 @@ public class WindowHandling {
 		            String ChildWindow = i1.next();
 		                if (!mainwindow.equalsIgnoreCase(ChildWindow)) {
 		                driver.switchTo().window(ChildWindow);
-		                WebElement text = driver.findElement(By.id("sampleHeading"));
-		                System.out.println("Heading of child window is " + text.getText());
+		             //   WebElement text = driver.findElement(By.id("sampleHeading"));
+		              //  System.out.println("Heading of child window is " + text.getText());
 		                driver.close();
 		                System.out.println("Child window closed");
 		            	StartBrowser.childTest.pass("Switched To Main  Window");
@@ -75,7 +75,7 @@ public class WindowHandling {
 		        }    
 		  
 		        //  Switch back to the main window which is the parent window.
-		        driver.switchTo().window(mainwindow);	
+		        	driver.switchTo().window(mainwindow);	
 		} 
 	                catch (Exception e) {
 			StartBrowser.childTest.fail("Cannot Switch Back to Main Window ");

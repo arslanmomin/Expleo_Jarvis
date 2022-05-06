@@ -3,15 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="jarvis.testscripts.BrokenScript$BLinkTest">
+      <class name="jarvis.testscripts.WindowClass">
         <methods>
-          <include name="loginintoApplication"/>
           <include name="generateReport"/>
           <include name="beforeClass"/>
           <include name="methodName"/>
+          <include name="WindowTest"/>
           <include name="afterClass"/>
         </methods>
-      </class> <!-- jarvis.testscripts.BrokenScript$BLinkTest -->
+      </class> <!-- jarvis.testscripts.WindowClass -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -80,8 +80,8 @@ public class StartBrowser {
 @AfterSuite
 	public void afterClass() {
 
-		driver.close();
-		System.out.println("browser closed");
+		//driver.close();
+		//System.out.println("browser closed");
 		extent.flush();
 	}
 
