@@ -1,39 +1,25 @@
 package jarvis.scripts;
 
 
-import org.openqa.selenium.WebDriver;
-
 import com.codoid.products.fillo.Connection;
 import com.codoid.products.fillo.Fillo;
 import com.codoid.products.fillo.Recordset;
 
-import commands.Browser;
-import commands.ElementsOp;
-import configs.BrowserSetup;
+import configs.Base;
 import jarvis.objects.HomePage;
 import jarvis.objects.LoginPage;
 import utilities.ConfigurationSupport;
 
-public class LoginLogout {
+public class LoginLogout extends Base {
 	public ConfigurationSupport cs = new ConfigurationSupport("config files//accounts.properties");
-	public WebDriver driver;
-	public ElementsOp edriver;
-	public Browser bdriver;
 	
-	public LoginLogout() {
-		driver=BrowserSetup.driver;
-		edriver= new ElementsOp(driver);
-		bdriver= new Browser(driver);
-		
-	}
-	
-	public void login(String url,String email, String password) throws Exception {
-		BrowserSetup.childTest=BrowserSetup.parentTest.createNode("login to application");
-		bdriver.openurl(url);
-		edriver.click(LoginPage.loginlink, "login link");
-		edriver.type(LoginPage.Emailtextbox, email, "username");
-		edriver.type(LoginPage.passwordtextbox, password, "password");
-		edriver.click(LoginPage.LoginButton, "LoginButton");
+	public void login() throws Exception {
+		Base.childTest=Base.parentTest.createNode("login to application");
+		LoginPage lp =new LoginPage();
+		lp.clickonsignin();
+		lp.setEmail();
+		lp.setPassword();
+		lp.clickonlogin();
 		
 		
 	}
@@ -43,13 +29,15 @@ public class LoginLogout {
 		String query="select * from Login";
 		Recordset rc= con.executeQuery(query);
 		while(rc.next()) {
-			login(url,rc.getField("Email"),rc.getField("password"));
+			login();
 			
 		}	
 	}
 	public void logout() throws Exception {
-		BrowserSetup.childTest = BrowserSetup.parentTest.createNode("logout from application");
-		edriver.click(HomePage.logoutbtn, "logout button");
+		Base.childTest = Base.parentTest.createNode("logout from application");
+		HomePage lop =new HomePage();
+		lop.clickonlogout();
+		
 	}
 
 

@@ -1,76 +1,69 @@
 package commands;
 
-import org.openqa.selenium.WebDriver;
+import configs.Base;
 
-import configs.BrowserSetup;
-
-public class Browser {
-	public WebDriver driver;
-
-	public Browser(WebDriver driver) {
-		this.driver = BrowserSetup.driver;
-	}
-
+public class Browser extends Base {
+	
 	/**
 	 * used to navigate to any application
 	 * 
 	 * @param URL- url of application
 	 */
-	public void openurl(String URL) {
+	public static void openurl(String URL) {
 
 		try {
 			driver.get(URL);
-			BrowserSetup.childTest.pass("successfully opened the " + URL);
+			Base.childTest.pass("successfully opened the " + URL);
 
 		} catch (Exception e) {
 
-			BrowserSetup.childTest.fail("unable to open the " + URL);
+			Base.childTest.fail("unable to open the " + URL);
 		}
 	}
 	
-	public void back() {
+	public static void back() {
 		try {
 			driver.navigate().back();
-			BrowserSetup.childTest.pass("browser navigated to previous page");
+			Base.childTest.pass("browser navigated to previous page");
 
 		} catch (Exception e) {
 
-			BrowserSetup.childTest.fail("unable to navigate to previous page");
+			Base.childTest.fail("unable to navigate to previous page");
 		}
 	}
 	
-	public void forward() {
+	public static void forward() {
 		try {
 			driver.navigate().forward();
-			BrowserSetup.childTest.pass("browser navigated to next page");
+			Base.childTest.pass("browser navigated to next page");
 
 		} catch (Exception e) {
 
-			BrowserSetup.childTest.fail("unable to navigate to next page");
+			Base.childTest.fail("unable to navigate to next page");
 		}
 	}
 	
-	public void navigate(String url) {
+	public static void navigate(String url) {
 		try {
 			driver.navigate().to(url);
-			BrowserSetup.childTest.pass("browser navigated to "+url);
+			Base.childTest.pass("browser navigated to "+url);
 
 		} catch (Exception e) {
 
-			BrowserSetup.childTest.fail("unable to navigate to url "+url);
+			Base.childTest.fail("unable to navigate to url "+url);
 		}
 	}
 	
-	public void matchurl(String expected) {
+	public static void matchurl(String expected) {
 		try {
 			String actual=driver.getCurrentUrl();
-			BrowserSetup.childTest.info(actual);
+			Base.childTest.info(actual);
 			if(actual.equals(expected))
-				BrowserSetup.childTest.pass("url  matched with expected");
+				Base.childTest.pass("url  matched with expected");
 
 		} catch (Exception e) {
 
-			BrowserSetup.childTest.fail("url not matched");
+			Base.childTest.fail("url not matched");
 		}
 	}
 }

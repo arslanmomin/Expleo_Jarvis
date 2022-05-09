@@ -13,16 +13,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.aventstack.extentreports.MediaEntityBuilder;
 
-import configs.BrowserSetup;
+import configs.Base;
 
-public class ElementsOp {
-	public WebDriver driver;
-
-	public ElementsOp(WebDriver driver) {
-		this.driver = BrowserSetup.driver;
-	}
+public class ElementsOp extends Base {
 	
-
 
 	/**
 	 * used to perform click operation
@@ -31,14 +25,14 @@ public class ElementsOp {
 	 * @throws Exception 
 	 */
 
-	public void click(By locator,String elementName) throws Exception {
+	public static void click(WebDriver driver,WebElement ele) throws Exception {
 		try {
-			driver.findElement(locator).click();
-			BrowserSetup.childTest.pass("performed click on :"+elementName);
+			ele.click();
+			Base.childTest.pass("performed click on :"+ ele);
 		} catch (Exception e) {
-			BrowserSetup.childTest.pass("can not perform click operation on :"+elementName);
+			Base.childTest.pass("can not perform click operation on :"+ele);
 			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
-			BrowserSetup.childTest.info(e);
+			Base.childTest.info(e);
 			throw e;
 		}
 	}
@@ -49,15 +43,15 @@ public class ElementsOp {
 	 * @param testData -- the data which have to passed, can get from external file
 	 * @param elementName
 	 */
-	public void type(By locator, String testData, String elementName) {
+	public static void type(WebDriver driver,WebElement ele, String testData) {
 		try {
-			driver.findElement(locator).sendKeys(testData);
-			BrowserSetup.childTest.pass("success in typing in  :"+elementName+" with testdata :"+testData);
+			ele.sendKeys(testData);
+			Base.childTest.pass("success in typing in  :"+ele+" with testdata :"+testData);
 			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
 		} catch (Exception e) {
-			BrowserSetup.childTest.fail("can not  type in :"+elementName+"with testdata :"+testData);
+			Base.childTest.fail("can not  type in :"+ele+"with testdata :"+testData);
 			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
-			BrowserSetup.childTest.info(e);
+			Base.childTest.info(e);
 			throw e;
 		}
 	}
@@ -66,16 +60,16 @@ public class ElementsOp {
 	 * @param locator can get it from object repository
 	 * @param elementname -name of element
 	 */
-	public void mouseover(By locator, String elementname) throws Exception {
+	public static void mouseover(By locator, String elementname) throws Exception {
 		try {
 			WebElement wx=driver.findElement(locator);
 			Actions ac=new Actions(driver);
 			ac.moveToElement(wx).build().perform();
-			BrowserSetup.childTest.pass("success in mouseHover action  :"+ elementname);
+			Base.childTest.pass("success in mouseHover action  :"+ elementname);
 		} catch (Exception e) {
-			BrowserSetup.childTest.fail("can not  mouseHover in :"+elementname);
+			Base.childTest.fail("can not  mouseHover in :"+elementname);
 			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
-			BrowserSetup.childTest.info(e);
+			Base.childTest.info(e);
 			throw e;
 		}
 	}
@@ -84,46 +78,46 @@ public class ElementsOp {
 	 * @param label webelement from object repository
 	 * @param elemnt -element name
 	 */
-	public void getText(WebElement label) {
+	public static void getText(WebElement label) {
 		try {
 			String text=driver.findElement((By) label).getText();
-			BrowserSetup.childTest.pass(text);
+			Base.childTest.pass(text);
 		} catch (Exception e) {
 			
 			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
-			BrowserSetup.childTest.info(e);
+			Base.childTest.info(e);
 			throw e;
 		}
 	}
 	
-	public void verifyeleclickable(By locator, String elementname) {
+	public static void verifyeleclickable(By locator, String elementname) {
 		try {
 			WebDriverWait wt = new WebDriverWait(driver, 6);
 			wt.until(ExpectedConditions.elementToBeClickable(locator));
-			BrowserSetup.childTest.pass("element is clickable  :" + elementname);
+			Base.childTest.pass("element is clickable  :" + elementname);
 
 		} catch (Exception e) {
-			BrowserSetup.childTest.fail("element is not clickable :" + elementname);
-			BrowserSetup.childTest.info(e);
+			Base.childTest.fail("element is not clickable :" + elementname);
+			Base.childTest.info(e);
 			throw e;
 		}
 
 	}
 
-	public void verifyelevisible(By locator, String elementname) {
+	public static void verifyelevisible(By locator, String elementname) {
 		try {
 			boolean t = driver.findElement(locator).isDisplayed();
 			if (t)
-				BrowserSetup.childTest.pass("element is visible  :" + elementname);
+				Base.childTest.pass("element is visible  :" + elementname);
 			else
-				BrowserSetup.childTest.fail("element is not visible :" + elementname);
+				Base.childTest.fail("element is not visible :" + elementname);
 		} catch (Exception e) {
-			BrowserSetup.childTest.info(e);
+			Base.childTest.info(e);
 			throw e;
 		}
 	}
 
-	public String screenshot() {
+	public static String screenshot() {
 		return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
 		
         //goto url

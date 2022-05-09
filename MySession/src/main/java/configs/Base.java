@@ -23,7 +23,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterSuite;
 
-public class BrowserSetup {
+public class Base {
 
 	public static WebDriver driver;
 	public ConfigurationSupport cs = new ConfigurationSupport("config files//global.properties");
@@ -37,7 +37,7 @@ public class BrowserSetup {
 	(alwaysRun = true)
 	public void generateReport() {
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-		final SimpleDateFormat sdf3 = new SimpleDateFormat("yyyy-MM-dd HH_mm_ss");
+		final SimpleDateFormat sdf3 = new SimpleDateFormat("yyyy_MM_dd HH_mm_ss");
 		String name=sdf3.format(timestamp);
 		sparkReporter = new ExtentSparkReporter("Report/"+name+".html");
 		extent = new ExtentReports();
@@ -78,6 +78,8 @@ public class BrowserSetup {
 			break;
 
 		}
+		
+		driver.get(cs.getProperty("url"));
 	}
 
 @AfterSuite

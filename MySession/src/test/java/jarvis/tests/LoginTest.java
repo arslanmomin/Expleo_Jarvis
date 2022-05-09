@@ -1,20 +1,19 @@
 package jarvis.tests;
 import org.testng.annotations.Test;
 
-import configs.BrowserSetup;
+import configs.Base;
 import jarvis.scripts.LoginLogout;
-import utilities.ConfigurationSupport;
 
 
-public class LoginTest extends BrowserSetup {
+public class LoginTest extends Base {
 	
-	public ConfigurationSupport cs = new ConfigurationSupport("config files//accounts.properties");
+
 
 
   @Test(priority=0,groups= {"regression","login"})
   public void loginTest() throws Exception {
 	  LoginLogout re = new LoginLogout();
-	  re.login(cs.getProperty("url"),cs.getProperty("email") , cs.getProperty("password"));
+	  re.login();
 
   }
  

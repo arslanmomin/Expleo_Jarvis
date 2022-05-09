@@ -2,13 +2,11 @@ package jarvis.tests;
 
 import org.testng.annotations.Test;
 
-import configs.BrowserSetup;
+import configs.Base;
 import jarvis.scripts.Accounts;
-import utilities.ConfigurationSupport;
 
-public class ShoppingCartTest extends BrowserSetup{
-	public ConfigurationSupport cs = new ConfigurationSupport("config files//accounts.properties");
 
+public class ShoppingCartTest extends Base{
 
 	  @Test(priority=0,groups= {"accounts"})
 	  public void shoppingcartTest() throws Exception { 

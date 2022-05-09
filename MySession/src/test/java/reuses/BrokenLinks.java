@@ -12,16 +12,16 @@ import org.testng.annotations.Test;
 
 import commands.Browser;
 import commands.ElementsOp;
-import configs.BrowserSetup;
+import configs.Base;
 
-public class BrokenLinks extends BrowserSetup {
+public class BrokenLinks extends Base {
 
 	public WebDriver driver;
 	public ElementsOp edriver;
 	public Browser bdriver;
 
 	public BrokenLinks() {
-		driver = BrowserSetup.driver;
+		driver = Base.driver;
 		edriver = new ElementsOp(driver);
 		bdriver = new Browser(driver);
 
@@ -29,7 +29,7 @@ public class BrokenLinks extends BrowserSetup {
 
 	public void BrokenTest(String WebUrl) throws InterruptedException {
 
-		BrowserSetup.childTest = BrowserSetup.parentTest.createNode("Broken links");
+		Base.childTest = Base.parentTest.createNode("Broken links");
 		bdriver.openurl(WebUrl);
 
 		List<WebElement> links = driver.findElements(By.tagName("a"));

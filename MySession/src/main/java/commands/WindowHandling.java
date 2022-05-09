@@ -10,13 +10,13 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import com.aventstack.extentreports.MediaEntityBuilder;
 
-import configs.BrowserSetup;
+import configs.Base;
 
 public class WindowHandling {
 	public WebDriver driver;
 
 	public WindowHandling() {
-		driver = BrowserSetup.driver;
+		driver = Base.driver;
 	}
 
 	public void SwitchToChild() {
@@ -29,14 +29,14 @@ public class WindowHandling {
 				String ChildWindow = iterator.next();
 				if (!mainWindowHandle.equalsIgnoreCase(ChildWindow)) {
 					driver.switchTo().window(ChildWindow);
-					BrowserSetup.childTest.pass("Switched To Child Window");
+					Base.childTest.pass("Switched To Child Window");
 					MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
 				}
 			}
 		} catch (Exception e) {
-			BrowserSetup.childTest.fail("can not switch to child window ");
+			Base.childTest.fail("can not switch to child window ");
 			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
-			BrowserSetup.childTest.info(e);
+			Base.childTest.info(e);
 			throw e;
 
 		}
@@ -54,14 +54,14 @@ public class WindowHandling {
 					driver.switchTo().window(ChildWindow);
 					driver.close();
 					System.out.println("Child window closed");
-					BrowserSetup.childTest.pass("Switched To Main  Window");
+					Base.childTest.pass("Switched To Main  Window");
 				}
 			}
 			driver.switchTo().window(mainwindow);
 		} catch (Exception e) {
-			BrowserSetup.childTest.fail("Cannot Switch Back to Main Window ");
+			Base.childTest.fail("Cannot Switch Back to Main Window ");
 			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
-			BrowserSetup.childTest.info(e);
+			Base.childTest.info(e);
 			throw e;
 
 		}
@@ -71,14 +71,14 @@ public class WindowHandling {
 	public void WindowHandle() {
 		try {
 			String wh = driver.getWindowHandle();
-			BrowserSetup.childTest.pass("Window Handle :" + wh);
+			Base.childTest.pass("Window Handle :" + wh);
 
 			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
 
 		} catch (Exception e) {
-			BrowserSetup.childTest.fail("can not handle Window ");
+			Base.childTest.fail("can not handle Window ");
 			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
-			BrowserSetup.childTest.info(e);
+			Base.childTest.info(e);
 			throw e;
 
 		}
@@ -87,16 +87,16 @@ public class WindowHandling {
 	public void WindowHandles() {
 		try {
 			Set<String> wh = driver.getWindowHandles();
-			BrowserSetup.childTest.pass("Window handles :"
+			Base.childTest.pass("Window handles :"
 
 					+ wh);
 
 			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
 
 		} catch (Exception e) {
-			BrowserSetup.childTest.fail("can not handle Window ");
+			Base.childTest.fail("can not handle Window ");
 			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
-			BrowserSetup.childTest.info(e);
+			Base.childTest.info(e);
 			throw e;
 
 		}
@@ -105,15 +105,15 @@ public class WindowHandling {
 	public void getSize() {
 		try {
 			Dimension winSize = driver.manage().window().getSize();
-			BrowserSetup.childTest.pass("***Full Size Values for Current Window***\n");
-			BrowserSetup.childTest.pass("Screen Width: " + winSize.getWidth() + "\n");
-			BrowserSetup.childTest.pass("Screen Height: " + winSize.getHeight() + "\n");
+			Base.childTest.pass("***Full Size Values for Current Window***\n");
+			Base.childTest.pass("Screen Width: " + winSize.getWidth() + "\n");
+			Base.childTest.pass("Screen Height: " + winSize.getHeight() + "\n");
 			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
 
 		} catch (Exception e) {
-			BrowserSetup.childTest.fail("can not get Window Size");
+			Base.childTest.fail("can not get Window Size");
 			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
-			BrowserSetup.childTest.info(e);
+			Base.childTest.info(e);
 			throw e;
 
 		}
@@ -122,14 +122,14 @@ public class WindowHandling {
 	public void setSize(Dimension a) {
 		try {
 			driver.manage().window().setSize(a);
-			BrowserSetup.childTest.pass("Size set");
+			Base.childTest.pass("Size set");
 
 			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
 
 		} catch (Exception e) {
-			BrowserSetup.childTest.fail("can not set Window Size ");
+			Base.childTest.fail("can not set Window Size ");
 			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
-			BrowserSetup.childTest.info(e);
+			Base.childTest.info(e);
 			throw e;
 
 		}
@@ -138,15 +138,15 @@ public class WindowHandling {
 	public void getPosition() {
 		try {
 			Point winPos = driver.manage().window().getPosition();
-			BrowserSetup.childTest.pass("***Full Size Values for Current Window***\n");
-			BrowserSetup.childTest.pass("X cordinate: " + winPos.getX() + "\n");
-			BrowserSetup.childTest.pass("Y cordinate: " + winPos.getY() + "\n");
+			Base.childTest.pass("***Full Size Values for Current Window***\n");
+			Base.childTest.pass("X cordinate: " + winPos.getX() + "\n");
+			Base.childTest.pass("Y cordinate: " + winPos.getY() + "\n");
 			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
 
 		} catch (Exception e) {
-			BrowserSetup.childTest.fail("can not get Window Position ");
+			Base.childTest.fail("can not get Window Position ");
 			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
-			BrowserSetup.childTest.info(e);
+			Base.childTest.info(e);
 			throw e;
 
 		}
@@ -157,14 +157,14 @@ public class WindowHandling {
 			Point winPos = driver.manage().window().getPosition();
 			Point NewWinPos = winPos.moveBy(x, y);
 			driver.manage().window().setPosition(NewWinPos);
-			BrowserSetup.childTest.pass("Position set");
+			Base.childTest.pass("Position set");
 
 			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
 
 		} catch (Exception e) {
-			BrowserSetup.childTest.fail("can not set Window Position ");
+			Base.childTest.fail("can not set Window Position ");
 			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
-			BrowserSetup.childTest.info(e);
+			Base.childTest.info(e);
 			throw e;
 
 		}

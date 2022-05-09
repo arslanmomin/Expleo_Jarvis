@@ -1,13 +1,46 @@
 package jarvis.objects;
 
 
-import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
+import commands.ElementsOp;
+import configs.Base;
+import utilities.ConfigurationSupport;
 
-	public static By loginlink =By.className("ico-login");
-	public static By Emailtextbox =By.id("Email");
-	public static By passwordtextbox=By.id("Password");
-	public static By LoginButton=By.xpath("//input[@value='Log in']");
+public class LoginPage extends Base{
+
+	public ConfigurationSupport cs = new ConfigurationSupport("config files//accounts.properties");
+	@FindBy(className="ico-login")
+	WebElement signinbtn;
 	
+	@FindBy(id="Email")
+	WebElement emailbox;
+	
+	@FindBy(id="Password")
+	WebElement passwordbox;
+	
+	@FindBy(xpath="//input[@value='Log in']")
+	WebElement loginbtn;
+
+	public LoginPage() {
+		PageFactory.initElements(driver, this);
+	}
+	
+	public void clickonsignin() throws Exception {
+		ElementsOp.click(driver, signinbtn);
+	}
+	
+	public void setEmail() {
+		ElementsOp.type(driver, emailbox, cs.getProperty("email"));
+	}
+
+	public void setPassword() {
+		ElementsOp.type(driver, passwordbox, cs.getProperty("password"));
+	}
+	
+	public void clickonlogin() throws Exception {
+		ElementsOp.click(driver, loginbtn);
+	}
 }
