@@ -7,8 +7,8 @@ import configs.StartBrowser;
 public class Browser {
 	public WebDriver driver;
 
-	public Browser() {
-		driver = StartBrowser.driver;
+	public Browser(WebDriver driver) {
+		this.driver = StartBrowser.driver;
 	}
 
 	/**

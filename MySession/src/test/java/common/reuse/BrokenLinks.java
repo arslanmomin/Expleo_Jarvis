@@ -22,8 +22,8 @@ public class BrokenLinks extends StartBrowser {
 
 	public BrokenLinks() {
 		driver = StartBrowser.driver;
-		edriver = new ElementsOp();
-		bdriver = new Browser();
+		edriver = new ElementsOp(driver);
+		bdriver = new Browser(driver);
 
 	}
 

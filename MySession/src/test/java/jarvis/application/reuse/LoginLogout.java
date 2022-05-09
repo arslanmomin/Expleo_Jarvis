@@ -22,8 +22,8 @@ public class LoginLogout {
 	
 	public LoginLogout() {
 		driver=StartBrowser.driver;
-		edriver= new ElementsOp();
-		bdriver= new Browser();
+		edriver= new ElementsOp(driver);
+		bdriver= new Browser(driver);
 		
 	}
 	
@@ -51,12 +51,7 @@ public class LoginLogout {
 		StartBrowser.childTest = StartBrowser.parentTest.createNode("logout from application");
 		edriver.click(HomePage.logoutbtn, "logout button");
 	}
-	public void shoppingcart() throws Exception {
-		StartBrowser.childTest = StartBrowser.parentTest.createNode("Shopping cart");
-		  edriver.verifyeleclickable(HomePage.shoppingcart, "cart");
-		  edriver.click(HomePage.shoppingcart, "Shopping cart");
-		  bdriver.matchurl( cs.getProperty("shoppingcarturl"));
-	  }
+
 
 
 }
