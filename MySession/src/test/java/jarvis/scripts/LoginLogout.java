@@ -1,4 +1,4 @@
-package jarvis.application.reuse;
+package jarvis.scripts;
 
 
 import org.openqa.selenium.WebDriver;
@@ -7,12 +7,12 @@ import com.codoid.products.fillo.Connection;
 import com.codoid.products.fillo.Fillo;
 import com.codoid.products.fillo.Recordset;
 
-import configs.StartBrowser;
-import jarvis.objectrepo.HomePage;
-import jarvis.objectrepo.LoginPage;
+import commands.Browser;
+import commands.ElementsOp;
+import configs.BrowserSetup;
+import jarvis.objects.HomePage;
+import jarvis.objects.LoginPage;
 import utilities.ConfigurationSupport;
-import wdcommands.Browser;
-import wdcommands.ElementsOp;
 
 public class LoginLogout {
 	public ConfigurationSupport cs = new ConfigurationSupport("config files//accounts.properties");
@@ -21,14 +21,14 @@ public class LoginLogout {
 	public Browser bdriver;
 	
 	public LoginLogout() {
-		driver=StartBrowser.driver;
+		driver=BrowserSetup.driver;
 		edriver= new ElementsOp(driver);
 		bdriver= new Browser(driver);
 		
 	}
 	
 	public void login(String url,String email, String password) throws Exception {
-		StartBrowser.childTest=StartBrowser.parentTest.createNode("login to application");
+		BrowserSetup.childTest=BrowserSetup.parentTest.createNode("login to application");
 		bdriver.openurl(url);
 		edriver.click(LoginPage.loginlink, "login link");
 		edriver.type(LoginPage.Emailtextbox, email, "username");
@@ -48,7 +48,7 @@ public class LoginLogout {
 		}	
 	}
 	public void logout() throws Exception {
-		StartBrowser.childTest = StartBrowser.parentTest.createNode("logout from application");
+		BrowserSetup.childTest = BrowserSetup.parentTest.createNode("logout from application");
 		edriver.click(HomePage.logoutbtn, "logout button");
 	}
 

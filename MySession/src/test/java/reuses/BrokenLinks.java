@@ -1,4 +1,4 @@
-package common.reuse;
+package reuses;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -10,18 +10,18 @@ import org.openqa.selenium.WebElement;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import configs.StartBrowser;
-import wdcommands.Browser;
-import wdcommands.ElementsOp;
+import commands.Browser;
+import commands.ElementsOp;
+import configs.BrowserSetup;
 
-public class BrokenLinks extends StartBrowser {
+public class BrokenLinks extends BrowserSetup {
 
 	public WebDriver driver;
 	public ElementsOp edriver;
 	public Browser bdriver;
 
 	public BrokenLinks() {
-		driver = StartBrowser.driver;
+		driver = BrowserSetup.driver;
 		edriver = new ElementsOp(driver);
 		bdriver = new Browser(driver);
 
@@ -29,7 +29,7 @@ public class BrokenLinks extends StartBrowser {
 
 	public void BrokenTest(String WebUrl) throws InterruptedException {
 
-		StartBrowser.childTest = StartBrowser.parentTest.createNode("Broken links");
+		BrowserSetup.childTest = BrowserSetup.parentTest.createNode("Broken links");
 		bdriver.openurl(WebUrl);
 
 		List<WebElement> links = driver.findElements(By.tagName("a"));

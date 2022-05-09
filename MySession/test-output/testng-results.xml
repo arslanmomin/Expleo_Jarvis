@@ -1,31 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="3" total="6" passed="2" failed="1" skipped="0">
+<testng-results ignored="3" total="5" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-05-09T11:24:20 IST" name="AccountsSuite" finished-at="2022-05-09T11:24:42 IST" duration-ms="21878">
+  <suite started-at="2022-05-09T14:45:03 IST" name="AccountsSuite" finished-at="2022-05-09T14:45:12 IST" duration-ms="9623">
     <groups>
       <group name="regression">
-        <method signature="LoginTest.loginTest()[pri:0, instance:jarvis.testscripts.LoginTest@18d87d80]" name="loginTest" class="jarvis.testscripts.LoginTest"/>
+        <method signature="LoginTest.loginTest()[pri:0, instance:jarvis.testscripts.LoginTest@1af2d44a]" name="loginTest" class="jarvis.testscripts.LoginTest"/>
       </group> <!-- regression -->
       <group name="accounts">
-        <method signature="ShoppingCart.cartHover()[pri:1, instance:jarvis.testscripts.ShoppingCart@21e360a]" name="cartHover" class="jarvis.testscripts.ShoppingCart"/>
-        <method signature="ShoppingCart.shoppingcartTest()[pri:0, instance:jarvis.testscripts.ShoppingCart@21e360a]" name="shoppingcartTest" class="jarvis.testscripts.ShoppingCart"/>
+        <method signature="ShoppingCartTest.shoppingcartTest()[pri:0, instance:jarvis.testscripts.ShoppingCartTest@7c24b813]" name="shoppingcartTest" class="jarvis.testscripts.ShoppingCartTest"/>
       </group> <!-- accounts -->
       <group name="login">
-        <method signature="LoginTest.loginTest()[pri:0, instance:jarvis.testscripts.LoginTest@18d87d80]" name="loginTest" class="jarvis.testscripts.LoginTest"/>
+        <method signature="LoginTest.loginTest()[pri:0, instance:jarvis.testscripts.LoginTest@1af2d44a]" name="loginTest" class="jarvis.testscripts.LoginTest"/>
       </group> <!-- login -->
     </groups>
-    <test started-at="2022-05-09T11:24:20 IST" name="AccountsTest" finished-at="2022-05-09T11:24:42 IST" duration-ms="21878">
+    <test started-at="2022-05-09T14:45:03 IST" name="AccountsTest" finished-at="2022-05-09T14:45:12 IST" duration-ms="9623">
       <class name="jarvis.testscripts.LoginTest">
-        <test-method is-config="true" signature="beforeClass()[pri:0, instance:jarvis.testscripts.LoginTest@18d87d80]" started-at="2022-05-09T11:24:15 IST" name="beforeClass" finished-at="2022-05-09T11:24:20 IST" duration-ms="5143" status="PASS">
+        <test-method is-config="true" signature="beforeClass()[pri:0, instance:jarvis.testscripts.LoginTest@1af2d44a]" started-at="2022-05-09T14:44:58 IST" name="beforeClass" finished-at="2022-05-09T14:45:03 IST" duration-ms="4326" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method is-config="true" signature="generateReport()[pri:0, instance:jarvis.testscripts.LoginTest@18d87d80]" started-at="2022-05-09T11:24:20 IST" name="generateReport" finished-at="2022-05-09T11:24:20 IST" duration-ms="530" status="PASS">
+        <test-method is-config="true" signature="generateReport()[pri:0, instance:jarvis.testscripts.LoginTest@1af2d44a]" started-at="2022-05-09T14:45:03 IST" name="generateReport" finished-at="2022-05-09T14:45:03 IST" duration-ms="286" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- generateReport -->
-        <test-method is-config="true" signature="methodName(java.lang.reflect.Method)[pri:0, instance:jarvis.testscripts.LoginTest@18d87d80]" started-at="2022-05-09T11:24:20 IST" name="methodName" finished-at="2022-05-09T11:24:20 IST" duration-ms="16" status="PASS">
+        <test-method is-config="true" signature="methodName(java.lang.reflect.Method)[pri:0, instance:jarvis.testscripts.LoginTest@1af2d44a]" started-at="2022-05-09T14:45:03 IST" name="methodName" finished-at="2022-05-09T14:45:03 IST" duration-ms="4" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -36,87 +35,32 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- methodName -->
-        <test-method signature="loginTest()[pri:0, instance:jarvis.testscripts.LoginTest@18d87d80]" started-at="2022-05-09T11:24:20 IST" name="loginTest" finished-at="2022-05-09T11:24:32 IST" duration-ms="11929" status="PASS">
+        <test-method signature="loginTest()[pri:0, instance:jarvis.testscripts.LoginTest@1af2d44a]" started-at="2022-05-09T14:45:03 IST" name="loginTest" finished-at="2022-05-09T14:45:11 IST" duration-ms="8253" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginTest -->
-        <test-method is-config="true" signature="afterClass()[pri:0, instance:jarvis.testscripts.LoginTest@18d87d80]" started-at="2022-05-09T11:24:42 IST" name="afterClass" finished-at="2022-05-09T11:24:42 IST" duration-ms="531" status="PASS">
+        <test-method is-config="true" signature="afterClass()[pri:0, instance:jarvis.testscripts.LoginTest@1af2d44a]" started-at="2022-05-09T14:45:12 IST" name="afterClass" finished-at="2022-05-09T14:45:13 IST" duration-ms="424" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
       </class> <!-- jarvis.testscripts.LoginTest -->
-      <class name="jarvis.testscripts.ShoppingCart">
-        <test-method is-config="true" signature="methodName(java.lang.reflect.Method)[pri:0, instance:jarvis.testscripts.ShoppingCart@21e360a]" started-at="2022-05-09T11:24:32 IST" name="methodName" finished-at="2022-05-09T11:24:32 IST" duration-ms="1" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void jarvis.testscripts.ShoppingCart.shoppingcartTest() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- methodName -->
-        <test-method signature="shoppingcartTest()[pri:0, instance:jarvis.testscripts.ShoppingCart@21e360a]" started-at="2022-05-09T11:24:32 IST" name="shoppingcartTest" finished-at="2022-05-09T11:24:42 IST" duration-ms="9306" status="PASS">
+      <class name="jarvis.testscripts.ShoppingCartTest">
+        <test-method signature="shoppingcartTest()[pri:0, instance:jarvis.testscripts.ShoppingCartTest@7c24b813]" started-at="2022-05-09T14:45:11 IST" name="shoppingcartTest" finished-at="2022-05-09T14:45:12 IST" duration-ms="1047" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- shoppingcartTest -->
-        <test-method is-config="true" signature="methodName(java.lang.reflect.Method)[pri:0, instance:jarvis.testscripts.ShoppingCart@21e360a]" started-at="2022-05-09T11:24:42 IST" name="methodName" finished-at="2022-05-09T11:24:42 IST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="methodName(java.lang.reflect.Method)[pri:0, instance:jarvis.testscripts.ShoppingCartTest@7c24b813]" started-at="2022-05-09T14:45:11 IST" name="methodName" finished-at="2022-05-09T14:45:11 IST" duration-ms="0" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void jarvis.testscripts.ShoppingCart.cartHover() throws java.lang.Exception]]>
+                <![CDATA[public void jarvis.testscripts.ShoppingCartTest.shoppingcartTest() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- methodName -->
-        <test-method signature="cartHover()[pri:1, instance:jarvis.testscripts.ShoppingCart@21e360a]" started-at="2022-05-09T11:24:42 IST" name="cartHover" finished-at="2022-05-09T11:24:42 IST" duration-ms="3" status="FAIL">
-          <exception class="java.lang.NullPointerException">
-            <message>
-              <![CDATA[Cannot invoke "org.openqa.selenium.TakesScreenshot.getScreenshotAs(org.openqa.selenium.OutputType)" because "this.driver" is null]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.TakesScreenshot.getScreenshotAs(org.openqa.selenium.OutputType)" because "this.driver" is null
-at wdcommands.ElementsOp.screenshot(ElementsOp.java:127)
-at wdcommands.ElementsOp.mouseover(ElementsOp.java:77)
-at jarvis.testscripts.ShoppingCart.cartHover(ShoppingCart.java:36)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
-at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
-at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
-at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:794)
-at org.testng.TestRunner.run(TestRunner.java:596)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
-at org.testng.SuiteRunner.run(SuiteRunner.java:276)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
-at org.testng.TestNG.runSuites(TestNG.java:1063)
-at org.testng.TestNG.run(TestNG.java:1031)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.NullPointerException -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- cartHover -->
-      </class> <!-- jarvis.testscripts.ShoppingCart -->
+      </class> <!-- jarvis.testscripts.ShoppingCartTest -->
     </test> <!-- AccountsTest -->
   </suite> <!-- AccountsSuite -->
 </testng-results>

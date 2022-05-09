@@ -1,4 +1,4 @@
-package wdcommands;
+package commands;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
@@ -13,13 +13,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.aventstack.extentreports.MediaEntityBuilder;
 
-import configs.StartBrowser;
+import configs.BrowserSetup;
 
 public class ElementsOp {
 	public WebDriver driver;
 
 	public ElementsOp(WebDriver driver) {
-		this.driver = StartBrowser.driver;
+		this.driver = BrowserSetup.driver;
 	}
 	
 
@@ -34,11 +34,11 @@ public class ElementsOp {
 	public void click(By locator,String elementName) throws Exception {
 		try {
 			driver.findElement(locator).click();
-			StartBrowser.childTest.pass("performed click on :"+elementName);
+			BrowserSetup.childTest.pass("performed click on :"+elementName);
 		} catch (Exception e) {
-			StartBrowser.childTest.pass("can not perform click operation on :"+elementName);
+			BrowserSetup.childTest.pass("can not perform click operation on :"+elementName);
 			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
-			StartBrowser.childTest.info(e);
+			BrowserSetup.childTest.info(e);
 			throw e;
 		}
 	}
@@ -52,12 +52,12 @@ public class ElementsOp {
 	public void type(By locator, String testData, String elementName) {
 		try {
 			driver.findElement(locator).sendKeys(testData);
-			StartBrowser.childTest.pass("success in typing in  :"+elementName+" with testdata :"+testData);
+			BrowserSetup.childTest.pass("success in typing in  :"+elementName+" with testdata :"+testData);
 			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
 		} catch (Exception e) {
-			StartBrowser.childTest.fail("can not  type in :"+elementName+"with testdata :"+testData);
+			BrowserSetup.childTest.fail("can not  type in :"+elementName+"with testdata :"+testData);
 			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
-			StartBrowser.childTest.info(e);
+			BrowserSetup.childTest.info(e);
 			throw e;
 		}
 	}
@@ -71,11 +71,11 @@ public class ElementsOp {
 			WebElement wx=driver.findElement(locator);
 			Actions ac=new Actions(driver);
 			ac.moveToElement(wx).build().perform();
-			StartBrowser.childTest.pass("success in mouseHover action  :"+ elementname);
+			BrowserSetup.childTest.pass("success in mouseHover action  :"+ elementname);
 		} catch (Exception e) {
-			StartBrowser.childTest.fail("can not  mouseHover in :"+elementname);
+			BrowserSetup.childTest.fail("can not  mouseHover in :"+elementname);
 			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
-			StartBrowser.childTest.info(e);
+			BrowserSetup.childTest.info(e);
 			throw e;
 		}
 	}
@@ -87,11 +87,11 @@ public class ElementsOp {
 	public void getText(WebElement label) {
 		try {
 			String text=driver.findElement((By) label).getText();
-			StartBrowser.childTest.pass(text);
+			BrowserSetup.childTest.pass(text);
 		} catch (Exception e) {
 			
 			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
-			StartBrowser.childTest.info(e);
+			BrowserSetup.childTest.info(e);
 			throw e;
 		}
 	}
@@ -100,11 +100,11 @@ public class ElementsOp {
 		try {
 			WebDriverWait wt = new WebDriverWait(driver, 6);
 			wt.until(ExpectedConditions.elementToBeClickable(locator));
-			StartBrowser.childTest.pass("element is clickable  :" + elementname);
+			BrowserSetup.childTest.pass("element is clickable  :" + elementname);
 
 		} catch (Exception e) {
-			StartBrowser.childTest.fail("element is not clickable :" + elementname);
-			StartBrowser.childTest.info(e);
+			BrowserSetup.childTest.fail("element is not clickable :" + elementname);
+			BrowserSetup.childTest.info(e);
 			throw e;
 		}
 
@@ -114,11 +114,11 @@ public class ElementsOp {
 		try {
 			boolean t = driver.findElement(locator).isDisplayed();
 			if (t)
-				StartBrowser.childTest.pass("element is visible  :" + elementname);
+				BrowserSetup.childTest.pass("element is visible  :" + elementname);
 			else
-				StartBrowser.childTest.fail("element is not visible :" + elementname);
+				BrowserSetup.childTest.fail("element is not visible :" + elementname);
 		} catch (Exception e) {
-			StartBrowser.childTest.info(e);
+			BrowserSetup.childTest.info(e);
 			throw e;
 		}
 	}

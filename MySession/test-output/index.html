@@ -26,7 +26,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite, 1 failed test</span>
+      <span class="top-banner-font-1">1 suite</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -40,7 +40,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-AccountsSuite" class="navigator-link">
-              <span class="suite-name border-failed">AccountsSuite</span>
+              <span class="suite-name border-passed">AccountsSuite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -51,7 +51,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-AccountsSuite" class="navigator-link ">
-                    <span>C:\Users\12053\eclipse-workspace\Expleo_Jarvis\MySession\testng files\test_accounts.xml</span>
+                    <span>C:\Users\12053\git\Expleo_Jarvis\MySession\testng files\test_accounts.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -93,21 +93,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">3 methods, 1 failed,   2 passed</span>
-                  </li>
-                  <li>
-                    <span class="method-list-title failed">Failed methods</span>
-                    <span class="show-or-hide-methods failed">
-                      <a href="#" panel-name="suite-AccountsSuite" class="hide-methods failed suite-AccountsSuite"> (hide)</a> <!-- hide-methods failed suite-AccountsSuite -->
-                      <a href="#" panel-name="suite-AccountsSuite" class="show-methods failed suite-AccountsSuite"> (show)</a> <!-- show-methods failed suite-AccountsSuite -->
-                    </span>
-                    <div class="method-list-content failed suite-AccountsSuite">
-                      <span>
-                        <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-AccountsSuite" title="jarvis.testscripts.ShoppingCart" class="method navigator-link" hash-for-method="cartHover">cartHover</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                    </div> <!-- method-list-content failed suite-AccountsSuite -->
+                    <span class="method-stats">2 methods,   2 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -123,7 +109,7 @@
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-AccountsSuite" title="jarvis.testscripts.ShoppingCart" class="method navigator-link" hash-for-method="shoppingcartTest">shoppingcartTest</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-AccountsSuite" title="jarvis.testscripts.ShoppingCartTest" class="method navigator-link" hash-for-method="shoppingcartTest">shoppingcartTest</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-AccountsSuite -->
@@ -138,32 +124,10 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-AccountsSuite" class="panel AccountsSuite">
-          <div class="suite-AccountsSuite-class-failed">
-            <div class="main-panel-header rounded-window-top">
-              <img src="failed.png"/>
-              <span class="class-name">jarvis.testscripts.ShoppingCart</span>
-            </div> <!-- main-panel-header rounded-window-top -->
-            <div class="main-panel-content rounded-window-bottom">
-              <div class="method">
-                <div class="method-content">
-                  <a name="cartHover">
-                  </a> <!-- cartHover -->
-                  <span class="method-name">cartHover</span>
-                  <div class="stack-trace">java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.TakesScreenshot.getScreenshotAs(org.openqa.selenium.OutputType)&quot; because &quot;this.driver&quot; is null
-	at wdcommands.ElementsOp.screenshot(ElementsOp.java:127)
-	at wdcommands.ElementsOp.mouseover(ElementsOp.java:77)
-	at jarvis.testscripts.ShoppingCart.cartHover(ShoppingCart.java:36)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 27 stack frames
-</div> <!-- stack-trace -->
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-            </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-AccountsSuite-class-failed -->
           <div class="suite-AccountsSuite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
-              <span class="class-name">jarvis.testscripts.ShoppingCart</span>
+              <span class="class-name">jarvis.testscripts.ShoppingCartTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
@@ -193,7 +157,7 @@
         </div> <!-- panel AccountsSuite -->
         <div panel-name="test-xml-AccountsSuite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\12053\eclipse-workspace\Expleo_Jarvis\MySession\testng files\test_accounts.xml</span>
+            <span class="header-content">C:\Users\12053\git\Expleo_Jarvis\MySession\testng files\test_accounts.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -203,7 +167,7 @@
   &lt;test thread-count=&quot;5&quot; name=&quot;AccountsTest&quot;&gt;
     &lt;classes&gt;
       &lt;class name=&quot;jarvis.testscripts.LoginTest&quot;/&gt;
-      &lt;class name=&quot;jarvis.testscripts.ShoppingCart&quot;/&gt;
+      &lt;class name=&quot;jarvis.testscripts.ShoppingCartTest&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- AccountsTest --&gt;
 &lt;/suite&gt; &lt;!-- AccountsSuite --&gt;
@@ -230,10 +194,6 @@
             <div class="test-group">
               <span class="test-group-name">accounts</span>
               <br/>
-              <div class="method-in-group">
-                <span class="method-in-group-name">cartHover</span>
-                <br/>
-              </div> <!-- method-in-group -->
               <div class="method-in-group">
                 <span class="method-in-group-name">shoppingcartTest</span>
                 <br/>
@@ -271,24 +231,20 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(3);
+data.addRows(2);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'loginTest')
 data.setCell(0, 2, 'jarvis.testscripts.LoginTest')
-data.setCell(0, 3, 11929);
+data.setCell(0, 3, 8253);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'shoppingcartTest')
-data.setCell(1, 2, 'jarvis.testscripts.ShoppingCart')
-data.setCell(1, 3, 9306);
-data.setCell(2, 0, 2)
-data.setCell(2, 1, 'cartHover')
-data.setCell(2, 2, 'jarvis.testscripts.ShoppingCart')
-data.setCell(2, 3, 3);
+data.setCell(1, 2, 'jarvis.testscripts.ShoppingCartTest')
+data.setCell(1, 3, 1047);
 window.suiteTableData['AccountsSuite']= { tableData: data, tableDiv: 'times-div-AccountsSuite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 21 seconds</span>
+              <span class="suite-total-time">Total running time: 9 seconds</span>
               <div id="times-div-AccountsSuite">
               </div> <!-- times-div-AccountsSuite -->
             </div> <!-- times-div -->
@@ -307,7 +263,7 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="ignored-class-div">
-              <span class="ignored-class-name">jarvis.testscripts.ShoppingCart</span>
+              <span class="ignored-class-name">jarvis.testscripts.ShoppingCartTest</span>
               <div class="ignored-methods-div">
                 <span class="ignored-method-name">generateReport</span>
                 <br/>
@@ -332,43 +288,33 @@ return data;
               </div> <!-- configuration-suite before -->
               <div class="configuration-test before">
                 <span class="method-name">generateReport</span>
-                <span class="method-start">5153 ms</span>
+                <span class="method-start">4329 ms</span>
               </div> <!-- configuration-test before -->
               <div class="configuration-method before">
                 <span class="method-name">methodName(public void jarvis.testscripts.LoginTest.loginTest() throws java.lang.Exception)</span>
-                <span class="method-start">5741 ms</span>
+                <span class="method-start">4629 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">loginTest</span>
-                <span class="method-start">5758 ms</span>
+                <span class="method-start">4633 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
-              <div class="chronological-class-name">jarvis.testscripts.ShoppingCart</div> <!-- chronological-class-name -->
-              <div class="configuration-method before">
-                <span class="method-name">methodName(public void jarvis.testscripts.ShoppingCart.shoppingcartTest() throws java.lang.Exception)</span>
-                <span class="method-start">17700 ms</span>
-              </div> <!-- configuration-method before -->
+              <div class="chronological-class-name">jarvis.testscripts.ShoppingCartTest</div> <!-- chronological-class-name -->
               <div class="test-method">
                 <span class="method-name">shoppingcartTest</span>
-                <span class="method-start">17701 ms</span>
+                <span class="method-start">12901 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
-                <span class="method-name">methodName(public void jarvis.testscripts.ShoppingCart.cartHover() throws java.lang.Exception)</span>
-                <span class="method-start">27014 ms</span>
+                <span class="method-name">methodName(public void jarvis.testscripts.ShoppingCartTest.shoppingcartTest() throws java.lang.Exception)</span>
+                <span class="method-start">12901 ms</span>
               </div> <!-- configuration-method before -->
-              <div class="test-method">
-                <img src="failed.png">
-                </img>
-                <span class="method-name">cartHover</span>
-                <span class="method-start">27015 ms</span>
-              </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">jarvis.testscripts.LoginTest</div> <!-- chronological-class-name -->
               <div class="configuration-suite after">
                 <span class="method-name">afterClass</span>
-                <span class="method-start">27078 ms</span>
+                <span class="method-start">13991 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

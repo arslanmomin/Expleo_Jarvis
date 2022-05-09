@@ -7,7 +7,7 @@
 	<test thread-count="5" name="AccountsTest">
 		<classes>
 			<class name="jarvis.testscripts.LoginTest" />
-			<class name="jarvis.testscripts.ShoppingCart" />
+			<class name="jarvis.testscripts.ShoppingCartTest" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

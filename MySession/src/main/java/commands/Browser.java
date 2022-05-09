@@ -1,14 +1,14 @@
-package wdcommands;
+package commands;
 
 import org.openqa.selenium.WebDriver;
 
-import configs.StartBrowser;
+import configs.BrowserSetup;
 
 public class Browser {
 	public WebDriver driver;
 
 	public Browser(WebDriver driver) {
-		this.driver = StartBrowser.driver;
+		this.driver = BrowserSetup.driver;
 	}
 
 	/**
@@ -20,57 +20,57 @@ public class Browser {
 
 		try {
 			driver.get(URL);
-			StartBrowser.childTest.pass("successfully opened the " + URL);
+			BrowserSetup.childTest.pass("successfully opened the " + URL);
 
 		} catch (Exception e) {
 
-			StartBrowser.childTest.fail("unable to open the " + URL);
+			BrowserSetup.childTest.fail("unable to open the " + URL);
 		}
 	}
 	
 	public void back() {
 		try {
 			driver.navigate().back();
-			StartBrowser.childTest.pass("browser navigated to previous page");
+			BrowserSetup.childTest.pass("browser navigated to previous page");
 
 		} catch (Exception e) {
 
-			StartBrowser.childTest.fail("unable to navigate to previous page");
+			BrowserSetup.childTest.fail("unable to navigate to previous page");
 		}
 	}
 	
 	public void forward() {
 		try {
 			driver.navigate().forward();
-			StartBrowser.childTest.pass("browser navigated to next page");
+			BrowserSetup.childTest.pass("browser navigated to next page");
 
 		} catch (Exception e) {
 
-			StartBrowser.childTest.fail("unable to navigate to next page");
+			BrowserSetup.childTest.fail("unable to navigate to next page");
 		}
 	}
 	
 	public void navigate(String url) {
 		try {
 			driver.navigate().to(url);
-			StartBrowser.childTest.pass("browser navigated to "+url);
+			BrowserSetup.childTest.pass("browser navigated to "+url);
 
 		} catch (Exception e) {
 
-			StartBrowser.childTest.fail("unable to navigate to url "+url);
+			BrowserSetup.childTest.fail("unable to navigate to url "+url);
 		}
 	}
 	
 	public void matchurl(String expected) {
 		try {
 			String actual=driver.getCurrentUrl();
-			StartBrowser.childTest.info(actual);
+			BrowserSetup.childTest.info(actual);
 			if(actual.equals(expected))
-				StartBrowser.childTest.pass("url  matched with expected");
+				BrowserSetup.childTest.pass("url  matched with expected");
 
 		} catch (Exception e) {
 
-			StartBrowser.childTest.fail("url not matched");
+			BrowserSetup.childTest.fail("url not matched");
 		}
 	}
 }

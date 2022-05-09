@@ -1,12 +1,12 @@
-package jarvis.testscripts;
+package jarvis.tests;
 import org.testng.annotations.Test;
 
-import configs.StartBrowser;
-import jarvis.application.reuse.LoginLogout;
+import configs.BrowserSetup;
+import jarvis.scripts.LoginLogout;
 import utilities.ConfigurationSupport;
 
 
-public class LoginTest extends StartBrowser {
+public class LoginTest extends BrowserSetup {
 	
 	public ConfigurationSupport cs = new ConfigurationSupport("config files//accounts.properties");
 

@@ -23,7 +23,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterSuite;
 
-public class StartBrowser {
+public class BrowserSetup {
 
 	public static WebDriver driver;
 	public ConfigurationSupport cs = new ConfigurationSupport("config files//global.properties");

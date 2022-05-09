@@ -1,4 +1,4 @@
-package jarvis.objectrepo;
+package jarvis.objects;
 
 import org.openqa.selenium.By;
 
