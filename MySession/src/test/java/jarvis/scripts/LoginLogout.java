@@ -12,10 +12,12 @@ import utilities.ConfigurationSupport;
 
 public class LoginLogout extends Base {
 	public ConfigurationSupport cs = new ConfigurationSupport("config files//accounts.properties");
+	LoginPage lp;
+	HomePage hp;
 	
 	public void login() throws Exception {
 		Base.childTest=Base.parentTest.createNode("login to application");
-		LoginPage lp =new LoginPage();
+		lp=new LoginPage();
 		lp.clickonsignin();
 		lp.setEmail();
 		lp.setPassword();
@@ -35,8 +37,8 @@ public class LoginLogout extends Base {
 	}
 	public void logout() throws Exception {
 		Base.childTest = Base.parentTest.createNode("logout from application");
-		HomePage lop =new HomePage();
-		lop.clickonlogout();
+		hp =new HomePage();
+		hp.clickonlogout();
 		
 	}
 

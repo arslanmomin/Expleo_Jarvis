@@ -33,11 +33,11 @@ public class LoginPage extends Base{
 	}
 	
 	public void setEmail() {
-		ElementsOp.type(driver, emailbox, cs.getProperty("email"),"email text box");
+		ElementsOp.type( emailbox, cs.getProperty("email"),"email text box");
 	}
 
 	public void setPassword() {
-		ElementsOp.type(driver, passwordbox, cs.getProperty("password"),"password text box");
+		ElementsOp.type( passwordbox, cs.getProperty("password"),"password text box");
 	}
 	
 	public void clickonlogin() throws Exception {

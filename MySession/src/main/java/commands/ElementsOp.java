@@ -19,10 +19,10 @@ import configs.Base;
 public class ElementsOp extends Base {
 
 	/**
-	 * used to perform click operation
+	 * used to perform click using actions class and javascript executor operation
 	 * 
-	 * @param locator           --get it from object repository
-	 * @param elementName--name of the element
+	 * @param ele--get      it from pageFactory
+	 * @param eleName--name of the element
 	 * @throws Exception
 	 */
 
@@ -39,7 +39,7 @@ public class ElementsOp extends Base {
 			throw e;
 		}
 	}
-	
+
 	public static void JSclick(WebDriver driver, WebElement ele, String eleName) throws Exception {
 		try {
 
@@ -56,9 +56,9 @@ public class ElementsOp extends Base {
 
 	/**
 	 * 
-	 * used to type text in textbox, search
+	 * used to type text in textbox after clearing it
 	 * 
-	 * @param locator--   get it from object repository
+	 * @param ele--       get it from pageFactory
 	 * @param testData    -- the data which have to passed, can get from external
 	 *                    file
 	 * @param elementName
@@ -80,8 +80,8 @@ public class ElementsOp extends Base {
 	/**
 	 * used to build mouseHover action on WebElement
 	 * 
-	 * @param locator     can get it from object repository
-	 * @param elementname -name of element
+	 * @param ele     can get it pageFactory
+	 * @param eleName -name of element
 	 */
 	public static void mouseover(WebDriver driver, WebElement ele, String eleName) throws Exception {
 		try {
@@ -95,7 +95,7 @@ public class ElementsOp extends Base {
 			throw e;
 		}
 	}
-	
+
 	public static void moveToElement(WebDriver driver, WebElement ele, String eleName) throws Exception {
 		try {
 			JavascriptExecutor executor = (JavascriptExecutor) driver;
@@ -114,121 +114,122 @@ public class ElementsOp extends Base {
 	/**
 	 * used to retrieve text from WebElement
 	 * 
-	 * @param label  webelement from object repository
+	 * @param label  webelement from pageFactory
 	 * @param elemnt -element name
 	 */
-	public static void getText(WebDriver driver, WebElement label, String eleName) {
+	public static void getText(WebDriver driver, WebElement ele, String eleName) {
 		try {
-			String text = driver.findElement((By) label).getText();
-			Base.childTest.pass(text);
+			String text = ele.getText();
+			Base.childTest.pass("successfully feteched text :" + text + " from element :" + eleName);
 		} catch (Exception e) {
-
 			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
 			Base.childTest.info(e);
 			throw e;
 		}
 	}
 
-	public static void verifyeleclickable(WebElement ele, String elementname) {
+	public static void verifyeleclickable(WebElement ele, String eleName) {
 		try {
-			WebDriverWait wt = new WebDriverWait(driver, 6);
+			WebDriverWait wt = new WebDriverWait(driver, 5);
 			wt.until(ExpectedConditions.elementToBeClickable(ele));
-			Base.childTest.pass("element is clickable  :" + elementname);
+			Base.childTest.pass("element is clickable  :" + eleName);
 
 		} catch (Exception e) {
-			Base.childTest.fail("element is not clickable :" + elementname);
+			Base.childTest.fail("element is not clickable :" + eleName);
 			Base.childTest.info(e);
 			throw e;
 		}
 
 	}
 
-	public static void isDisplayed(WebElement ele, String elementname) {
+	public static void isDisplayed(WebElement ele, String eleName) {
 		try {
 			boolean t = ele.isDisplayed();
 			if (t)
-				Base.childTest.pass("element is visible  :" + elementname);
+				Base.childTest.pass("element is visible  :" + eleName);
 			else
-				Base.childTest.fail("element is not visible :" + elementname);
+				Base.childTest.fail("element is not visible :" + eleName);
 		} catch (Exception e) {
 			Base.childTest.info(e);
 			throw e;
 		}
 	}
 
-	public static void isSelected(WebElement ele, String elementname) {
+	public static void isSelected(WebElement ele, String eleName) {
 		try {
 			boolean t = ele.isSelected();
 			if (t)
-				Base.childTest.pass("element is selected  :" + elementname);
+				Base.childTest.pass("element is selected  :" + eleName);
 			else
-				Base.childTest.fail("element is not selected :" + elementname);
+				Base.childTest.fail("element is not selected :" + eleName);
 		} catch (Exception e) {
 			Base.childTest.info(e);
 			throw e;
 		}
 	}
 
-	public static void isEnabled(WebElement ele, String elementname) {
+	public static void isEnabled(WebElement ele, String eleName) {
 		try {
 			boolean t = ele.isEnabled();
 			if (t)
-				Base.childTest.pass("element is enabled  :" + elementname);
+				Base.childTest.pass("element is enabled  :" + eleName);
 			else
-				Base.childTest.fail("element is not enabled :" + elementname);
+				Base.childTest.fail("element is not enabled :" + eleName);
 		} catch (Exception e) {
 			Base.childTest.info(e);
 			throw e;
 		}
 	}
 
-	public void scrollByVisibilityOfElement(WebDriver driver, WebElement ele, String elementname) {
+	public void scrollByVisibilityOfElement(WebDriver driver, WebElement ele, String eleName) {
 		try {
 			JavascriptExecutor js = (JavascriptExecutor) driver;
 			js.executeScript("arguments[0].scrollIntoView();", ele);
-			Base.childTest.pass("scrolled to element :" + elementname);
+			Base.childTest.pass("scrolled to element :" + eleName);
 		} catch (Exception e) {
-			Base.childTest.fail("not able to scroll into element :" + elementname);
+			Base.childTest.fail("not able to scroll into element :" + eleName);
 			Base.childTest.info(e);
 			throw e;
 		}
 	}
-	
-	public void selectByIndex(WebElement element, int index) {
+
+	public void selectByIndex(WebElement ele, int index) {
 		try {
-			Select s = new Select(element);
+			Select s = new Select(ele);
 			s.selectByIndex(index);
 			Base.childTest.pass("selected value from dropbox using index at :" + index);
 		} catch (Exception e) {
 			Base.childTest.fail("can not value from dropbox using index at :" + index);
 			Base.childTest.info(e);
 			throw e;
-		} 
 		}
+	}
 
-	public void selectByValue(WebElement element, String value) {
+	public void selectByValue(WebElement ele, String value) {
 		try {
-			Select s = new Select(element);
+			Select s = new Select(ele);
 			s.deselectByValue(value);
 			Base.childTest.pass("selected value from dropbox using value at :" + value);
 		} catch (Exception e) {
 			Base.childTest.fail("can not value from dropbox using value at :" + value);
 			Base.childTest.info(e);
 			throw e;
-		} 
 		}
-	
-	public void selectByVisibleText(WebElement element, String VisibleText) {
+	}
+
+	public void selectByVisibleText(WebElement ele, String VisibleText) {
 		try {
-			Select s = new Select(element);
+			Select s = new Select(ele
+					);
 			s.selectByVisibleText(VisibleText);
 			Base.childTest.pass("selected value from dropbox using VisibleText at :" + VisibleText);
 		} catch (Exception e) {
 			Base.childTest.fail("can not value from dropbox using VisibleText at :" + VisibleText);
 			Base.childTest.info(e);
 			throw e;
-		} 
 		}
+	}
+
 	public static String screenshot() {
 		return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
 
