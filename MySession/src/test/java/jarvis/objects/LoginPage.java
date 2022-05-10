@@ -29,18 +29,18 @@ public class LoginPage extends Base{
 	}
 	
 	public void clickonsignin() throws Exception {
-		ElementsOp.click(driver, signinbtn);
+		ElementsOp.click(driver, signinbtn,"signinbtn");
 	}
 	
 	public void setEmail() {
-		ElementsOp.type(driver, emailbox, cs.getProperty("email"));
+		ElementsOp.type(driver, emailbox, cs.getProperty("email"),"email text box");
 	}
 
 	public void setPassword() {
-		ElementsOp.type(driver, passwordbox, cs.getProperty("password"));
+		ElementsOp.type(driver, passwordbox, cs.getProperty("password"),"password text box");
 	}
 	
 	public void clickonlogin() throws Exception {
-		ElementsOp.click(driver, loginbtn);
+		ElementsOp.click(driver, loginbtn,"login button");
 	}
 }

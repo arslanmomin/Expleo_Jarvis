@@ -1,5 +1,7 @@
 package commands;
 
+import org.openqa.selenium.WebDriver;
+
 import configs.Base;
 
 public class Browser extends Base {
@@ -9,7 +11,7 @@ public class Browser extends Base {
 	 * 
 	 * @param URL- url of application
 	 */
-	public static void openurl(String URL) {
+	public static void openurl(WebDriver driver,String URL) {
 
 		try {
 			driver.get(URL);
@@ -21,7 +23,7 @@ public class Browser extends Base {
 		}
 	}
 	
-	public static void back() {
+	public static void back(WebDriver driver) {
 		try {
 			driver.navigate().back();
 			Base.childTest.pass("browser navigated to previous page");
@@ -32,7 +34,7 @@ public class Browser extends Base {
 		}
 	}
 	
-	public static void forward() {
+	public static void forward(WebDriver driver) {
 		try {
 			driver.navigate().forward();
 			Base.childTest.pass("browser navigated to next page");
@@ -43,7 +45,7 @@ public class Browser extends Base {
 		}
 	}
 	
-	public static void navigate(String url) {
+	public static void navigate(WebDriver driver,String url) {
 		try {
 			driver.navigate().to(url);
 			Base.childTest.pass("browser navigated to "+url);
@@ -54,7 +56,7 @@ public class Browser extends Base {
 		}
 	}
 	
-	public static void matchurl(String expected) {
+	public static void matchurl(WebDriver driver,String expected) {
 		try {
 			String actual=driver.getCurrentUrl();
 			Base.childTest.info(actual);

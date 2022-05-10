@@ -20,12 +20,12 @@ public class HomePage extends Base{
 	}
 	
 	public void clickoncart() throws Exception {
-		ElementsOp.click(driver,shoppingcart);
+		ElementsOp.click(driver,shoppingcart,"shoppingcart btn");
 		
 	}
 	
 	public void clickonlogout() throws Exception {
-		ElementsOp.click(driver,logout);
+		ElementsOp.click(driver,logout,"logout button");
 		
 	}
 	

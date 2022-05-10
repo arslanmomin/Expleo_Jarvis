@@ -16,21 +16,11 @@ import configs.Base;
 
 public class BrokenLinks extends Base {
 
-	public WebDriver driver;
-	public ElementsOp edriver;
-	public Browser bdriver;
-
-	public BrokenLinks() {
-		driver = Base.driver;
-		edriver = new ElementsOp(driver);
-		bdriver = new Browser(driver);
-
-	}
 
 	public void BrokenTest(String WebUrl) throws InterruptedException {
 
 		Base.childTest = Base.parentTest.createNode("Broken links");
-		bdriver.openurl(WebUrl);
+		
 
 		List<WebElement> links = driver.findElements(By.tagName("a"));
 
