@@ -13,16 +13,16 @@ public class LoginPage extends Base{
 
 	public ConfigurationSupport cs = new ConfigurationSupport("config files//accounts.properties");
 	@FindBy(className="ico-login")
-	WebElement signinbtn;
+	private WebElement signinbtn;
 	
 	@FindBy(id="Email")
-	WebElement emailbox;
+	private WebElement emailbox;
 	
 	@FindBy(id="Password")
-	WebElement passwordbox;
+	private WebElement passwordbox;
 	
 	@FindBy(xpath="//input[@value='Log in']")
-	WebElement loginbtn;
+	private WebElement loginbtn;
 
 	public LoginPage() {
 		PageFactory.initElements(getDriver(), this);

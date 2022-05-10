@@ -10,10 +10,10 @@ import configs.Base;
 public class HomePage extends Base{
 
 	@FindBy(xpath="//li[@id='topcartlink']/a/span[1]")
-	WebElement shoppingcart;
+	private WebElement shoppingcart;
 	
 	@FindBy(className="ico-logout")
-	WebElement logout;
+	private WebElement logout;
 	
 	public HomePage() {
 		PageFactory.initElements(getDriver(), this);
