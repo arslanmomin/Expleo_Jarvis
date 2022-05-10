@@ -12,14 +12,9 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 
 import configs.Base;
 
-public class WindowHandling {
-	public WebDriver driver;
+public class WindowHandling extends Base{
 
-	public WindowHandling() {
-		driver = Base.driver;
-	}
-
-	public void SwitchToChild() {
+	public void SwitchToChild(WebDriver driver) {
 		try {
 			String mainWindowHandle = driver.getWindowHandle();
 			Set<String> allWindowHandles = driver.getWindowHandles();
@@ -42,7 +37,7 @@ public class WindowHandling {
 		}
 	}
 
-	public void SwitchBack() {
+	public void SwitchBack(WebDriver driver) {
 		try {
 			String mainwindow = driver.getWindowHandle();
 			Set<String> s1 = driver.getWindowHandles();
@@ -68,7 +63,7 @@ public class WindowHandling {
 	}
 
 
-	public void WindowHandle() {
+	public void WindowHandle(WebDriver driver) {
 		try {
 			String wh = driver.getWindowHandle();
 			Base.childTest.pass("Window Handle :" + wh);
@@ -84,7 +79,7 @@ public class WindowHandling {
 		}
 	}
 
-	public void WindowHandles() {
+	public void WindowHandles(WebDriver driver) {
 		try {
 			Set<String> wh = driver.getWindowHandles();
 			Base.childTest.pass("Window handles :"

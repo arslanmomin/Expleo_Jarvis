@@ -1,4 +1,4 @@
-package reuses;
+package jarvis.dataproviders;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -22,7 +22,7 @@ public class BrokenLinks extends Base {
 		Base.childTest = Base.parentTest.createNode("Broken links");
 		
 
-		List<WebElement> links = driver.findElements(By.tagName("a"));
+		List<WebElement> links = getDriver().findElements(By.tagName("a"));
 
 		System.out.println("Total links are " + links.size());
 

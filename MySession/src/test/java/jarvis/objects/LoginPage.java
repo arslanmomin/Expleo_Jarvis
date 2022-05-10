@@ -25,11 +25,11 @@ public class LoginPage extends Base{
 	WebElement loginbtn;
 
 	public LoginPage() {
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(getDriver(), this);
 	}
 	
 	public void clickonsignin() throws Exception {
-		ElementsOp.click(driver, signinbtn,"signinbtn");
+		ElementsOp.click(getDriver(), signinbtn,"signinbtn");
 	}
 	
 	public void setEmail() {
@@ -41,6 +41,6 @@ public class LoginPage extends Base{
 	}
 	
 	public void clickonlogin() throws Exception {
-		ElementsOp.click(driver, loginbtn,"login button");
+		ElementsOp.click(getDriver(), loginbtn,"login button");
 	}
 }

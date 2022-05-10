@@ -17,15 +17,21 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.log4j.xml.DOMConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterSuite;
 
 public class Base {
 
-	public static WebDriver driver;
+	//public static WebDriver driver;
+	public static ThreadLocal<RemoteWebDriver> driver=new ThreadLocal<>();
+	public static WebDriver getDriver() {
+		return driver.get();
+	}
 	public ConfigurationSupport cs = new ConfigurationSupport("config files//global.properties");
 	public static ExtentReports extent;
 	public static ExtentTest parentTest;
@@ -52,41 +58,43 @@ public class Base {
 
 	@BeforeSuite
 	(alwaysRun = true)
-	public void beforeClass() {
+	public void beforeSuite() {
 		String browser = cs.getProperty("browser");
+		
+		DOMConfigurator.configure("log4j.xml");
 		switch (browser) {
 		
 		case "edge":
 			WebDriverManager.edgedriver().setup();
-			driver = new EdgeDriver();
-			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-			driver.manage().window().maximize();
+			driver.set(new EdgeDriver());
+			getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			getDriver().manage().window().maximize();
 			break;
 
 		case "firefox":
 			WebDriverManager.firefoxdriver().setup();
-			driver = new FirefoxDriver();
-			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-			driver.manage().window().maximize();
+			driver.set(new FirefoxDriver());
+			getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			getDriver().manage().window().maximize();
 			break;
 
 		case "chrome":
 			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver();
-			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-			driver.manage().window().maximize();
+			driver.set(new ChromeDriver());
+			getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			getDriver().manage().window().maximize();
 			break;
 
 		}
 		
-		driver.get(cs.getProperty("url"));
+		getDriver().get(cs.getProperty("url"));
 	}
 
 @AfterSuite
 (alwaysRun = true)
 	public void afterClass() {
 
-		driver.close();
+	getDriver().close();
 		System.out.println("browser closed");
 		extent.flush();
 	}

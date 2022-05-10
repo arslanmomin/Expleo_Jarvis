@@ -9,6 +9,7 @@ import configs.Base;
 import jarvis.objects.HomePage;
 import jarvis.objects.LoginPage;
 import utilities.ConfigurationSupport;
+import utilities.Log;
 
 public class LoginLogout extends Base {
 	public ConfigurationSupport cs = new ConfigurationSupport("config files//accounts.properties");
@@ -18,10 +19,13 @@ public class LoginLogout extends Base {
 	public void login() throws Exception {
 		Base.childTest=Base.parentTest.createNode("login to application");
 		lp=new LoginPage();
+		Log.startTestCase("login test");
 		lp.clickonsignin();
+		Log.info("clicked on signin button");
 		lp.setEmail();
 		lp.setPassword();
 		lp.clickonlogin();
+		Log.endTestCase("test ended ");
 		
 		
 	}

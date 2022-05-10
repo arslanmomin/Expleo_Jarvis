@@ -8,15 +8,11 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 
 import configs.Base;
 
-public class FrameHandling {
+public class FrameHandling extends Base {
 
-	public WebDriver driver;
 
-	public FrameHandling() {
-		driver = Base.driver;
-	}
 
-	public void SwitchToFrameByIndex(int index) {
+	public void SwitchToFrameByIndex(WebDriver driver,int index) {
 		try {
 			driver.switchTo().frame(index);
 			Base.childTest.pass("Focus moved to Frame with Index :" + index);
@@ -29,7 +25,7 @@ public class FrameHandling {
 		}
 	}
 
-	public void SwitchToFrameByName(String name) {
+	public void SwitchToFrameByName(WebDriver driver,String name) {
 		try {
 			driver.switchTo().frame(name);
 			Base.childTest.pass("Focus moved to Frame with name" + name);
@@ -42,7 +38,7 @@ public class FrameHandling {
 		}
 	}
 
-	public void SwitchToFrameById(String id) {
+	public void SwitchToFrameById(WebDriver driver,String id) {
 		try {
 			driver.switchTo().frame(id);
 			Base.childTest.pass("Focus moved to Frame with id" + id);
@@ -55,7 +51,7 @@ public class FrameHandling {
 		}
 	}
 
-	public void SwitchToDefaultContent() {
+	public void SwitchToDefaultContent(WebDriver driver) {
 		try {
 			driver.switchTo().defaultContent();
 			Base.childTest.pass("Focus moved to Default Content");
@@ -68,7 +64,7 @@ public class FrameHandling {
 		}
 	}
 
-	public void SwitchToParentFrame() {
+	public void SwitchToParentFrame(WebDriver driver) {
 		try {
 			driver.switchTo().parentFrame();
 			Base.childTest.pass("Focus moved to Parent Frame");

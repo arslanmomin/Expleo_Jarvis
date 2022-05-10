@@ -6,8 +6,8 @@
       <class name="jarvis.tests.LoginTest">
         <methods>
           <include name="afterClass"/>
+          <include name="beforeSuite"/>
           <include name="methodName"/>
-          <include name="beforeClass"/>
           <include name="generateReport"/>
           <include name="loginTest"/>
         </methods>

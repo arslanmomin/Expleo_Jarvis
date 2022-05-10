@@ -16,16 +16,16 @@ public class HomePage extends Base{
 	WebElement logout;
 	
 	public HomePage() {
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(getDriver(), this);
 	}
 	
 	public void clickoncart() throws Exception {
-		ElementsOp.click(driver,shoppingcart,"shoppingcart btn");
+		ElementsOp.click(getDriver(),shoppingcart,"shoppingcart btn");
 		
 	}
 	
 	public void clickonlogout() throws Exception {
-		ElementsOp.click(driver,logout,"logout button");
+		ElementsOp.click(getDriver(),logout,"logout button");
 		
 	}
 	

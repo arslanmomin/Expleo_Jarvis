@@ -130,7 +130,7 @@ public class ElementsOp extends Base {
 
 	public static void verifyeleclickable(WebElement ele, String eleName) {
 		try {
-			WebDriverWait wt = new WebDriverWait(driver, 5);
+			WebDriverWait wt = new WebDriverWait(getDriver(), 5);
 			wt.until(ExpectedConditions.elementToBeClickable(ele));
 			Base.childTest.pass("element is clickable  :" + eleName);
 
@@ -231,7 +231,7 @@ public class ElementsOp extends Base {
 	}
 
 	public static String screenshot() {
-		return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
+		return ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BASE64);
 
 		// goto url
 
