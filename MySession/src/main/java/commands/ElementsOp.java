@@ -229,6 +229,48 @@ public class ElementsOp extends Base {
 			throw e;
 		}
 	}
+	public void check(By locator,String elementName) throws Exception {
+		try {
+			
+			if(driver.findElement(locator).isSelected()==true) {
+				
+				Base.childTest.pass("element already checked");
+			}
+			else {
+				driver.findElement(locator).click();
+				Base.childTest.pass("performed check on :"+elementName);
+			}
+		} catch (Exception e) {
+			Base.childTest.pass("can not perform check operation on :"+elementName);
+			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
+			Base.childTest.info(e);
+			throw e;
+		}
+	}
+	
+	
+	
+	public void uncheck(By locator,String elementName) throws Exception {
+		try {
+			
+			if(driver.findElement(locator).isSelected()==false) {
+				
+				Base.childTest.pass("element already unchecked");
+			}
+			else {
+				driver.findElement(locator).click();
+				Base.childTest.pass("performed uncheck on :"+elementName);
+			}
+		} catch (Exception e) {
+			Base.childTest.pass("can not perform check operation on :"+elementName);
+			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
+			Base.childTest.info(e);
+			throw e;
+		}
+	}
+
+	
+	
 
 	public static String screenshot() {
 		return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
