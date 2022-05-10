@@ -229,19 +229,19 @@ public class ElementsOp extends Base {
 			throw e;
 		}
 	}
-	public void check(By locator,String elementName) throws Exception {
+	public void check(WebElement ele,String eleName) throws Exception {
 		try {
 			
-			if(driver.findElement(locator).isSelected()==true) {
+			if(ele.isSelected()==true) {
 				
 				Base.childTest.pass("element already checked");
 			}
 			else {
-				driver.findElement(locator).click();
-				Base.childTest.pass("performed check on :"+elementName);
+				ele.click();
+				Base.childTest.pass("performed check on :"+eleName);
 			}
 		} catch (Exception e) {
-			Base.childTest.pass("can not perform check operation on :"+elementName);
+			Base.childTest.pass("can not perform check operation on :"+eleName);
 			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
 			Base.childTest.info(e);
 			throw e;
@@ -250,19 +250,19 @@ public class ElementsOp extends Base {
 	
 	
 	
-	public void uncheck(By locator,String elementName) throws Exception {
+	public void uncheck(WebElement ele,String eleName) throws Exception {
 		try {
 			
-			if(driver.findElement(locator).isSelected()==false) {
+			if(ele.isSelected()==false) {
 				
 				Base.childTest.pass("element already unchecked");
 			}
 			else {
-				driver.findElement(locator).click();
-				Base.childTest.pass("performed uncheck on :"+elementName);
+				ele.click();
+				Base.childTest.pass("performed uncheck on :"+eleName);
 			}
 		} catch (Exception e) {
-			Base.childTest.pass("can not perform check operation on :"+elementName);
+			Base.childTest.pass("can not perform check operation on :"+eleName);
 			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
 			Base.childTest.info(e);
 			throw e;
