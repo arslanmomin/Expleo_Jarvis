@@ -69,4 +69,29 @@ public class Browser extends Base {
 			ExtentManager.childTest.fail("url not matched");
 		}
 	}
+	public static void closeBrowser(WebDriver driver) {
+		try {
+			driver.close();
+			ExtentManager.childTest.info("Window Closed");
+			
+		} catch (Exception e) {
+
+			ExtentManager.childTest.fail(e);
+		}
+	}
+	//Quit browser
+	public static void quitBrowser(WebDriver driver) {
+		try {
+			driver.quit();
+			ExtentManager.childTest.info("Browser Closed");
+			
+		} catch (Exception e) {
+
+			ExtentManager.childTest.fail(e);
+		}
+	}
+	
+	
 }
+
+	

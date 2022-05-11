@@ -323,11 +323,26 @@ public class ElementsOp extends Base {
 		}
 	}
 
+
 	public static void getAttribute(WebDriver driver, WebElement ele,String Attributename, String eleName) {
 		try {
 			String AtTrValue = ele.getAttribute(Attributename);
 			ExtentManager.childTest.pass("successfully feteched value :" + AtTrValue + " from Attribute :" + Attributename);
 		} catch (Exception e) {
+			ExtentManager.childTest.info(e);
+			throw e;
+		}
+	}
+	//get Attribute
+	
+	public static void uploadFile( WebElement path,WebElement uploadButton,String FilePath, String eleName) {
+		try {
+			
+		path.sendKeys(FilePath);
+		uploadButton.click();
+			ExtentManager.childTest.pass("File uploaded Successfully"+ eleName);
+		} catch (Exception e) {
+			
 			ExtentManager.childTest.info(e);
 			throw e;
 		}
