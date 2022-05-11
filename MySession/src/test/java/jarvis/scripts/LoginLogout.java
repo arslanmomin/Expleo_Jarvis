@@ -19,14 +19,11 @@ public class LoginLogout extends Base {
 	public void login() throws Exception {
 		Base.childTest=Base.parentTest.createNode("login to application");
 		lp=new LoginPage();
-		Log.startTestCase("login test");
 		lp.clickonsignin();
 		Log.info("clicked on signin button");
 		lp.setEmail();
 		lp.setPassword();
 		lp.clickonlogin();
-		Log.endTestCase("test ended ");
-		
 		
 	}
 	public void loginwithExcelData(String url) throws Exception {
