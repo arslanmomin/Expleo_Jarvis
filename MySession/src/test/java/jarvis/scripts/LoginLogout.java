@@ -25,6 +25,7 @@ public class LoginLogout extends Base {
 		lp.setEmail();
 		lp.setPassword();
 		lp.clickonlogin();
+	
 		
 	}
 	public void loginwithExcelData(String url) throws Exception {

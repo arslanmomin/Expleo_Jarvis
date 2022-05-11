@@ -29,7 +29,7 @@ public class ElementsOp extends Base {
 			act.moveToElement(ele).click().build().perform();
 			ExtentManager.childTest.pass("performed click on :" + eleName);
 		} catch (Exception e) {
-			ExtentManager.childTest.pass("can not perform click operation on :" + eleName);
+			ExtentManager.childTest.fail("can not perform click operation on :" + eleName);
 			ExtentManager.childTest.info(e);
 			throw e;
 		}
@@ -42,7 +42,7 @@ public class ElementsOp extends Base {
 			executor.executeScript("arguments[0].click();", ele);
 			ExtentManager.childTest.pass("performed JSclick on :" + eleName);
 		} catch (Exception e) {
-			ExtentManager.childTest.pass("can not perform JSclick operation on :" + eleName);
+			ExtentManager.childTest.fail("can not perform JSclick operation on :" + eleName);
 
 			ExtentManager.childTest.info(e);
 			throw e;

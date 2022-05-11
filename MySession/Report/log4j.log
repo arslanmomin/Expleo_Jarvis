@@ -1,0 +1,4 @@
+2022-05-11 17:49:52 INFO  Log:14 - =====================================loginTest TEST START=========================================
+2022-05-11 17:49:53 INFO  Log:25 - clicked on signin button
+2022-05-11 17:50:04 ERROR Log:37 - Test FAILED
+2022-05-11 17:50:04 INFO  Log:25 - TEST finished

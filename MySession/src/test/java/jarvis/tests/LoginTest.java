@@ -1,10 +1,11 @@
 package jarvis.tests;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import configs.Base;
 import jarvis.scripts.LoginLogout;
 
-
+@Listeners(utilities.Listener.class)
 public class LoginTest extends Base {
 	
 
