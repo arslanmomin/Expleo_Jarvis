@@ -343,30 +343,6 @@ public class ElementsOp extends Base {
 			throw e;
 		}
 	}
-	//get Attribute
-	public static void getAttribute( WebElement ele,String Attributename, String eleName) {
-		try {
-			String AtTrValue = ele.getAttribute(Attributename);
-			Base.childTest.pass("successfully feteched value :" + AtTrValue + " from Attribute :" + Attributename);
-		} catch (Exception e) {
-			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
-			Base.childTest.info(e);
-			throw e;
-		}
-	}
-	public static void uploadFile( WebElement path,WebElement uploadButton,String FilePath, String eleName) {
-		try {
-			
-		path.sendKeys(FilePath);
-		uploadButton.click();
-			Base.childTest.pass("File uploaded Successfully"+ eleName);
-		} catch (Exception e) {
-			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
-			Base.childTest.info(e);
-			throw e;
-		}
-	}
-	
 	
 	
 	
