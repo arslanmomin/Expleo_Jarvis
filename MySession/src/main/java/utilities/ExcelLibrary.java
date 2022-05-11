@@ -23,7 +23,7 @@ public class ExcelLibrary {
 	private XSSFRow row = null;
 	private XSSFCell cell = null;
 
-	public NewExcelLibrary() {
+	public ExcelLibrary() {
 
 		this.path=path;
 		try {
@@ -37,7 +37,7 @@ public class ExcelLibrary {
 		}
 	}
 
-	public NewExcelLibrary(String path) {
+	public ExcelLibrary(String path) {
 
 		this.path = path;
 		try {

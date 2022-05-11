@@ -1,5 +1,6 @@
 package commands;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -267,7 +268,81 @@ public class ElementsOp extends Base {
 			throw e;
 		}
 	}
+	
+	public void acceptAlert(WebDriver driver)
+	{
+		try {
+			driver.switchTo().alert().accept();
+			Base.childTest.pass("alert accept successfully");
+		}
+		catch(Exception e)
+		{
+			Base.childTest.fail("can jnot alert accept");
+			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
+			Base.childTest.info(e);
+			throw e;
+		}
+	}
+	
+	public void cancelAlert(WebDriver driver)
+	{
+		try {
+			driver.switchTo().alert().dismiss();
+			Base.childTest.pass("cancel alert");
+		}
+		catch(Exception e){
+			Base.childTest.fail(" alert accept");
+			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
+			Base.childTest.info(e);
+			throw e;
+			
+		}
+	}
 
+	
+	public void getAlertText(WebDriver driver)
+	{
+		try {
+			driver.switchTo().alert().getText();
+			Base.childTest.pass("alert text capture successfully");
+		}
+		catch(Exception e) {
+			Base.childTest.fail("alert text is not present there.");
+			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
+			Base.childTest.info(e);
+			throw e;
+		}
+	}
+	
+	public void setAlertText(WebDriver driver,String text)
+	{
+		try {
+			driver.switchTo().alert().sendKeys(text);
+			Base.childTest.pass("send  data to alert box successfully");
+		}
+		catch(Exception e) {
+			Base.childTest.fail("enter the text in alert box");
+			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
+			Base.childTest.info(e);
+			throw e;
+		}
+	}
+	
+	public void verifyAlertMsg(WebDriver driver)
+	{
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, 10);
+			wait.until(ExpectedConditions.alertIsPresent());
+			Base.childTest.pass("alert is Present");
+			driver.switchTo().alert().accept();
+		}
+		catch(Exception e) {
+			Base.childTest.fail("alert message is not Present");
+			MediaEntityBuilder.createScreenCaptureFromBase64String(screenshot()).build();
+			Base.childTest.info(e);
+			throw e;
+		}
+	}
 	
 	
 
