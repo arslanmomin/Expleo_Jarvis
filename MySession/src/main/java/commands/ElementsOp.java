@@ -323,4 +323,17 @@ public class ElementsOp extends Base {
 		}
 	}
 
+	public static void getAttribute(WebDriver driver, WebElement ele,String Attributename, String eleName) {
+		try {
+			String AtTrValue = ele.getAttribute(Attributename);
+			ExtentManager.childTest.pass("successfully feteched value :" + AtTrValue + " from Attribute :" + Attributename);
+		} catch (Exception e) {
+			ExtentManager.childTest.info(e);
+			throw e;
+		}
+	}
+	
+	
+
+
 }
