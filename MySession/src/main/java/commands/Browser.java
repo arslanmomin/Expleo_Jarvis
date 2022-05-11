@@ -68,4 +68,26 @@ public class Browser extends Base {
 			Base.childTest.fail("url not matched");
 		}
 	}
+	//Close Browser
+	public static void closeBrowser(WebDriver driver) {
+		try {
+			driver.close();
+			Base.childTest.info("Window Closed");
+			
+		} catch (Exception e) {
+
+			Base.childTest.fail(e);
+		}
+	}
+	//Quit browser
+	public static void quitBrowser(WebDriver driver) {
+		try {
+			driver.quit();
+			Base.childTest.info("Browser Closed");
+			
+		} catch (Exception e) {
+
+			Base.childTest.fail(e);
+		}
+	}
 }
