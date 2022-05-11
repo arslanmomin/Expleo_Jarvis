@@ -20,7 +20,7 @@ public class Listener extends ExtentManager implements ITestListener {
 	//Action action= new Action();
 	
 	public void onTestStart(ITestResult result) {
-		parentTest = extent.createTest(result.getName());
+		//parentTest = extent.createTest(result.getName());
 	}
 
 	public void onTestSuccess(ITestResult result) {
@@ -31,19 +31,13 @@ public class Listener extends ExtentManager implements ITestListener {
 
 	public void onTestFailure(ITestResult result) {
 		if (result.getStatus() == ITestResult.FAILURE) {
-			try {
-				parentTest.log(Status.FAIL,
-						MarkupHelper.createLabel(result.getName() + " - Test Case Failed", ExtentColor.RED));
-				parentTest.log(Status.FAIL,
-						MarkupHelper.createLabel(result.getThrowable() + " - Test Case Failed", ExtentColor.RED));
-				String imgPath = screenShot(Base.getDriver(), result.getName());
-			
-				parentTest.fail("ScreenShot is Attached", MediaEntityBuilder.createScreenCaptureFromPath(imgPath).build());
-				
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			parentTest.log(Status.FAIL,
+					MarkupHelper.createLabel(result.getName() + " - Test Case Failed", ExtentColor.RED));
+			parentTest.log(Status.FAIL,
+					MarkupHelper.createLabel(result.getThrowable() + " - Test Case Failed", ExtentColor.RED));
+			String imgPath = screenShot(Base.getDriver(), result.getName());
+
+			parentTest.fail("ScreenShot is Attached", MediaEntityBuilder.createScreenCaptureFromPath(imgPath).build());
 		}
 	}
 
@@ -69,4 +63,4 @@ public class Listener extends ExtentManager implements ITestListener {
 
 		
 	}
-}
+

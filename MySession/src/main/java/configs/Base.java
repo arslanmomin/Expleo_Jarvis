@@ -52,7 +52,7 @@ public class Base {
 
 	@BeforeMethod(alwaysRun = true)
 	public void methodName(Method method) {
-		// ExtentManager.parentTest = ExtentManager.extent.createTest(method.getName());
+		ExtentManager.parentTest = ExtentManager.extent.createTest(method.getName());
 		Log.startTestCase(method.getName());
 	}
 
