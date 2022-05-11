@@ -20,8 +20,13 @@ import java.util.concurrent.TimeUnit;
 import org.apache.log4j.xml.DOMConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterSuite;
 
@@ -62,25 +67,36 @@ public class Base {
 		String browser = cs.getProperty("browser");
 		
 		DOMConfigurator.configure("config files//log4j.xml");
+		
+		DesiredCapabilities dc = new DesiredCapabilities();
+		dc.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
+		dc.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true );
+		
 		switch (browser) {
 		
 		case "edge":
 			WebDriverManager.edgedriver().setup();
-			driver.set(new EdgeDriver());
+			EdgeOptions eo= new EdgeOptions();
+			eo.merge(dc);
+			driver.set(new EdgeDriver(eo));
 			getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			getDriver().manage().window().maximize();
 			break;
 
 		case "firefox":
 			WebDriverManager.firefoxdriver().setup();
-			driver.set(new FirefoxDriver());
+			FirefoxOptions fo= new FirefoxOptions();
+			fo.merge(dc);
+			driver.set(new FirefoxDriver(fo));
 			getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			getDriver().manage().window().maximize();
 			break;
 
 		case "chrome":
 			WebDriverManager.chromedriver().setup();
-			driver.set(new ChromeDriver());
+			ChromeOptions co= new ChromeOptions();
+			co.merge(dc);
+			driver.set(new ChromeDriver(co));
 			getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			getDriver().manage().window().maximize();
 			break;
