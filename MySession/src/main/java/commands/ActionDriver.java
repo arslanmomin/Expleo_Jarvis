@@ -14,6 +14,6 @@ public interface ActionDriver {
 	
 	
 	public void click(WebDriver driver, WebElement ele, String eleName);
-	public  void JSclick(WebDriver driver, WebElement ele, String eleName);
-	
+	public void JSclick(WebDriver driver, WebElement ele, String eleName);
+	public void type();
 }

@@ -61,7 +61,7 @@ public class Base {
 	public void beforeSuite() {
 		String browser = cs.getProperty("browser");
 		
-		DOMConfigurator.configure("log4j.xml");
+		DOMConfigurator.configure("config files//log4j.xml");
 		switch (browser) {
 		
 		case "edge":
