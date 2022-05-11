@@ -2,26 +2,26 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-05-11T10:42:27 IST" name="Default suite" finished-at="2022-05-11T10:42:30 IST" duration-ms="3809">
+  <suite started-at="2022-05-11T14:42:05 IST" name="Default suite" finished-at="2022-05-11T14:42:11 IST" duration-ms="5510">
     <groups>
       <group name="regression">
-        <method signature="LoginTest.loginTest()[pri:0, instance:jarvis.tests.LoginTest@6fd83fc1]" name="loginTest" class="jarvis.tests.LoginTest"/>
+        <method signature="LoginTest.loginTest()[pri:0, instance:jarvis.tests.LoginTest@bae7dc0]" name="loginTest" class="jarvis.tests.LoginTest"/>
       </group> <!-- regression -->
       <group name="login">
-        <method signature="LoginTest.loginTest()[pri:0, instance:jarvis.tests.LoginTest@6fd83fc1]" name="loginTest" class="jarvis.tests.LoginTest"/>
+        <method signature="LoginTest.loginTest()[pri:0, instance:jarvis.tests.LoginTest@bae7dc0]" name="loginTest" class="jarvis.tests.LoginTest"/>
       </group> <!-- login -->
     </groups>
-    <test started-at="2022-05-11T10:42:27 IST" name="Default test" finished-at="2022-05-11T10:42:30 IST" duration-ms="3809">
+    <test started-at="2022-05-11T14:42:05 IST" name="Default test" finished-at="2022-05-11T14:42:11 IST" duration-ms="5510">
       <class name="jarvis.tests.LoginTest">
-        <test-method is-config="true" signature="beforeSuite()[pri:0, instance:jarvis.tests.LoginTest@6fd83fc1]" started-at="2022-05-11T10:42:19 IST" name="beforeSuite" finished-at="2022-05-11T10:42:27 IST" duration-ms="7722" status="PASS">
+        <test-method is-config="true" signature="beforeSuite()[pri:0, instance:jarvis.tests.LoginTest@bae7dc0]" started-at="2022-05-11T14:41:51 IST" name="beforeSuite" finished-at="2022-05-11T14:42:05 IST" duration-ms="14017" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeSuite -->
-        <test-method is-config="true" signature="generateReport()[pri:0, instance:jarvis.tests.LoginTest@6fd83fc1]" started-at="2022-05-11T10:42:27 IST" name="generateReport" finished-at="2022-05-11T10:42:27 IST" duration-ms="559" status="PASS">
+        <test-method is-config="true" signature="generateReport()[pri:0, instance:jarvis.tests.LoginTest@bae7dc0]" started-at="2022-05-11T14:42:05 IST" name="generateReport" finished-at="2022-05-11T14:42:06 IST" duration-ms="756" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- generateReport -->
-        <test-method is-config="true" signature="methodName(java.lang.reflect.Method)[pri:0, instance:jarvis.tests.LoginTest@6fd83fc1]" started-at="2022-05-11T10:42:27 IST" name="methodName" finished-at="2022-05-11T10:42:27 IST" duration-ms="16" status="PASS">
+        <test-method is-config="true" signature="methodName(java.lang.reflect.Method)[pri:0, instance:jarvis.tests.LoginTest@bae7dc0]" started-at="2022-05-11T14:42:06 IST" name="methodName" finished-at="2022-05-11T14:42:06 IST" duration-ms="32" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -32,11 +32,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- methodName -->
-        <test-method signature="loginTest()[pri:0, instance:jarvis.tests.LoginTest@6fd83fc1]" started-at="2022-05-11T10:42:27 IST" name="loginTest" finished-at="2022-05-11T10:42:30 IST" duration-ms="3156" status="PASS">
+        <test-method signature="loginTest()[pri:0, instance:jarvis.tests.LoginTest@bae7dc0]" started-at="2022-05-11T14:42:06 IST" name="loginTest" finished-at="2022-05-11T14:42:11 IST" duration-ms="4636" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginTest -->
-        <test-method is-config="true" signature="afterClass()[pri:0, instance:jarvis.tests.LoginTest@6fd83fc1]" started-at="2022-05-11T10:42:31 IST" name="afterClass" finished-at="2022-05-11T10:42:31 IST" duration-ms="678" status="PASS">
+        <test-method is-config="true" signature="afterClass()[pri:0, instance:jarvis.tests.LoginTest@bae7dc0]" started-at="2022-05-11T14:42:11 IST" name="afterClass" finished-at="2022-05-11T14:42:12 IST" duration-ms="1008" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->

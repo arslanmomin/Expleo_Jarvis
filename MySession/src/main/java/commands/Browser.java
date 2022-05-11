@@ -68,7 +68,6 @@ public class Browser extends Base {
 			Base.childTest.fail("url not matched");
 		}
 	}
-	//Close Browser
 	public static void closeBrowser(WebDriver driver) {
 		try {
 			driver.close();
@@ -90,4 +89,8 @@ public class Browser extends Base {
 			Base.childTest.fail(e);
 		}
 	}
+	
+	
 }
+
+	
