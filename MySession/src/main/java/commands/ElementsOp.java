@@ -1,12 +1,21 @@
 package commands;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.time.Duration;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import configs.Base;
@@ -346,6 +355,42 @@ public class ElementsOp extends Base {
 			ExtentManager.childTest.info(e);
 			throw e;
 		}
+	}
+	
+	public static int getColumncount(WebElement row) {
+		List<WebElement> columns = row.findElements(By.tagName("td"));
+		int a = columns.size();
+		System.out.println(columns.size());
+		for (WebElement column : columns) {
+			System.out.print(column.getText());
+			System.out.print("|");
+		}
+		return a;
+	}
+	public static void explicitWait(WebDriver driver, WebElement element, int timeOut ) {
+		WebDriverWait wait = new WebDriverWait(driver,timeOut);
+		wait.until(ExpectedConditions.visibilityOf(element));
+	}
+	
+	public static void implicitWait(WebDriver driver, int timeOut) {
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	}
+	public static void fluentWait(WebDriver driver,WebElement element, int timeOut) {
+	    Wait<WebDriver> wait = null;
+	    try {
+	        wait = new FluentWait<WebDriver>((WebDriver) driver)
+	        		.withTimeout(Duration.ofSeconds(20))
+	        	    .pollingEvery(Duration.ofSeconds(2))
+	        	    .ignoring(Exception.class);
+	        wait.until(ExpectedConditions.visibilityOf(element));
+	        element.click();
+	    }catch(Exception e) {
+	    }
+	}
+
+	public static String getCurrentTime() {
+		String currentDate = new SimpleDateFormat("yyyy-MM-dd-hhmmss").format(new Date());
+		return currentDate;
 	}
 	
 	

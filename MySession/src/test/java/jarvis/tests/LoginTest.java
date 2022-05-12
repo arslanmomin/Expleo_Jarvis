@@ -7,9 +7,6 @@ import jarvis.scripts.LoginLogout;
 
 @Listeners(utilities.Listener.class)
 public class LoginTest extends Base {
-	
-
-
 
   @Test(priority=0,groups= {"regression","login"})
   public void loginTest() throws Exception {
