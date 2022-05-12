@@ -86,7 +86,7 @@ public class Browser extends Base {
 	public static void quitBrowser(WebDriver driver) {
 		try {
 			driver.quit();
-			ExtentManager.childTest.info("Browser Closed");
+			ExtentManager.childTest.info("Browser quit done");
 
 		} catch (Exception e) {
 

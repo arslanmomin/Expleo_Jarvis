@@ -69,9 +69,10 @@ public class Listener extends ExtentManager implements ITestListener {
 
 	public String screenShot(WebDriver driver, String filename) {
 		String dateName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+		String date = new SimpleDateFormat("yyyy_MM_dd").format(new Date());
 		TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
 		File source = takesScreenshot.getScreenshotAs(OutputType.FILE);
-		String destination = System.getProperty("user.dir") + "\\ScreenShots\\" + filename + "_" + dateName + ".png";
+		String destination = System.getProperty("user.dir") + "\\Report\\"+date +"\\ScreenShots\\"+ filename + "_" + dateName + ".png";
 
 		try {
 			FileUtils.copyFile(source, new File(destination));

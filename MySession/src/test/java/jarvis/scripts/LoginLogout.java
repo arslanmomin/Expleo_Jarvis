@@ -17,24 +17,25 @@ public class LoginLogout extends Base {
 	LoginPage lp;
 	HomePage hp;
 	
-	public void login() throws Exception {
+	
+	public void login(String uname, String pwd) throws Exception {
 		ExtentManager.childTest=ExtentManager.parentTest.createNode("login to application");
 		lp=new LoginPage();
 		lp.clickonsignin();
 		Log.info("clicked on signin button");
-		lp.setEmail();
-		lp.setPassword();
+		lp.setEmail(uname);
+		lp.setPassword(pwd);
 		lp.clickonlogin();
 	
 		
 	}
-	public void loginwithExcelData(String url) throws Exception {
+	public void loginwithExcelData(String uname,String pw) throws Exception {
 		Fillo f = new Fillo();
 		Connection con = f.getConnection("Testdata/Data.xlsx");
 		String query="select * from Login";
 		Recordset rc= con.executeQuery(query);
 		while(rc.next()) {
-			login();
+			login(uname,pw);
 			
 		}	
 	}

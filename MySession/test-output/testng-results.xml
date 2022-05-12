@@ -2,37 +2,49 @@
 <testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-05-11T17:49:52 IST" name="Default suite" finished-at="2022-05-11T17:50:04 IST" duration-ms="12531">
+  <suite started-at="2022-05-12T18:39:01 IST" name="Default suite" finished-at="2022-05-12T18:39:15 IST" duration-ms="13880">
     <groups>
       <group name="regression">
-        <method signature="LoginTest.loginTest()[pri:0, instance:jarvis.tests.LoginTest@1b2abca6]" name="loginTest" class="jarvis.tests.LoginTest"/>
+        <method signature="LoginTest.loginTest(java.lang.String,java.lang.String)[pri:0, instance:jarvis.tests.LoginTest@6392827e]" name="loginTest" class="jarvis.tests.LoginTest"/>
       </group> <!-- regression -->
       <group name="login">
-        <method signature="LoginTest.loginTest()[pri:0, instance:jarvis.tests.LoginTest@1b2abca6]" name="loginTest" class="jarvis.tests.LoginTest"/>
+        <method signature="LoginTest.loginTest(java.lang.String,java.lang.String)[pri:0, instance:jarvis.tests.LoginTest@6392827e]" name="loginTest" class="jarvis.tests.LoginTest"/>
       </group> <!-- login -->
     </groups>
-    <test started-at="2022-05-11T17:49:52 IST" name="Default test" finished-at="2022-05-11T17:50:04 IST" duration-ms="12531">
+    <test started-at="2022-05-12T18:39:01 IST" name="Default test" finished-at="2022-05-12T18:39:15 IST" duration-ms="13880">
       <class name="jarvis.tests.LoginTest">
-        <test-method is-config="true" signature="beforeSuite()[pri:0, instance:jarvis.tests.LoginTest@1b2abca6]" started-at="2022-05-11T17:49:43 IST" name="beforeSuite" finished-at="2022-05-11T17:49:52 IST" duration-ms="8739" status="PASS">
+        <test-method is-config="true" signature="beforeSuite()[pri:0, instance:jarvis.tests.LoginTest@6392827e]" started-at="2022-05-12T18:38:54 IST" name="beforeSuite" finished-at="2022-05-12T18:39:01 IST" duration-ms="7439" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeSuite -->
-        <test-method is-config="true" signature="report()[pri:0, instance:jarvis.tests.LoginTest@1b2abca6]" started-at="2022-05-11T17:49:52 IST" name="report" finished-at="2022-05-11T17:49:52 IST" duration-ms="514" status="PASS">
+        <test-method is-config="true" signature="report()[pri:0, instance:jarvis.tests.LoginTest@6392827e]" started-at="2022-05-12T18:39:01 IST" name="report" finished-at="2022-05-12T18:39:02 IST" duration-ms="528" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- report -->
-        <test-method is-config="true" signature="methodName(java.lang.reflect.Method)[pri:0, instance:jarvis.tests.LoginTest@1b2abca6]" started-at="2022-05-11T17:49:52 IST" name="methodName" finished-at="2022-05-11T17:49:52 IST" duration-ms="5" status="PASS">
+        <test-method is-config="true" signature="methodName(java.lang.reflect.Method)[pri:0, instance:jarvis.tests.LoginTest@6392827e]" started-at="2022-05-12T18:39:03 IST" name="methodName" finished-at="2022-05-12T18:39:03 IST" duration-ms="2" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void jarvis.tests.LoginTest.loginTest() throws java.lang.Exception]]>
+                <![CDATA[public void jarvis.tests.LoginTest.loginTest(java.lang.String,java.lang.String) throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- methodName -->
-        <test-method signature="loginTest()[pri:0, instance:jarvis.tests.LoginTest@1b2abca6]" started-at="2022-05-11T17:49:52 IST" name="loginTest" finished-at="2022-05-11T17:50:04 IST" duration-ms="11637" status="FAIL">
+        <test-method signature="loginTest(java.lang.String,java.lang.String)[pri:0, instance:jarvis.tests.LoginTest@6392827e]" started-at="2022-05-12T18:39:03 IST" name="loginTest" data-provider="credentials" finished-at="2022-05-12T18:39:15 IST" duration-ms="11633" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Shiva11@gmail.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Shiva11]]>
+              </value>
+            </param>
+          </params>
           <exception class="org.openqa.selenium.json.JsonException">
             <message>
               <![CDATA[java.lang.reflect.InvocationTargetException
@@ -65,10 +77,10 @@ at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverComman
 at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
 at org.openqa.selenium.remote.RemoteWebDriver.perform(RemoteWebDriver.java:618)
 at org.openqa.selenium.interactions.Actions$BuiltAction.perform(Actions.java:639)
-at commands.ElementsOp.click(ElementsOp.java:29)
+at commands.ElementsOp.click(ElementsOp.java:42)
 at jarvis.objects.LoginPage.clickonlogin(LoginPage.java:44)
-at jarvis.scripts.LoginLogout.login(LoginLogout.java:27)
-at jarvis.tests.LoginTest.loginTest(LoginTest.java:17)
+at jarvis.scripts.LoginLogout.login(LoginLogout.java:28)
+at jarvis.tests.LoginTest.loginTest(LoginTest.java:15)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -117,8 +129,8 @@ For documentation on this error, please visit: https://www.seleniumhq.org/except
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
 System info: host: 'ESLLAP-3639', ip: '192.168.43.219', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '16.0.1'
 Driver info: org.openqa.selenium.edge.EdgeDriver
-Capabilities {acceptInsecureCerts: true, browserName: msedge, browserVersion: 101.0.1210.39, javascriptEnabled: true, ms:edgeOptions: {debuggerAddress: localhost:49816}, msedge: {msedgedriverVersion: 101.0.1210.39 (ae7c307992c2..., userDataDir: C:\Users\12053\AppData\Loca...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: ac04f6478d17acff086eb6f014492af7
+Capabilities {acceptInsecureCerts: true, browserName: msedge, browserVersion: 101.0.1210.39, javascriptEnabled: true, ms:edgeOptions: {debuggerAddress: localhost:62878}, msedge: {msedgedriverVersion: 101.0.1210.39 (ae7c307992c2..., userDataDir: C:\Users\12053\AppData\Loca...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: c5ed5b23650edb9a3d54d420c190ddab
 *** Element info: {Using=xpath, value=//input[@value='Log in1']}
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:78)
@@ -137,7 +149,7 @@ at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
 at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
 at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
 at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-at jdk.proxy2/jdk.proxy2.$Proxy16.getWrappedElement(Unknown Source)
+at jdk.proxy2/jdk.proxy2.$Proxy17.getWrappedElement(Unknown Source)
 at org.openqa.selenium.interactions.PointerInput$Origin.asArg(PointerInput.java:204)
 at org.openqa.selenium.interactions.PointerInput$Move.encode(PointerInput.java:155)
 at org.openqa.selenium.interactions.Sequence.encode(Sequence.java:75)
@@ -149,7 +161,7 @@ at org.openqa.selenium.interactions.Sequence.toJson(Sequence.java:84)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginTest -->
-        <test-method is-config="true" signature="afterClass()[pri:0, instance:jarvis.tests.LoginTest@1b2abca6]" started-at="2022-05-11T17:50:04 IST" name="afterClass" finished-at="2022-05-11T17:50:05 IST" duration-ms="615" status="PASS">
+        <test-method is-config="true" signature="afterClass()[pri:0, instance:jarvis.tests.LoginTest@6392827e]" started-at="2022-05-12T18:39:15 IST" name="afterClass" finished-at="2022-05-12T18:39:16 IST" duration-ms="499" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->

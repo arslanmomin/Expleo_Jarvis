@@ -9,17 +9,11 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="8">Default suite</th></tr>
-<<<<<<< HEAD
-<tr><td><a href="#t0">Default test</a></td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">5,510</td><td></td><td></td></tr>
+<tr><td><a href="#t0">Default test</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">13,880</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">jarvis.tests.LoginTest</td><td><a href="#m0">loginTest</a></td><td rowspan="1">1652260326637</td><td rowspan="1">4636</td></tr></tbody>
-=======
-<tr><td><a href="#t0">Default test</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">12,531</td><td></td><td></td></tr>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">jarvis.tests.LoginTest</td><td><a href="#m0">loginTest</a></td><td rowspan="1">1652360943648</td><td rowspan="1">11633</td></tr></tbody>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">jarvis.tests.LoginTest</td><td><a href="#m0">loginTest</a></td><td rowspan="1">1652271592612</td><td rowspan="1">11637</td></tr></tbody>
->>>>>>> 11144c8bbfdb7b2e97938fdfa41dcd97bbe6d230
-</table>
-<h2>Default test</h2><h3 id="m0">jarvis.tests.LoginTest#loginTest</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.json.JsonException: java.lang.reflect.InvocationTargetException
+<h2>Default test</h2><h3 id="m0">jarvis.tests.LoginTest#loginTest</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>Shiva11@gmail.com</td><td>Shiva11</td></tr><tr><th colspan="2">Exception</th></tr><tr><td colspan="2"><div class="stacktrace">org.openqa.selenium.json.JsonException: java.lang.reflect.InvocationTargetException
 Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
 System info: host: &apos;ESLLAP-3639&apos;, ip: &apos;192.168.43.219&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;16.0.1&apos;
 Driver info: driver.version: RemoteWebDriver
@@ -43,10 +37,10 @@ Driver info: driver.version: RemoteWebDriver
 	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
 	at org.openqa.selenium.remote.RemoteWebDriver.perform(RemoteWebDriver.java:618)
 	at org.openqa.selenium.interactions.Actions$BuiltAction.perform(Actions.java:639)
-	at commands.ElementsOp.click(ElementsOp.java:29)
+	at commands.ElementsOp.click(ElementsOp.java:42)
 	at jarvis.objects.LoginPage.clickonlogin(LoginPage.java:44)
-	at jarvis.scripts.LoginLogout.login(LoginLogout.java:27)
-	at jarvis.tests.LoginTest.loginTest(LoginTest.java:17)
+	at jarvis.scripts.LoginLogout.login(LoginLogout.java:28)
+	at jarvis.tests.LoginTest.loginTest(LoginTest.java:15)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -95,8 +89,8 @@ For documentation on this error, please visit: https://www.seleniumhq.org/except
 Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
 System info: host: &apos;ESLLAP-3639&apos;, ip: &apos;192.168.43.219&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;16.0.1&apos;
 Driver info: org.openqa.selenium.edge.EdgeDriver
-Capabilities {acceptInsecureCerts: true, browserName: msedge, browserVersion: 101.0.1210.39, javascriptEnabled: true, ms:edgeOptions: {debuggerAddress: localhost:49816}, msedge: {msedgedriverVersion: 101.0.1210.39 (ae7c307992c2..., userDataDir: C:\Users\12053\AppData\Loca...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: ac04f6478d17acff086eb6f014492af7
+Capabilities {acceptInsecureCerts: true, browserName: msedge, browserVersion: 101.0.1210.39, javascriptEnabled: true, ms:edgeOptions: {debuggerAddress: localhost:62878}, msedge: {msedgedriverVersion: 101.0.1210.39 (ae7c307992c2..., userDataDir: C:\Users\12053\AppData\Loca...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: c5ed5b23650edb9a3d54d420c190ddab
 *** Element info: {Using=xpath, value=//input[@value=&apos;Log in1&apos;]}
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:78)
@@ -115,7 +109,7 @@ Session ID: ac04f6478d17acff086eb6f014492af7
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
 	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
 	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-	at jdk.proxy2/jdk.proxy2.$Proxy16.getWrappedElement(Unknown Source)
+	at jdk.proxy2/jdk.proxy2.$Proxy17.getWrappedElement(Unknown Source)
 	at org.openqa.selenium.interactions.PointerInput$Origin.asArg(PointerInput.java:204)
 	at org.openqa.selenium.interactions.PointerInput$Move.encode(PointerInput.java:155)
 	at org.openqa.selenium.interactions.Sequence.encode(Sequence.java:75)

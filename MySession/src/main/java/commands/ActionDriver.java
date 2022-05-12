@@ -11,7 +11,7 @@ public interface ActionDriver {
 	public void navigateToUrl(WebDriver driver);
 	public void matchUrl(WebDriver driver,String expected);
 	public void refreshPage(WebDriver driver);
-	public void pageLoadTimeOut(WebDriver driver, int timeOut)
+	public void pageLoadTimeOut(WebDriver driver, int timeOut);
 	
 	public String getCurrentTime();
 	

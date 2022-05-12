@@ -9,7 +9,7 @@
           <include name="beforeSuite"/>
           <include name="report"/>
           <include name="methodName"/>
-          <include name="loginTest"/>
+          <include name="loginTest" invocation-numbers="0"/>
         </methods>
       </class> <!-- jarvis.tests.LoginTest -->
     </classes>

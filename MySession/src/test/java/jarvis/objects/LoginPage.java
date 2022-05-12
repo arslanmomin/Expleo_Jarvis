@@ -32,12 +32,12 @@ public class LoginPage extends Base{
 		ElementsOp.click(getDriver(), signinbtn,"signinbtn");
 	}
 	
-	public void setEmail() {
-		ElementsOp.type( emailbox, cs.getProperty("email"),"email text box");
+	public void setEmail(String email) {
+		ElementsOp.type( emailbox, email,"email text box");
 	}
 
-	public void setPassword() {
-		ElementsOp.type( passwordbox, cs.getProperty("password"),"password text box");
+	public void setPassword(String password) {
+		ElementsOp.type( passwordbox, password,"password text box");
 	}
 	
 	public void clickonlogin() throws Exception {

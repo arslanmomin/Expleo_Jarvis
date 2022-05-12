@@ -2,6 +2,7 @@ package utilities;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -17,10 +18,10 @@ public class ExtentManager extends Base {
 	static ExtentSparkReporter sparkReporter;
 	
 	public static void generateReport() {
-		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-		final SimpleDateFormat sdf3 = new SimpleDateFormat("yyyy_MM_dd HH_mm_ss");
-		String name = sdf3.format(timestamp);
-		sparkReporter = new ExtentSparkReporter("Report/" + name + ".html");
+
+		String dateName = new SimpleDateFormat("yyyy_MM_dd hh_mm_ss").format(new Date());
+		String date = new SimpleDateFormat("yyyy_MM_dd").format(new Date());
+		sparkReporter = new ExtentSparkReporter(System.getProperty("user.dir") + "\\Report\\"+date +"\\ExtentReports\\" + dateName + ".html");
 		extent = new ExtentReports();
 		extent.attachReporter(sparkReporter);
 		
