@@ -1,10 +1,13 @@
 package commands;
 
+import java.io.File;
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -347,7 +350,72 @@ public class ElementsOp extends Base {
 			throw e;
 		}
 	}
+	//Element Count
+	public static void ElementsCount(WebDriver driver,WebElement ele,String attribute) {
+		try {
+			
+		
+		int count = 0;
+
+		String AttrValue = ele.getAttribute(attribute);
+
+		List<WebElement> val = driver.findElements(By.xpath(AttrValue));
+
+		for (WebElement value : val) 
+		{
+			count++;
+		}
+
+		ExtentManager.childTest.pass("The Count Is"+ count);
+		
+	}catch(Exception e) {
+		
+		ExtentManager.childTest.info(e);
+		throw e;
+	}
+}
+	//Verify Download
+	public boolean isFileDownloaded(String downloadPath, String fileName) {
+		try {
+		  File dir = new File(downloadPath);
+		  File[] dirContents = dir.listFiles();
+
+		  for (int i = 0; i < dirContents.length; i++) {
+		      if (dirContents[i].getName().equals(fileName)) {
+		          // File has been found, it can now be deleted:
+		          dirContents[i].delete();
+		          ExtentManager.childTest.pass("The File Is Downloaded");
+		          return true;
+		         
+		      }
+		          }
+		  	ExtentManager.childTest.pass("The File Is Not  Downloaded");
+		      return false;
+		  }
+		catch(Exception e) {
+			
+			ExtentManager.childTest.info(e);
+			throw e;
+		}
+	}
+	public void matchSubStringAndVerify( String actualText, String expectedText) {
+		ExtentManager.childTest.pass("comparing two strings if expected substring is present");
+		
+		if(actualText.contains(expectedText))
+			ExtentManager.childTest.pass(expectedText +" expected text found");
+		else
+			ExtentManager.childTest.fail(expectedText +" expected text not found");
+	}
 	
+	public void verifyElementText(WebElement ele,  String expectedText) {
+		ExtentManager.childTest.pass("comparing two strings if expected substring is present");
+		String actualText=ele.getText();
+		if(actualText.contains(expectedText))
+			ExtentManager.childTest.pass(expectedText +" expected text found");
+		else
+			ExtentManager.childTest.fail(expectedText +" expected text not found");
+	}
+
 	
 
 
