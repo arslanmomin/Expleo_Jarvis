@@ -7,8 +7,8 @@
         <methods>
           <include name="afterClass"/>
           <include name="beforeSuite"/>
+          <include name="report"/>
           <include name="methodName"/>
-          <include name="generateReport"/>
           <include name="loginTest"/>
         </methods>
       </class> <!-- jarvis.tests.LoginTest -->

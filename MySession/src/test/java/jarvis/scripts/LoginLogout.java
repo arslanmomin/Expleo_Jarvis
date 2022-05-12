@@ -9,6 +9,7 @@ import configs.Base;
 import jarvis.objects.HomePage;
 import jarvis.objects.LoginPage;
 import utilities.ConfigurationSupport;
+import utilities.ExtentManager;
 import utilities.Log;
 
 public class LoginLogout extends Base {
@@ -17,13 +18,14 @@ public class LoginLogout extends Base {
 	HomePage hp;
 	
 	public void login() throws Exception {
-		Base.childTest=Base.parentTest.createNode("login to application");
+		ExtentManager.childTest=ExtentManager.parentTest.createNode("login to application");
 		lp=new LoginPage();
 		lp.clickonsignin();
 		Log.info("clicked on signin button");
 		lp.setEmail();
 		lp.setPassword();
 		lp.clickonlogin();
+	
 		
 	}
 	public void loginwithExcelData(String url) throws Exception {
@@ -37,7 +39,7 @@ public class LoginLogout extends Base {
 		}	
 	}
 	public void logout() throws Exception {
-		Base.childTest = Base.parentTest.createNode("logout from application");
+		ExtentManager.childTest = ExtentManager.parentTest.createNode("logout from application");
 		hp =new HomePage();
 		hp.clickonlogout();
 		

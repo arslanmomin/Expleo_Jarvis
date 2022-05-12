@@ -5,13 +5,15 @@ import org.openqa.selenium.WebElement;
 
 public interface ActionDriver {
 
-	public void openurl(WebDriver driver,String URL) ;
-	public void back(WebDriver driver);
-	public void forward(WebDriver driver);
-	public void navigate(WebDriver driver);
-	public void matchurl(WebDriver driver,String expected);
-	public void refresh(WebDriver driver);
+	public void openUrl(WebDriver driver,String url) ;
+	public void backPage(WebDriver driver);
+	public void forwardPage(WebDriver driver);
+	public void navigateToUrl(WebDriver driver);
+	public void matchUrl(WebDriver driver,String expected);
+	public void refreshPage(WebDriver driver);
+	public void pageLoadTimeOut(WebDriver driver, int timeOut)
 	
+	public String getCurrentTime();
 	
 	public void click(WebDriver driver, WebElement ele, String eleName);
 	public  void JSclick(WebDriver driver, WebElement ele, String eleName);
@@ -20,13 +22,13 @@ public interface ActionDriver {
 	public void type(WebElement ele,String testData, String eleName);
 	
 	
-	public void mouseover(WebDriver driver, WebElement ele, String eleName);
+	public void mouseOver(WebDriver driver, WebElement ele, String eleName);
 	public void moveToElement(WebDriver driver, WebElement ele, String eleName);
 	
 	
 	
 	public void getText(WebDriver driver, WebElement ele, String eleName);
-	public void verifyeleclickable(WebElement ele, String eleName);
+	public void verifyEleClickable(WebElement ele, String eleName);
 	public void isDisplayed(WebElement ele, String eleName);
 	public void isSelected(WebElement ele, String eleName);
 	public void isEnabled(WebElement ele, String eleName);

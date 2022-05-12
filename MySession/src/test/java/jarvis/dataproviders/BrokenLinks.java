@@ -13,13 +13,14 @@ import org.testng.annotations.Test;
 import commands.Browser;
 import commands.ElementsOp;
 import configs.Base;
+import utilities.ExtentManager;
 
 public class BrokenLinks extends Base {
 
 
 	public void BrokenTest(String WebUrl) throws InterruptedException {
 
-		Base.childTest = Base.parentTest.createNode("Broken links");
+		ExtentManager.childTest = ExtentManager.parentTest.createNode("Broken links");
 		
 
 		List<WebElement> links = getDriver().findElements(By.tagName("a"));

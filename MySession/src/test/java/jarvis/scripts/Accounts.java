@@ -1,13 +1,14 @@
 package jarvis.scripts;
 
 import configs.Base;
+import utilities.ExtentManager;
 
 
 public class Accounts {
 
 	
 	public void shoppingcart() throws Exception {
-		Base.childTest = Base.parentTest.createNode("Shopping cart");
+		ExtentManager.childTest = ExtentManager.parentTest.createNode("Shopping cart");
 		
 	  }
 	public void cartHover() throws Exception {
