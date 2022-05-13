@@ -1,6 +1,5 @@
 package commands;
 
-
 import java.io.File;
 import java.util.List;
 
@@ -9,7 +8,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.time.Duration;
-
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -42,7 +40,7 @@ public class ElementsOp extends Base {
 			act.moveToElement(ele).click().build().perform();
 			ExtentManager.childTest.pass("performed click on :" + eleName);
 		} catch (Exception e) {
-			ExtentManager.childTest.fail("can not perform click operation on :" + eleName);
+			ExtentManager.childTest.info("can not perform click operation on :" + eleName);
 			ExtentManager.childTest.info(e);
 			throw e;
 		}
@@ -150,17 +148,16 @@ public class ElementsOp extends Base {
 
 	}
 
-	public static void isDisplayed(WebElement ele, String eleName) {
-		try {
-			boolean t = ele.isDisplayed();
-			if (t)
-				ExtentManager.childTest.pass("element is visible  :" + eleName);
-			else
-				ExtentManager.childTest.fail("element is not visible :" + eleName);
-		} catch (Exception e) {
-			ExtentManager.childTest.info(e);
-			throw e;
-		}
+	public static boolean isDisplayed(WebElement ele, String eleName) {
+
+		boolean t = ele.isDisplayed();
+		if (t)
+			ExtentManager.childTest.pass("element is visible  :" + eleName);
+
+		else
+			ExtentManager.childTest.info("element is not visible :" + eleName);
+
+		return t;
 	}
 
 	public static void isSelected(WebElement ele, String eleName) {
@@ -245,10 +242,9 @@ public class ElementsOp extends Base {
 				ExtentManager.childTest.pass("element already checked");
 			} else {
 				ele.click();
-				ExtentManager.childTest.pass("performed check on :" + eleName);
+				ExtentManager.childTest.info("performed check on :" + eleName);
 			}
 		} catch (Exception e) {
-			ExtentManager.childTest.pass("can not perform check operation on :" + eleName);
 
 			ExtentManager.childTest.info(e);
 			throw e;
@@ -336,97 +332,98 @@ public class ElementsOp extends Base {
 		}
 	}
 
-
-	public static void getAttribute(WebDriver driver, WebElement ele,String Attributename, String eleName) {
+	public static void getAttribute(WebDriver driver, WebElement ele, String Attributename, String eleName) {
 		try {
 			String AtTrValue = ele.getAttribute(Attributename);
-			ExtentManager.childTest.pass("successfully feteched value :" + AtTrValue + " from Attribute :" + Attributename);
+			ExtentManager.childTest
+					.pass("successfully feteched value :" + AtTrValue + " from Attribute :" + Attributename);
 		} catch (Exception e) {
 			ExtentManager.childTest.info(e);
 			throw e;
 		}
 	}
-	//get Attribute
-	
-	public static void uploadFile( WebElement path,WebElement uploadButton,String FilePath, String eleName) {
+	// get Attribute
+
+	public static void uploadFile(WebElement path, WebElement uploadButton, String FilePath, String eleName) {
 		try {
-			
-		path.sendKeys(FilePath);
-		uploadButton.click();
-			ExtentManager.childTest.pass("File uploaded Successfully"+ eleName);
+
+			path.sendKeys(FilePath);
+			uploadButton.click();
+			ExtentManager.childTest.pass("File uploaded Successfully" + eleName);
 		} catch (Exception e) {
-			
+
 			ExtentManager.childTest.info(e);
 			throw e;
 		}
 	}
-	//Element Count
-	public static void ElementsCount(WebDriver driver,WebElement ele,String attribute) {
+
+	// Element Count
+	public static void ElementsCount(WebDriver driver, WebElement ele, String attribute) {
 		try {
-			
-		
-		int count = 0;
 
-		String AttrValue = ele.getAttribute(attribute);
+			int count = 0;
 
-		List<WebElement> val = driver.findElements(By.xpath(AttrValue));
+			String AttrValue = ele.getAttribute(attribute);
 
-		for (WebElement value : val) 
-		{
-			count++;
+			List<WebElement> val = driver.findElements(By.xpath(AttrValue));
+
+			for (WebElement value : val) {
+				count++;
+			}
+
+			ExtentManager.childTest.pass("The Count Is" + count);
+
+		} catch (Exception e) {
+
+			ExtentManager.childTest.info(e);
+			throw e;
 		}
-
-		ExtentManager.childTest.pass("The Count Is"+ count);
-		
-	}catch(Exception e) {
-		
-		ExtentManager.childTest.info(e);
-		throw e;
 	}
-}
-	//Verify Download
+
+	// Verify Download
 	public boolean isFileDownloaded(String downloadPath, String fileName) {
 		try {
-		  File dir = new File(downloadPath);
-		  File[] dirContents = dir.listFiles();
+			File dir = new File(downloadPath);
+			File[] dirContents = dir.listFiles();
 
-		  for (int i = 0; i < dirContents.length; i++) {
-		      if (dirContents[i].getName().equals(fileName)) {
-		          // File has been found, it can now be deleted:
-		          dirContents[i].delete();
-		          ExtentManager.childTest.pass("The File Is Downloaded");
-		          return true;
-		         
-		      }
-		          }
-		  	ExtentManager.childTest.pass("The File Is Not  Downloaded");
-		      return false;
-		  }
-		catch(Exception e) {
-			
+			for (int i = 0; i < dirContents.length; i++) {
+				if (dirContents[i].getName().equals(fileName)) {
+					// File has been found, it can now be deleted:
+					dirContents[i].delete();
+					ExtentManager.childTest.pass("The File Is Downloaded");
+					return true;
+
+				}
+			}
+			ExtentManager.childTest.pass("The File Is Not  Downloaded");
+			return false;
+		} catch (Exception e) {
+
 			ExtentManager.childTest.info(e);
 			throw e;
 		}
 	}
-	public void matchSubStringAndVerify( String actualText, String expectedText) {
-		ExtentManager.childTest.pass("comparing two strings if expected substring is present");
-		
-		if(actualText.contains(expectedText))
-			ExtentManager.childTest.pass(expectedText +" expected text found");
-		else
-			ExtentManager.childTest.fail(expectedText +" expected text not found");
-	}
-	
 
-	public void verifyElementText(WebElement ele,  String expectedText) {
+	public void matchSubStringAndVerify(String actualText, String expectedText) {
 		ExtentManager.childTest.pass("comparing two strings if expected substring is present");
-		String actualText=ele.getText();
-		if(actualText.contains(expectedText))
-			ExtentManager.childTest.pass(expectedText +" expected text found");
+
+		if (actualText.contains(expectedText))
+			ExtentManager.childTest.pass(expectedText + " expected text found");
 		else
-			ExtentManager.childTest.fail(expectedText +" expected text not found");
+			ExtentManager.childTest.fail(expectedText + " expected text not found");
 	}
 
+	public boolean verifyElementText(WebElement ele, String expectedText) {
+		boolean flag = false;
+		String actualText = ele.getText();
+		if (actualText.contains(expectedText)) {
+			ExtentManager.childTest.pass(expectedText + " expected text found");
+			flag = true;
+		} else {
+			ExtentManager.childTest.info(expectedText + " expected text not found");
+		}
+		return flag;
+	}
 
 	public static int getColumncount(WebElement row) {
 		List<WebElement> columns = row.findElements(By.tagName("td"));
@@ -438,34 +435,30 @@ public class ElementsOp extends Base {
 		}
 		return a;
 	}
-	public static void explicitWait(WebDriver driver, WebElement element, int timeOut ) {
-		WebDriverWait wait = new WebDriverWait(driver,timeOut);
+
+	public static void explicitWait(WebDriver driver, WebElement element, int timeOut) {
+		WebDriverWait wait = new WebDriverWait(driver, timeOut);
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}
-	
+
 	public static void implicitWait(WebDriver driver, int timeOut) {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
-	public static void fluentWait(WebDriver driver,WebElement element, int timeOut) {
-	    Wait<WebDriver> wait = null;
-	    try {
-	        wait = new FluentWait<WebDriver>((WebDriver) driver)
-	        		.withTimeout(Duration.ofSeconds(20))
-	        	    .pollingEvery(Duration.ofSeconds(2))
-	        	    .ignoring(Exception.class);
-	        wait.until(ExpectedConditions.visibilityOf(element));
-	        element.click();
-	    }catch(Exception e) {
-	    }
+
+	public static void fluentWait(WebDriver driver, WebElement element, int timeOut) {
+		Wait<WebDriver> wait = null;
+		try {
+			wait = new FluentWait<WebDriver>((WebDriver) driver).withTimeout(Duration.ofSeconds(20))
+					.pollingEvery(Duration.ofSeconds(2)).ignoring(Exception.class);
+			wait.until(ExpectedConditions.visibilityOf(element));
+			element.click();
+		} catch (Exception e) {
+		}
 	}
 
 	public static String getCurrentTime() {
 		String currentDate = new SimpleDateFormat("yyyy-MM-dd-hhmmss").format(new Date());
 		return currentDate;
 	}
-	
-
-	
-
 
 }

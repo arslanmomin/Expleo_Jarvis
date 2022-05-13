@@ -25,6 +25,11 @@ public class Log extends Base{
 			Log.info(message);
 
 			}
+	 public static void exception(String msg,Exception e) {
+
+			Log.info(msg,e);
+
+			}
 
 	 public static void warn(String message) {
 

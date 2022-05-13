@@ -42,7 +42,7 @@ public class Browser extends Base {
 			driver.navigate().back();
 			ExtentManager.childTest.pass("browser navigated to previous page");
 		} catch (Exception e) {
-			ExtentManager.childTest.fail("unable to navigate to previous page");
+			ExtentManager.childTest.info("unable to navigate to previous page");
 			Log.exception("unable to navigate to back due to exception: ", e);
 		}
 	}
@@ -53,7 +53,7 @@ public class Browser extends Base {
 			driver.navigate().forward();
 			ExtentManager.childTest.pass("browser navigated to next page");
 		} catch (Exception e) {
-			ExtentManager.childTest.fail("unable to navigate to next page");
+			ExtentManager.childTest.info("unable to navigate to next page");
 			Log.exception("unable to forward nextpage due to exception: ", e);
 		}
 	}
@@ -64,7 +64,7 @@ public class Browser extends Base {
 			driver.navigate().to(url);
 			ExtentManager.childTest.pass("browser navigated to " + url);
 		} catch (Exception e) {
-			ExtentManager.childTest.fail("unable to navigate to url " + url);
+			ExtentManager.childTest.info("unable to navigate to url " + url);
 			Log.exception("unable to navigate to url due to exception: ", e);
 		}
 	}
@@ -76,7 +76,7 @@ public class Browser extends Base {
 			ExtentManager.childTest.pass("page refreshed");
 
 		} catch (Exception e) {
-			ExtentManager.childTest.fail("not able to refresh webpage");
+			ExtentManager.childTest.info("not able to refresh webpage");
 			Log.exception("unable to refreshPage due to exception: ", e);
 		}
 	}
