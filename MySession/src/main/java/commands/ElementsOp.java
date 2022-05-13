@@ -160,30 +160,28 @@ public class ElementsOp extends Base {
 		return t;
 	}
 
-	public static void isSelected(WebElement ele, String eleName) {
-		try {
+	public static boolean isSelected(WebElement ele, String eleName) {
+		
 			boolean t = ele.isSelected();
 			if (t)
 				ExtentManager.childTest.pass("element is selected  :" + eleName);
 			else
-				ExtentManager.childTest.fail("element is not selected :" + eleName);
-		} catch (Exception e) {
-			ExtentManager.childTest.info(e);
-			throw e;
-		}
+				ExtentManager.childTest.info("element is not selected :" + eleName);
+			return t;
+			
+		
 	}
 
-	public static void isEnabled(WebElement ele, String eleName) {
-		try {
+	public static boolean isEnabled(WebElement ele, String eleName) {
+		
 			boolean t = ele.isEnabled();
 			if (t)
 				ExtentManager.childTest.pass("element is enabled  :" + eleName);
 			else
-				ExtentManager.childTest.fail("element is not enabled :" + eleName);
-		} catch (Exception e) {
-			ExtentManager.childTest.info(e);
-			throw e;
-		}
+				ExtentManager.childTest.info("element is not enabled :" + eleName);
+			
+			return t;
+		
 	}
 
 	public void scrollByVisibilityOfElement(WebDriver driver, WebElement ele, String eleName) {
@@ -234,39 +232,31 @@ public class ElementsOp extends Base {
 		}
 	}
 
-	public void check(WebElement ele, String eleName) throws Exception {
-		try {
-
+	public boolean check(WebElement ele, String eleName) throws Exception {
+		boolean flag=false;
 			if (ele.isSelected() == true) {
 
 				ExtentManager.childTest.pass("element already checked");
 			} else {
 				ele.click();
 				ExtentManager.childTest.info("performed check on :" + eleName);
+				flag=true;
 			}
-		} catch (Exception e) {
-
-			ExtentManager.childTest.info(e);
-			throw e;
-		}
+		return flag;
 	}
 
-	public void uncheck(WebElement ele, String eleName) throws Exception {
-		try {
+	public boolean uncheck(WebElement ele, String eleName) throws Exception {
+		boolean flag=false;
 
 			if (ele.isSelected() == false) {
-
-				ExtentManager.childTest.pass("element already unchecked");
-			} else {
 				ele.click();
+				flag=true;
 				ExtentManager.childTest.pass("performed uncheck on :" + eleName);
+			} else {
+				
+				ExtentManager.childTest.info("element already checked");
 			}
-		} catch (Exception e) {
-			ExtentManager.childTest.pass("can not perform check operation on :" + eleName);
-
-			ExtentManager.childTest.info(e);
-			throw e;
-		}
+		return flag;
 	}
 
 	public void acceptAlert(WebDriver driver) {
@@ -294,16 +284,14 @@ public class ElementsOp extends Base {
 		}
 	}
 
-	public void getAlertText(WebDriver driver) {
-		try {
-			driver.switchTo().alert().getText();
-			ExtentManager.childTest.pass("alert text capture successfully");
-		} catch (Exception e) {
-			ExtentManager.childTest.fail("alert text is not present there.");
-
-			ExtentManager.childTest.info(e);
-			throw e;
-		}
+	public String getAlertText(WebDriver driver) {
+		
+			String alertText=driver.switchTo().alert().getText();
+			ExtentManager.childTest.pass("alert text captured successfully");
+		
+			return alertText;
+		
+		
 	}
 
 	public void setAlertText(WebDriver driver, String text) {
@@ -331,18 +319,14 @@ public class ElementsOp extends Base {
 			throw e;
 		}
 	}
-
-	public static void getAttribute(WebDriver driver, WebElement ele, String Attributename, String eleName) {
-		try {
-			String AtTrValue = ele.getAttribute(Attributename);
-			ExtentManager.childTest
-					.pass("successfully feteched value :" + AtTrValue + " from Attribute :" + Attributename);
-		} catch (Exception e) {
-			ExtentManager.childTest.info(e);
-			throw e;
-		}
-	}
 	// get Attribute
+	public static String getAttribute(WebDriver driver, WebElement ele, String Attributename, String eleName) {
+		
+			String AttrValue = ele.getAttribute(Attributename);
+			ExtentManager.childTest.pass("successfully feteched value :" + AttrValue + " from Attribute :" + Attributename);
+			return AttrValue;
+	}
+	
 
 	public static void uploadFile(WebElement path, WebElement uploadButton, String FilePath, String eleName) {
 		try {
@@ -404,14 +388,20 @@ public class ElementsOp extends Base {
 		}
 	}
 
-	public void matchSubStringAndVerify(String actualText, String expectedText) {
+	public boolean matchSubStringAndVerify(String actualText, String expectedText) {
 		ExtentManager.childTest.pass("comparing two strings if expected substring is present");
-
+		Boolean Flag=false;
 		if (actualText.contains(expectedText))
+	{	Flag=true;
 			ExtentManager.childTest.pass(expectedText + " expected text found");
-		else
-			ExtentManager.childTest.fail(expectedText + " expected text not found");
+			
 	}
+		else {
+			ExtentManager.childTest.fail(expectedText + " expected text not found");
+		
+	}
+		return Flag;
+	} 
 
 	public boolean verifyElementText(WebElement ele, String expectedText) {
 		boolean flag = false;
