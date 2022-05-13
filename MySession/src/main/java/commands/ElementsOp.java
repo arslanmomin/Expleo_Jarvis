@@ -123,15 +123,10 @@ public class ElementsOp extends Base {
 	 * @param label  webelement from pageFactory
 	 * @param elemnt -element name
 	 */
-	public static void getText(WebDriver driver, WebElement ele, String eleName) {
-		try {
-			String text = ele.getText();
+	public static String getText(WebDriver driver, WebElement ele, String eleName) {
+					String text = ele.getText();
 			ExtentManager.childTest.pass("successfully feteched text :" + text + " from element :" + eleName);
-		} catch (Exception e) {
-
-			ExtentManager.childTest.info(e);
-			throw e;
-		}
+		return text;
 	}
 
 	public static void verifyeleclickable(WebElement ele, String eleName) {
