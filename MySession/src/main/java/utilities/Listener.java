@@ -11,6 +11,9 @@ import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+import org.testng.TestRunner;
+import org.testng.annotations.BeforeTest;
+
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
@@ -57,10 +60,9 @@ public class Listener extends ExtentManager implements ITestListener {
 	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
 		
 	}
-
+	@BeforeTest
 	public void onStart(ITestContext context) {
 		
-
 	}
 
 	public void onFinish(ITestContext context) {
