@@ -25,6 +25,20 @@ public class Browser extends Base {
 		}
 	}
 
+	public static String getUrl(WebDriver driver) {
+
+		String url = driver.getCurrentUrl();
+		ExtentManager.childTest.pass("fetched current url i.e.,"+url);
+		return url;
+	}
+
+	public static String getWindowTitle(WebDriver driver) {
+
+		String title = driver.getTitle();
+		ExtentManager.childTest.pass(" current window title i.e.,"+title);
+		return title;
+	}
+
 	public static void back(WebDriver driver) {
 		try {
 			driver.navigate().back();
@@ -55,6 +69,17 @@ public class Browser extends Base {
 		} catch (Exception e) {
 
 			ExtentManager.childTest.fail("unable to navigate to url " + url);
+		}
+	}
+
+	public static void refreshPage(WebDriver driver) {
+		try {
+			driver.navigate().refresh();
+			ExtentManager.childTest.pass("page refreshed");
+
+		} catch (Exception e) {
+
+			ExtentManager.childTest.fail("not able to refresh webpage");
 		}
 	}
 
@@ -93,12 +118,9 @@ public class Browser extends Base {
 			ExtentManager.childTest.fail(e);
 		}
 	}
-	
+
 	public static void pageLoadTimeOut(WebDriver driver, int timeOut) {
 		driver.manage().timeouts().pageLoadTimeout(timeOut, TimeUnit.SECONDS);
 	}
-	
-
-	
 
 }
