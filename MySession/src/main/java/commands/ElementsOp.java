@@ -11,6 +11,7 @@ import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -101,6 +102,22 @@ public class ElementsOp extends Base {
 			throw e;
 		}
 	}
+	
+	/**
+	 * used to build Keyboard Key combinations on WebElement
+	 * 
+	 * @param ele     WebElement can get from pageFactory
+	 * @param keyChar -Keyboard key to be pressed
+	 * @param driver WebDriver Object
+	 */
+	public static void keyboardOp(WebDriver driver, WebElement ele,String keyChar)
+	{
+		Actions ac = new Actions(driver);
+		ac.sendKeys(Keys.chord(Keys.CONTROL,keyChar)).build().perform();
+		ExtentManager.childTest.pass("Key pressed is  :"+Keys.CONTROL + keyChar);
+	}
+	
+	
 
 	public static void moveToElement(WebDriver driver, WebElement ele, String eleName) throws Exception {
 		try {
@@ -476,6 +493,20 @@ public class ElementsOp extends Base {
 	ExtentManager.childTest.pass(trimStr + "String is trimmed");
 	return trimStr;
 	}
+	
+	
+	/**
+	 * used to replace all Special characters and Digits from String
+	 * @param text  Actual String 
+	  */
+	public static String replaceSpecialSymbol(String text)
+	{
+		String alphaOnly = text.replaceAll("[^a-zA-Z]+","");
+		ExtentManager.childTest.pass(alphaOnly + "String containing Only Alphabets");
+		return(alphaOnly);
+	}
+	
+	
 		
 	/**
 	 * used to verify expected text is found or not
