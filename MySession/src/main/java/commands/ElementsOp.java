@@ -234,39 +234,48 @@ public class ElementsOp extends Base {
 		}
 	}
 
-	public void check(WebElement ele, String eleName) throws Exception {
-		try {
-
+	/**
+	 * used to check element is selected
+	 * 
+	 * @param ele WebElement from PageFactory 
+	 * @param eleName name of element
+	  */
+	public boolean check(WebElement ele, String eleName) throws Exception {
+		
+			boolean flag=false;
 			if (ele.isSelected() == true) {
-
 				ExtentManager.childTest.pass("element already checked");
-			} else {
+				flag=true;
+				
+			} 
+			else {
 				ele.click();
 				ExtentManager.childTest.info("performed check on :" + eleName);
 			}
-		} catch (Exception e) {
-
-			ExtentManager.childTest.info(e);
-			throw e;
-		}
+		return flag;
 	}
 
-	public void uncheck(WebElement ele, String eleName) throws Exception {
-		try {
 
-			if (ele.isSelected() == false) {
+	/**
+	 * used to check element is not selected
+	 * 
+	 * @param ele WebElement from PageFactory 
+	 * @param eleName name of element
+	  */
+	public boolean uncheck(WebElement ele, String eleName) throws Exception {
+		
+			boolean flag=true;
+			if (ele.isSelected() == false) 
+			{
 
 				ExtentManager.childTest.pass("element already unchecked");
-			} else {
+				flag=false;
+			} 
+			else {
 				ele.click();
 				ExtentManager.childTest.pass("performed uncheck on :" + eleName);
-			}
-		} catch (Exception e) {
-			ExtentManager.childTest.pass("can not perform check operation on :" + eleName);
-
-			ExtentManager.childTest.info(e);
-			throw e;
-		}
+				}
+			return flag;
 	}
 
 	public void acceptAlert(WebDriver driver) {
@@ -331,19 +340,32 @@ public class ElementsOp extends Base {
 			throw e;
 		}
 	}
-
-	public static void getAttribute(WebDriver driver, WebElement ele, String Attributename, String eleName) {
-		try {
-			String AtTrValue = ele.getAttribute(Attributename);
-			ExtentManager.childTest
-					.pass("successfully feteched value :" + AtTrValue + " from Attribute :" + Attributename);
-		} catch (Exception e) {
-			ExtentManager.childTest.info(e);
-			throw e;
-		}
-	}
+	
 	// get Attribute
-
+	/**
+	 * used to get Attribute value
+	 * 
+	 * @param driver  WebDriver object
+	 * @param ele WebElement from PageFactory 
+	 * @param AttributeName name of attribute for which value has to be retrieved 
+	 * @param eleName name of file
+	  */
+	public static String getAttribute(WebDriver driver, WebElement ele, String Attributename, String eleName) {
+		
+			String AtTrValue = ele.getAttribute(Attributename);
+			ExtentManager.childTest.pass("successfully feteched value :" + AtTrValue + " from Attribute :" + Attributename);
+			return AtTrValue;
+		
+	}
+	
+	/**
+	 * used to verify whether file is uploaded or not
+	 * 
+	 * @param Path  WebElement
+	 * @param uploadButton WebElement button to upload 
+	 * @param FilePath  path to upload file 
+	 * @param eleName name of file
+	  */
 	public static void uploadFile(WebElement path, WebElement uploadButton, String FilePath, String eleName) {
 		try {
 
@@ -358,11 +380,16 @@ public class ElementsOp extends Base {
 	}
 
 	// Element Count
-	public static void ElementsCount(WebDriver driver, WebElement ele, String attribute) {
-		try {
-
-			int count = 0;
-
+	/**
+	 * used to count total number of Elements
+	 * 
+	 * @param driver Object of WebDriver
+	 * @param attribute attribute name 
+	 * @param ele WebElement from Pagefactory
+	  */
+	public static int ElementsCount(WebDriver driver, WebElement ele, String attribute) {
+			
+		    int count = 0;
 			String AttrValue = ele.getAttribute(attribute);
 
 			List<WebElement> val = driver.findElements(By.xpath(AttrValue));
@@ -373,46 +400,73 @@ public class ElementsOp extends Base {
 
 			ExtentManager.childTest.pass("The Count Is" + count);
 
-		} catch (Exception e) {
-
-			ExtentManager.childTest.info(e);
-			throw e;
-		}
+		return count;
 	}
 
 	// Verify Download
+	/**
+	 * used to verify whether file is download or not
+	 * 
+	 * @param downloadPath  path from which File is downloaded 
+	 * @param fileName name of file
+	  */
 	public boolean isFileDownloaded(String downloadPath, String fileName) {
-		try {
+		
+			boolean flag=false;
 			File dir = new File(downloadPath);
 			File[] dirContents = dir.listFiles();
 
-			for (int i = 0; i < dirContents.length; i++) {
-				if (dirContents[i].getName().equals(fileName)) {
+			for (int i = 0; i < dirContents.length; i++) 
+			{
+				if (dirContents[i].getName().equals(fileName))
+				{
 					// File has been found, it can now be deleted:
 					dirContents[i].delete();
 					ExtentManager.childTest.pass("The File Is Downloaded");
-					return true;
+					flag= true;
 
 				}
-			}
-			ExtentManager.childTest.pass("The File Is Not  Downloaded");
-			return false;
-		} catch (Exception e) {
-
-			ExtentManager.childTest.info(e);
-			throw e;
-		}
+			   else
+					ExtentManager.childTest.pass("The File Is Not  Downloaded");
+			}	
+			return flag;
 	}
 
-	public void matchSubStringAndVerify(String actualText, String expectedText) {
+	/**
+	 * used to compare two Strings if expected substring is present
+	 * 
+	 * @param actualText  Actual String 
+	 * @param expectedText the text to be searched
+	  */
+	public boolean matchSubStringAndVerify(String actualText, String expectedText) {
 		ExtentManager.childTest.pass("comparing two strings if expected substring is present");
-
+		boolean flag=false;
 		if (actualText.contains(expectedText))
+		{
 			ExtentManager.childTest.pass(expectedText + " expected text found");
+			flag=true;
+		}
 		else
-			ExtentManager.childTest.fail(expectedText + " expected text not found");
+			ExtentManager.childTest.info(expectedText + " expected text not found");
+		return flag;
 	}
 
+	/**
+	 * used to remove before and after white spaces from String
+	 * @param text  Actual String 
+	  */
+	public static String trimText(String text) 
+	{
+			String trimStr=text.trim();
+			ExtentManager.childTest.pass(trimStr + "String is trimmed");
+			return trimStr;
+	}
+		
+	/**
+	 * used to verify expected text is found or not
+	 * @param  ele webelement from pageFactory
+	 * @param expectedText the text to be searched
+	  */
 	public boolean verifyElementText(WebElement ele, String expectedText) {
 		boolean flag = false;
 		String actualText = ele.getText();
@@ -425,6 +479,10 @@ public class ElementsOp extends Base {
 		return flag;
 	}
 
+	/**
+	 * used to retrieve column count
+	 * @param  row webelement from pageFactory
+	 */
 	public static int getColumncount(WebElement row) {
 		List<WebElement> columns = row.findElements(By.tagName("td"));
 		int a = columns.size();
@@ -436,15 +494,37 @@ public class ElementsOp extends Base {
 		return a;
 	}
 
+	/**
+	 * used to assign Explicit wait to particular element
+	 * 
+	 * @param driver Webdriver object
+	 * @param  element webelement from pageFactory
+	 * @param timeout waiting time
+	 */
 	public static void explicitWait(WebDriver driver, WebElement element, int timeOut) {
 		WebDriverWait wait = new WebDriverWait(driver, timeOut);
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}
+	
 
+	/**
+	 * used to assign Implicit wait 
+	 * 
+	 * @param driver Webdriver object
+	 * @param timeout waiting time
+	 */
 	public static void implicitWait(WebDriver driver, int timeOut) {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
+	
 
+	/**
+	 * used to assign Fluent wait to particular element
+	 * 
+	 * @param driver Webdriver object
+	 * @param  element webelement from pageFactory
+	 * @param timeout waiting time
+	 */
 	public static void fluentWait(WebDriver driver, WebElement element, int timeOut) {
 		Wait<WebDriver> wait = null;
 		try {
@@ -456,6 +536,11 @@ public class ElementsOp extends Base {
 		}
 	}
 
+	
+	/**
+	 * used to get current System's time
+	 * 
+	*/
 	public static String getCurrentTime() {
 		String currentDate = new SimpleDateFormat("yyyy-MM-dd-hhmmss").format(new Date());
 		return currentDate;
