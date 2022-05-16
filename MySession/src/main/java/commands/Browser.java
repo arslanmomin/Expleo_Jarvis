@@ -1,5 +1,6 @@
 package commands;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
@@ -115,7 +116,7 @@ public class Browser extends Base {
 
 //static method to wait till specified time when loading page
 	public static void pageLoadTimeOut(WebDriver driver, int timeOut) {
-		driver.manage().timeouts().pageLoadTimeout(timeOut, TimeUnit.SECONDS);
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(timeOut));
 	}
 
 }

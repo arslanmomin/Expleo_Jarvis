@@ -5,8 +5,6 @@ import java.util.List;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
@@ -54,7 +52,7 @@ public class ElementsOp extends Base {
 			executor.executeScript("arguments[0].click();", ele);
 			ExtentManager.childTest.pass("performed JSclick on :" + eleName);
 		} catch (Exception e) {
-			ExtentManager.childTest.fail("can not perform JSclick operation on :" + eleName);
+			ExtentManager.childTest.info("can not perform JSclick operation on :" + eleName);
 
 			ExtentManager.childTest.info(e);
 			throw e;
@@ -74,10 +72,10 @@ public class ElementsOp extends Base {
 		try {
 			ele.clear();
 			ele.sendKeys(testData);
-			ExtentManager.childTest.pass("success in typing in  :" + eleName + " with testdata :");
+			ExtentManager.childTest.pass("success in typing in  :" + eleName + " with testdata ");
 
 		} catch (Exception e) {
-			ExtentManager.childTest.fail("can not  type in :" + eleName + "with testdata :");
+			ExtentManager.childTest.info("can not  type in :" + eleName + "with testdata ");
 
 			ExtentManager.childTest.info(e);
 			throw e;
@@ -148,7 +146,7 @@ public class ElementsOp extends Base {
 
 	public static void verifyeleclickable(WebElement ele, String eleName) {
 		try {
-			WebDriverWait wt = new WebDriverWait(getDriver(), 5);
+			WebDriverWait wt = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
 			wt.until(ExpectedConditions.elementToBeClickable(ele));
 			ExtentManager.childTest.pass("element is clickable  :" + eleName);
 
@@ -351,7 +349,7 @@ public class ElementsOp extends Base {
 
 	public void verifyAlertMsg(WebDriver driver) {
 		try {
-			WebDriverWait wait = new WebDriverWait(driver, 10);
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 			wait.until(ExpectedConditions.alertIsPresent());
 			ExtentManager.childTest.pass("alert is Present");
 			driver.switchTo().alert().accept();
@@ -469,7 +467,7 @@ public class ElementsOp extends Base {
 	 * @param expectedText the text to be searched
 	  */
 	public boolean matchSubStringAndVerify(String actualText, String expectedText) {
-		ExtentManager.childTest.pass("comparing two strings if expected substring is present");
+		ExtentManager.childTest.info("comparing two strings if expected substring is present");
 		boolean flag=false;
 		if (actualText.contains(expectedText))
 		{
@@ -516,7 +514,7 @@ public class ElementsOp extends Base {
 	public boolean verifyElementText(WebElement ele, String expectedText) {
 		boolean flag = false;
 		String actualText = ele.getText();
-		if (actualText.contains(expectedText)) {
+		if (actualText.equals(expectedText)) {
 			ExtentManager.childTest.pass(expectedText + " expected text found");
 			flag = true;
 		} else {
@@ -548,7 +546,7 @@ public class ElementsOp extends Base {
 	 * @param timeout waiting time
 	 */
 	public static void explicitWait(WebDriver driver, WebElement element, int timeOut) {
-		WebDriverWait wait = new WebDriverWait(driver, timeOut);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}
 	
@@ -560,7 +558,7 @@ public class ElementsOp extends Base {
 	 * @param timeout waiting time
 	 */
 	public static void implicitWait(WebDriver driver, int timeOut) {
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(timeOut));
 	}
 	
 
