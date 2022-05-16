@@ -1,11 +1,14 @@
 package jarvis.scripts;
 
 
+import org.testng.annotations.Test;
+
 import com.codoid.products.fillo.Connection;
 import com.codoid.products.fillo.Fillo;
 import com.codoid.products.fillo.Recordset;
 
 import configs.Base;
+import jarvis.dataproviders.DataProvider;
 import jarvis.objects.HomePage;
 import jarvis.objects.LoginPage;
 import utilities.ConfigurationSupport;
@@ -17,7 +20,7 @@ public class LoginLogout extends Base {
 	LoginPage lp;
 	HomePage hp;
 	
-	
+	@Test(priority=0,groups= {"regression","login"},dataProvider="credentials",dataProviderClass=DataProvider.class)
 	public void login(String uname, String pwd) throws Exception {
 		ExtentManager.childTest=ExtentManager.parentTest.createNode("login to application");
 		lp=new LoginPage();
@@ -39,6 +42,7 @@ public class LoginLogout extends Base {
 			
 		}	
 	}
+	@Test
 	public void logout() throws Exception {
 		ExtentManager.childTest = ExtentManager.parentTest.createNode("logout from application");
 		hp =new HomePage();

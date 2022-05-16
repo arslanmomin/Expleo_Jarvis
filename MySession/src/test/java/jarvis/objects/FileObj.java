@@ -1,18 +1,13 @@
 package jarvis.objects;
 
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import commands.FilesOperation;
 import configs.Base;
-import utilities.ConfigurationSupport;
 
 public class FileObj extends Base{
 
-	public ConfigurationSupport cs = new ConfigurationSupport("config files//accounts.properties");
-	
 
 	public FileObj() {
 		PageFactory.initElements(getDriver(), this);
