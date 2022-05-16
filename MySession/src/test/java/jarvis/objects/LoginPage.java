@@ -1,7 +1,10 @@
 package jarvis.objects;
 
 
+import java.util.List;
+
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -23,7 +26,11 @@ public class LoginPage extends Base{
 	
 	@FindBy(xpath="//input[@value='Log in']")
 	private WebElement loginbtn;
-
+	
+	//syntax for list
+	@FindAll({@FindBy(xpath = "yourpath")})
+	public List<WebElement> networks;
+	
 	public LoginPage() {
 		PageFactory.initElements(getDriver(), this);
 	}
