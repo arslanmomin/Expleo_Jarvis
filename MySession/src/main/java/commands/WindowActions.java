@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 import configs.Base;
 import utilities.ExtentManager;
 
-public class WindowHandling extends Base {
+public class WindowActions extends Base {
 
 	public void SwitchToChild(WebDriver driver) {
 		try {

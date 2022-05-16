@@ -8,7 +8,7 @@ import configs.Base;
 import utilities.ExtentManager;
 import utilities.Log;
 
-public class Browser extends Base {
+public class BrowserActions extends Base {
 
 //opens Url
 	public static void openUrl(WebDriver driver, String URL) {

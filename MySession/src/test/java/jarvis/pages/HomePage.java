@@ -1,10 +1,10 @@
-package jarvis.objects;
+package jarvis.pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import commands.ElementsOp;
+import commands.ElementActions;
 import configs.Base;
 
 public class HomePage extends Base{
@@ -20,12 +20,12 @@ public class HomePage extends Base{
 	}
 	
 	public void clickoncart() throws Exception {
-		ElementsOp.click(getDriver(),shoppingcart,"shoppingcart btn");
+		ElementActions.click(getDriver(),shoppingcart,"shoppingcart btn");
 		
 	}
 	
 	public void clickonlogout() throws Exception {
-		ElementsOp.click(getDriver(),logout,"logout button");
+		ElementActions.click(getDriver(),logout,"logout button");
 		
 	}
 	

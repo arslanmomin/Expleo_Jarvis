@@ -9,8 +9,8 @@ import com.codoid.products.fillo.Recordset;
 
 import configs.Base;
 import jarvis.dataproviders.DataProvider;
-import jarvis.objects.HomePage;
-import jarvis.objects.LoginPage;
+import jarvis.pages.HomePage;
+import jarvis.pages.LoginPage;
 import utilities.ConfigurationSupport;
 import utilities.ExtentManager;
 import utilities.Log;

@@ -10,8 +10,8 @@ import org.openqa.selenium.WebElement;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import commands.Browser;
-import commands.ElementsOp;
+import commands.BrowserActions;
+import commands.ElementActions;
 import configs.Base;
 import utilities.ExtentManager;
 

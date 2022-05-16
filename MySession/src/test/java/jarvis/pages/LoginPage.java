@@ -1,4 +1,4 @@
-package jarvis.objects;
+package jarvis.pages;
 
 
 import java.util.List;
@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import commands.ElementsOp;
+import commands.ElementActions;
 import configs.Base;
 import utilities.ConfigurationSupport;
 
@@ -36,19 +36,19 @@ public class LoginPage extends Base{
 	}
 	
 	public void clickonsignin() throws Exception {
-		ElementsOp.click(getDriver(), signinbtn,"signinbtn");
+		ElementActions.click(getDriver(), signinbtn,"signinbtn");
 	}
 	
 	public void setEmail(String email) {
-		ElementsOp.type( emailbox, email,"email text box");
+		ElementActions.type( emailbox, email,"email text box");
 	}
 
 	public void setPassword(String password) {
-		ElementsOp.type( passwordbox, password,"password text box");
+		ElementActions.type( passwordbox, password,"password text box");
 	}
 	
 	public void clickonlogin() throws Exception {
-		ElementsOp.click(getDriver(), loginbtn,"login button");
+		ElementActions.click(getDriver(), loginbtn,"login button");
 	}
 
 }

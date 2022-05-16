@@ -19,7 +19,7 @@ import org.openqa.selenium.WebDriver;
 import configs.Base;
 import utilities.ExtentManager;
 
-public class FilesOperation extends Base {
+public class FilesActions extends Base {
 
 	
 

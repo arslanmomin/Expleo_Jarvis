@@ -3,7 +3,7 @@ package jarvis.scripts;
 import org.testng.annotations.Test;
 
 import configs.Base;
-import jarvis.objects.FileObj;
+import jarvis.pages.FileObj;
 import utilities.ExtentManager;
 
 public class FileScripts extends Base{

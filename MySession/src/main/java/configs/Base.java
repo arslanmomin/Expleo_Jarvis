@@ -6,7 +6,7 @@ import utilities.ExtentManager;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 
-import commands.Browser;
+import commands.BrowserActions;
 
 import org.apache.log4j.xml.DOMConfigurator;
 import org.openqa.selenium.WebDriver;
@@ -59,7 +59,7 @@ public class Base {
 				((EdgeOptions) eo).addArguments("headless");
 			eo.merge(dc);
 			driver.set(new EdgeDriver(eo));
-			Browser.pageLoadTimeOut(getDriver(), 5);
+			BrowserActions.pageLoadTimeOut(getDriver(), 5);
 			getDriver().manage().window().maximize();
 			break;
 
@@ -70,7 +70,7 @@ public class Base {
 				((FirefoxOptions) fo).addArguments("headless");
 			fo.merge(dc);
 			driver.set(new FirefoxDriver(fo));
-			Browser.pageLoadTimeOut(getDriver(), 5);
+			BrowserActions.pageLoadTimeOut(getDriver(), 5);
 			getDriver().manage().window().maximize();
 			break;
 
@@ -81,7 +81,7 @@ public class Base {
 				((ChromeOptions) co).addArguments("headless");
 			co.merge(dc);
 			driver.set(new ChromeDriver(co));
-			Browser.pageLoadTimeOut(getDriver(), 5);
+			BrowserActions.pageLoadTimeOut(getDriver(), 5);
 			getDriver().manage().window().maximize();
 			break;
 

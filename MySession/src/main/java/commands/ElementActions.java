@@ -22,7 +22,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import configs.Base;
 import utilities.ExtentManager;
 
-public class ElementsOp extends Base {
+public class ElementActions extends Base {
 
 	/**
 	 * used to perform click using actions class and javascript executor operation
