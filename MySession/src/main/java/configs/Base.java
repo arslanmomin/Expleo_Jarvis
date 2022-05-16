@@ -1,4 +1,3 @@
-
 package configs;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -55,6 +54,7 @@ public class Base {
 		
 	}
 
+	@SuppressWarnings("deprecation")
 	@BeforeSuite(alwaysRun = true)
 	public void beforeSuite() {
 
@@ -69,6 +69,8 @@ public class Base {
 		case "edge":
 			WebDriverManager.edgedriver().setup();
 			EdgeOptions eo = new EdgeOptions();
+			if(cs.getProperty("headless").equals("true"))
+				((EdgeOptions) eo).addArguments("headless");
 			eo.merge(dc);
 			driver.set(new EdgeDriver(eo));
 			getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -87,6 +89,8 @@ public class Base {
 		case "chrome":
 			WebDriverManager.chromedriver().setup();
 			ChromeOptions co = new ChromeOptions();
+			if(cs.getProperty("headless").equals("true"))
+			((ChromeOptions) co).addArguments("headless");
 			co.merge(dc);
 			driver.set(new ChromeDriver(co));
 			getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
