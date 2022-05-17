@@ -49,37 +49,7 @@ public class WindowActions extends Base {
 			}
 			driver.switchTo().window(mainwindow);
 		} catch (Exception e) {
-			ExtentManager.childTest.fail("Cannot Switch Back to Main Window ");
-
-			ExtentManager.childTest.info(e);
-			throw e;
-
-		}
-	}
-
-	public void WindowHandle(WebDriver driver) {
-		try {
-			String wh = driver.getWindowHandle();
-			ExtentManager.childTest.pass("Window Handle :" + wh);
-
-		} catch (Exception e) {
-			ExtentManager.childTest.fail("can not handle Window ");
-
-			ExtentManager.childTest.info(e);
-			throw e;
-
-		}
-	}
-
-	public void WindowHandles(WebDriver driver) {
-		try {
-			Set<String> wh = driver.getWindowHandles();
-			ExtentManager.childTest.pass("Window handles :"
-
-					+ wh);
-
-		} catch (Exception e) {
-			ExtentManager.childTest.fail("can not handle Window ");
+			ExtentManager.childTest.info("Cannot Switch Back to Main Window ");
 
 			ExtentManager.childTest.info(e);
 			throw e;
@@ -92,7 +62,7 @@ public class WindowActions extends Base {
 			driver.switchTo().frame(index);
 			ExtentManager.childTest.pass("Focus moved to Frame with Index :" + index);
 		} catch (Exception e) {
-			ExtentManager.childTest.fail("Focus can not  move to Frame with Index" + index);
+			ExtentManager.childTest.info("Focus can not  move to Frame with Index" + index);
 
 			ExtentManager.childTest.info(e);
 			throw e;
@@ -105,7 +75,7 @@ public class WindowActions extends Base {
 			driver.switchTo().frame(name);
 			ExtentManager.childTest.pass("Focus moved to Frame with name" + name);
 		} catch (Exception e) {
-			ExtentManager.childTest.fail("Focus can not  move to Frame with name" + name);
+			ExtentManager.childTest.info("Focus can not  move to Frame with name" + name);
 
 			ExtentManager.childTest.info(e);
 			throw e;
@@ -118,20 +88,8 @@ public class WindowActions extends Base {
 			driver.switchTo().frame(id);
 			ExtentManager.childTest.pass("Focus moved to Frame with id" + id);
 		} catch (Exception e) {
-			ExtentManager.childTest.fail("Focus can not  move to Frame with id" + id);
+			ExtentManager.childTest.info("Focus can not  move to Frame with id" + id);
 
-			ExtentManager.childTest.info(e);
-			throw e;
-
-		}
-	}
-
-	public void SwitchToDefaultContent(WebDriver driver) {
-		try {
-			driver.switchTo().defaultContent();
-			ExtentManager.childTest.pass("Focus moved to Default Content");
-		} catch (Exception e) {
-			ExtentManager.childTest.fail("Focus can not  move to Default Content");
 			ExtentManager.childTest.info(e);
 			throw e;
 
