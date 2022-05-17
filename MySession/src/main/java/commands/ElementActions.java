@@ -2,8 +2,9 @@ package commands;
 
 import java.io.File;
 import java.util.List;
-
+import java.util.stream.Collectors;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
 import java.time.Duration;
 
@@ -100,22 +101,19 @@ public class ElementActions extends Base {
 			throw e;
 		}
 	}
-	
+
 	/**
 	 * used to build Keyboard Key combinations on WebElement
 	 * 
 	 * @param ele     WebElement can get from pageFactory
 	 * @param keyChar -Keyboard key to be pressed
-	 * @param driver WebDriver Object
+	 * @param driver  WebDriver Object
 	 */
-	public static void keyboardOp(WebDriver driver, WebElement ele,String keyChar)
-	{
+	public static void keyboardOp(WebDriver driver, WebElement ele, String keyChar) {
 		Actions ac = new Actions(driver);
-		ac.sendKeys(Keys.chord(Keys.CONTROL,keyChar)).build().perform();
-		ExtentManager.childTest.pass("Key pressed is  :"+Keys.CONTROL + keyChar);
+		ac.sendKeys(Keys.chord(Keys.CONTROL, keyChar)).build().perform();
+		ExtentManager.childTest.pass("Key pressed is  :" + Keys.CONTROL + keyChar);
 	}
-	
-	
 
 	public static void moveToElement(WebDriver driver, WebElement ele, String eleName) throws Exception {
 		try {
@@ -139,8 +137,8 @@ public class ElementActions extends Base {
 	 * @param elemnt -element name
 	 */
 	public static String getText(WebDriver driver, WebElement ele, String eleName) {
-					String text = ele.getText();
-			ExtentManager.childTest.pass("successfully feteched text :" + text + " from element :" + eleName);
+		String text = ele.getText();
+		ExtentManager.childTest.pass("successfully feteched text :" + text + " from element :" + eleName);
 		return text;
 	}
 
@@ -171,27 +169,26 @@ public class ElementActions extends Base {
 	}
 
 	public static boolean isSelected(WebElement ele, String eleName) {
-		
-			boolean t = ele.isSelected();
-			if (t)
-				ExtentManager.childTest.pass("element is selected  :" + eleName);
-			else
-				ExtentManager.childTest.info("element is not selected :" + eleName);
-			return t;
-			
-		
+
+		boolean t = ele.isSelected();
+		if (t)
+			ExtentManager.childTest.pass("element is selected  :" + eleName);
+		else
+			ExtentManager.childTest.info("element is not selected :" + eleName);
+		return t;
+
 	}
 
 	public static boolean isEnabled(WebElement ele, String eleName) {
-		
-			boolean t = ele.isEnabled();
-			if (t)
-				ExtentManager.childTest.pass("element is enabled  :" + eleName);
-			else
-				ExtentManager.childTest.info("element is not enabled :" + eleName);
-			
-			return t;
-		
+
+		boolean t = ele.isEnabled();
+		if (t)
+			ExtentManager.childTest.pass("element is enabled  :" + eleName);
+		else
+			ExtentManager.childTest.info("element is not enabled :" + eleName);
+
+		return t;
+
 	}
 
 	public void scrollByVisibilityOfElement(WebDriver driver, WebElement ele, String eleName) {
@@ -242,61 +239,50 @@ public class ElementActions extends Base {
 		}
 	}
 
-
-
 	/**
 	 * used to check element is selected
 	 * 
-	 * @param ele WebElement from PageFactory 
+	 * @param ele     WebElement from PageFactory
 	 * @param eleName name of element
-	  */
+	 */
 	public boolean check(WebElement ele, String eleName) throws Exception {
-		
-			boolean flag=false;
 
-			if (ele.isSelected() == true) {
-				ExtentManager.childTest.pass("element already checked");
-				flag=true;
-				
-			} 
-			else {
-				ele.click();
-				ExtentManager.childTest.info("performed check on :" + eleName);
-				flag=true;
-			}
+		boolean flag = false;
+
+		if (ele.isSelected() == true) {
+			ExtentManager.childTest.pass("element already checked");
+			flag = true;
+
+		} else {
+			ele.click();
+			ExtentManager.childTest.info("performed check on :" + eleName);
+			flag = true;
+		}
 		return flag;
 	}
-
-
 
 	/**
 	 * used to check element is not selected
 	 * 
-	 * @param ele WebElement from PageFactory 
+	 * @param ele     WebElement from PageFactory
 	 * @param eleName name of element
-	  */
+	 */
 	public boolean uncheck(WebElement ele, String eleName) throws Exception {
-		
-			boolean flag=false;
-			if (ele.isSelected() == false) 
-			{
 
-				ExtentManager.childTest.pass("element already unchecked");
-				flag=false;
-				
+		boolean flag = false;
+		if (ele.isSelected() == false) {
 
-				
-			} 
-			else {
-				ele.click();
-				flag=true;
-				ExtentManager.childTest.pass("performed uncheck on :" + eleName);
-				
-			} 
-			
+			ExtentManager.childTest.pass("element already unchecked");
+			flag = false;
+
+		} else {
+			ele.click();
+			flag = true;
+			ExtentManager.childTest.pass("performed uncheck on :" + eleName);
+
+		}
+
 		return flag;
-
-			
 
 	}
 
@@ -326,13 +312,12 @@ public class ElementActions extends Base {
 	}
 
 	public String getAlertText(WebDriver driver) {
-		
-			String alertText=driver.switchTo().alert().getText();
-			ExtentManager.childTest.pass("alert text captured successfully");
-		
-			return alertText;
-		
-		
+
+		String alertText = driver.switchTo().alert().getText();
+		ExtentManager.childTest.pass("alert text captured successfully");
+
+		return alertText;
+
 	}
 
 	public void setAlertText(WebDriver driver, String text) {
@@ -363,34 +348,30 @@ public class ElementActions extends Base {
 
 	// get Attribute
 	public static String getAttribute(WebDriver driver, WebElement ele, String Attributename, String eleName) {
-		
-			String AttrValue = ele.getAttribute(Attributename);
-			ExtentManager.childTest.pass("successfully feteched value :" + AttrValue + " from Attribute :" + Attributename);
-			return AttrValue;
+
+		String AttrValue = ele.getAttribute(Attributename);
+		ExtentManager.childTest.pass("successfully feteched value :" + AttrValue + " from Attribute :" + Attributename);
+		return AttrValue;
 	}
-	
 
-
-	
 	// get Attribute
 	/**
 	 * used to get Attribute value
 	 * 
-	 * @param driver  WebDriver object
-	 * @param ele WebElement from PageFactory 
-	 * @param AttributeName name of attribute for which value has to be retrieved 
-	 * @param eleName name of file
-	  */
-	
-	
+	 * @param driver        WebDriver object
+	 * @param ele           WebElement from PageFactory
+	 * @param AttributeName name of attribute for which value has to be retrieved
+	 * @param eleName       name of file
+	 */
+
 	/**
 	 * used to verify whether file is uploaded or not
 	 * 
-	 * @param Path  WebElement
-	 * @param uploadButton WebElement button to upload 
-	 * @param FilePath  path to upload file 
-	 * @param eleName name of file
-	  */
+	 * @param Path         WebElement
+	 * @param uploadButton WebElement button to upload
+	 * @param FilePath     path to upload file
+	 * @param eleName      name of file
+	 */
 
 	public static void uploadFile(WebElement path, WebElement uploadButton, String FilePath, String eleName) {
 		try {
@@ -409,22 +390,22 @@ public class ElementActions extends Base {
 	/**
 	 * used to count total number of Elements
 	 * 
-	 * @param driver Object of WebDriver
-	 * @param attribute attribute name 
-	 * @param ele WebElement from Pagefactory
-	  */
+	 * @param driver    Object of WebDriver
+	 * @param attribute attribute name
+	 * @param ele       WebElement from Pagefactory
+	 */
 	public static int ElementsCount(WebDriver driver, WebElement ele, String attribute) {
-			
-		    int count = 0;
-			String AttrValue = ele.getAttribute(attribute);
 
-			List<WebElement> val = driver.findElements(By.xpath(AttrValue));
+		int count = 0;
+		String AttrValue = ele.getAttribute(attribute);
 
-			for (WebElement value : val) {
-				count++;
-			}
+		List<WebElement> val = driver.findElements(By.xpath(AttrValue));
 
-			ExtentManager.childTest.pass("The Count Is" + count);
+		for (WebElement value : val) {
+			count++;
+		}
+
+		ExtentManager.childTest.pass("The Count Is" + count);
 
 		return count;
 	}
@@ -433,84 +414,74 @@ public class ElementActions extends Base {
 	/**
 	 * used to verify whether file is download or not
 	 * 
-	 * @param downloadPath  path from which File is downloaded 
-	 * @param fileName name of file
-	  */
+	 * @param downloadPath path from which File is downloaded
+	 * @param fileName     name of file
+	 */
 	public boolean isFileDownloaded(String downloadPath, String fileName) {
-		
-			boolean flag=false;
-			File dir = new File(downloadPath);
-			File[] dirContents = dir.listFiles();
 
-			for (int i = 0; i < dirContents.length; i++) 
-			{
-				if (dirContents[i].getName().equals(fileName))
-				{
-					// File has been found, it can now be deleted:
-					dirContents[i].delete();
-					ExtentManager.childTest.pass("The File Is Downloaded");
-					flag= true;
+		boolean flag = false;
+		File dir = new File(downloadPath);
+		File[] dirContents = dir.listFiles();
 
-				}
-			   else
-					ExtentManager.childTest.pass("The File Is Not  Downloaded");
-			}	
-			return flag;
+		for (int i = 0; i < dirContents.length; i++) {
+			if (dirContents[i].getName().equals(fileName)) {
+				// File has been found, it can now be deleted:
+				dirContents[i].delete();
+				ExtentManager.childTest.pass("The File Is Downloaded");
+				flag = true;
+
+			} else
+				ExtentManager.childTest.pass("The File Is Not  Downloaded");
+		}
+		return flag;
 	}
 
-
-	
 	/**
 	 * used to compare two Strings if expected substring is present
 	 * 
-	 * @param actualText  Actual String 
+	 * @param actualText   Actual String
 	 * @param expectedText the text to be searched
-	  */
+	 */
 	public boolean matchSubStringAndVerify(String actualText, String expectedText) {
 		ExtentManager.childTest.info("comparing two strings if expected substring is present");
-		boolean flag=false;
-		if (actualText.contains(expectedText))
-		{
+		boolean flag = false;
+		if (actualText.contains(expectedText)) {
 			ExtentManager.childTest.pass(expectedText + " expected text found");
-			flag=true;
-		}
-		else
+			flag = true;
+		} else
 			ExtentManager.childTest.info(expectedText + " expected text not found");
 		return flag;
 
 	}
-	
 
 	/**
 	 * used to remove before and after white spaces from String
-	 * @param text  Actual String 
-	  */
-	public static String trimText(String text)
-	{
-	String trimStr=text.trim();
-	ExtentManager.childTest.pass(trimStr + "String is trimmed");
-	return trimStr;
+	 * 
+	 * @param text Actual String
+	 */
+	public static String trimText(String text) {
+		String trimStr = text.trim();
+		ExtentManager.childTest.pass(trimStr + "String is trimmed");
+		return trimStr;
 	}
-	
-	
+
 	/**
 	 * used to replace all Special characters and Digits from String
-	 * @param text  Actual String 
-	  */
-	public static String replaceSpecialSymbol(String text)
-	{
-		String alphaOnly = text.replaceAll("[^a-zA-Z]+","");
+	 * 
+	 * @param text Actual String
+	 */
+	public static String replaceSpecialSymbol(String text) {
+		String alphaOnly = text.replaceAll("[^a-zA-Z]+", "");
 		ExtentManager.childTest.pass(alphaOnly + "String containing Only Alphabets");
-		return(alphaOnly);
+		return (alphaOnly);
 	}
-	
-	
-		
+
 	/**
 	 * used to verify expected text is found or not
-	 * @param  ele webelement from pageFactory
+	 * 
+	 * @param ele          webelement from pageFactory
 	 * @param expectedText the text to be searched
-	  */
+	 */
 	public boolean verifyElementText(WebElement ele, String expectedText) {
 		boolean flag = false;
 		String actualText = ele.getText();
@@ -525,7 +496,8 @@ public class ElementActions extends Base {
 
 	/**
 	 * used to retrieve column count
-	 * @param  row webelement from pageFactory
+	 * 
+	 * @param row webelement from pageFactory
 	 */
 	public static int getColumncount(WebElement row) {
 		List<WebElement> columns = row.findElements(By.tagName("td"));
@@ -538,35 +510,53 @@ public class ElementActions extends Base {
 		return a;
 	}
 
+	public static List<String> extractText(List<WebElement> elements) {
+
+		List<String> texts = elements.stream().map(element -> element.getText()).collect(Collectors.toList());
+		List<String> text = texts.stream().sorted().toList();
+		return text;
+
+	}
+
+	public static boolean comapreLists(List<String> text, List<String> expected) {
+		boolean flag = false;
+		Collections.sort(expected);
+		if (text.equals(expected)) {
+			ExtentManager.childTest.pass("two lists are  equal");
+			flag = true;
+		} else
+			ExtentManager.childTest.info("two lists are not equal");
+		return flag;
+
+	}
+
 	/**
 	 * used to assign Explicit wait to particular element
 	 * 
-	 * @param driver Webdriver object
-	 * @param  element webelement from pageFactory
+	 * @param driver  Webdriver object
+	 * @param element webelement from pageFactory
 	 * @param timeout waiting time
 	 */
 	public static void explicitWait(WebDriver driver, WebElement element, int timeOut) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}
-	
 
 	/**
-	 * used to assign Implicit wait 
+	 * used to assign Implicit wait
 	 * 
-	 * @param driver Webdriver object
+	 * @param driver  Webdriver object
 	 * @param timeout waiting time
 	 */
 	public static void implicitWait(WebDriver driver, int timeOut) {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(timeOut));
 	}
-	
 
 	/**
 	 * used to assign Fluent wait to particular element
 	 * 
-	 * @param driver Webdriver object
-	 * @param  element webelement from pageFactory
+	 * @param driver  Webdriver object
+	 * @param element webelement from pageFactory
 	 * @param timeout waiting time
 	 */
 	public static void fluentWait(WebDriver driver, WebElement element, int timeOut) {
@@ -580,11 +570,10 @@ public class ElementActions extends Base {
 		}
 	}
 
-	
 	/**
 	 * used to get current System's time
 	 * 
-	*/
+	 */
 	public static String getCurrentTime() {
 		String currentDate = new SimpleDateFormat("yyyy-MM-dd-hhmmss").format(new Date());
 		return currentDate;
