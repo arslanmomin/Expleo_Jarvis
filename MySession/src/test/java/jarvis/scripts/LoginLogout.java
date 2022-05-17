@@ -1,6 +1,11 @@
 package jarvis.scripts;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.codoid.products.fillo.Connection;
@@ -14,35 +19,37 @@ import jarvis.pages.LoginPage;
 import utilities.ConfigurationSupport;
 import utilities.ExtentManager;
 import utilities.Log;
+@Listeners(utilities.Listener.class)
 
 public class LoginLogout extends Base {
 	public ConfigurationSupport cs = new ConfigurationSupport("config files//accounts.properties");
+	String uname=cs.getProperty("email");
+	String pwd=cs.getProperty("password");
 	LoginPage lp;
 	HomePage hp;
-	
-	@Test(priority=0,groups= {"regression","login"},dataProvider="credentials",dataProviderClass=DataProvider.class)
-	public void login(String uname, String pwd) throws Exception {
-		ExtentManager.childTest=ExtentManager.parentTest.createNode("login to application");
+
+	@Test
+	public void login() throws Exception {
+		
 		lp=new LoginPage();
-		lp.clickonsignin();
-		Log.info("clicked on signin button");
-		lp.setEmail(uname);
-		lp.setPassword(pwd);
-		lp.clickonlogin();
+		Assert.assertTrue(lp.checkTabsVisibility(List.of("APPAREL & SHOES","BOOKS","COMPUTERS","DIGITAL DOWNLOADS","ELECTRONICS","GIFT CARDS","JEWELRY")));
+		lp.signin(uname,pwd);
+		Log.info("signin done");
+
 	
 		
 	}
-	public void loginwithExcelData(String uname,String pw) throws Exception {
+	public void loginwithExcelData() throws Exception {
 		Fillo f = new Fillo();
 		Connection con = f.getConnection("Testdata/Data.xlsx");
 		String query="select * from Login";
 		Recordset rc= con.executeQuery(query);
 		while(rc.next()) {
-			login(uname,pw);
+			login();
 			
 		}	
 	}
-	@Test
+	
 	public void logout() throws Exception {
 		ExtentManager.childTest = ExtentManager.parentTest.createNode("logout from application");
 		hp =new HomePage();

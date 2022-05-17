@@ -1,6 +1,5 @@
 package jarvis.pages;
 
-
 import java.util.List;
 
 import org.openqa.selenium.WebElement;
@@ -11,44 +10,56 @@ import org.openqa.selenium.support.PageFactory;
 import commands.ElementActions;
 import configs.Base;
 import utilities.ConfigurationSupport;
+import utilities.ExtentManager;
 
-public class LoginPage extends Base{
+public class LoginPage extends Base {
 
 	public ConfigurationSupport cs = new ConfigurationSupport("config files//accounts.properties");
-	@FindBy(className="ico-login")
+	@FindBy(className = "ico-login")
 	private WebElement signinbtn;
-	
-	@FindBy(id="Email")
+
+	@FindBy(id = "Email")
 	private WebElement emailbox;
-	
-	@FindBy(id="Password")
+
+	@FindBy(id = "Password")
 	private WebElement passwordbox;
-	
-	@FindBy(xpath="//input[@value='Log in']")
+
+	@FindBy(xpath = "//input[@value='Log in']")
 	private WebElement loginbtn;
-	
-	//syntax for list
-	@FindAll({@FindBy(xpath = "yourpath")})
-	public List<WebElement> networks;
-	
+
+	@FindAll({ @FindBy(xpath = "//ul[@class='top-menu']/li") })
+	private  List<WebElement> maintabs;
+
 	public LoginPage() {
 		PageFactory.initElements(getDriver(), this);
 	}
-	
-	public void clickonsignin() throws Exception {
-		ElementActions.click(getDriver(), signinbtn,"signinbtn");
-	}
-	
-	public void setEmail(String email) {
-		ElementActions.type( emailbox, email,"email text box");
+
+	public boolean checkTabsVisibility(List<String> expected) {
+		ExtentManager.childTest = ExtentManager.parentTest.createNode("check visibilty");
+		boolean flag = false;
+		for (WebElement ele : maintabs) {
+			if (ElementActions.isDisplayed(ele, "main menu tab List element"))
+				flag = true;
+			if (!flag) {
+				break;
+			}
+		}
+		boolean mark = ElementActions.comapreLists(ElementActions.extractText(maintabs), expected);
+		if (flag && mark)
+			return true;
+		else
+			return false;
+
 	}
 
-	public void setPassword(String password) {
-		ElementActions.type( passwordbox, password,"password text box");
+	public void signin(String email,String password) throws Exception {
+		ExtentManager.childTest = ExtentManager.parentTest.createNode("login to application");
+		ElementActions.click(getDriver(), signinbtn, "signin btn");
+		ElementActions.type(emailbox, email, "email text box");
+		ElementActions.type(passwordbox, password, "password text box");
+		ElementActions.click(getDriver(), loginbtn, "login button");
 	}
-	
-	public void clickonlogin() throws Exception {
-		ElementActions.click(getDriver(), loginbtn,"login button");
-	}
+
+
 
 }
