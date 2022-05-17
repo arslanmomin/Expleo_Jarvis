@@ -514,13 +514,15 @@ public class ElementActions extends Base {
 
 		List<String> texts = elements.stream().map(element -> element.getText()).collect(Collectors.toList());
 		List<String> text = texts.stream().sorted().toList();
+		System.out.println(text);
 		return text;
 
 	}
 
 	public static boolean comapreLists(List<String> text, List<String> expected) {
 		boolean flag = false;
-		Collections.sort(expected);
+		
+		System.out.println(expected);
 		if (text.equals(expected)) {
 			ExtentManager.childTest.pass("two lists are  equal");
 			flag = true;

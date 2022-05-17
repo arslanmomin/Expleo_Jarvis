@@ -59,7 +59,7 @@ public class Base {
 				((EdgeOptions) eo).addArguments("headless");
 			eo.merge(dc);
 			driver.set(new EdgeDriver(eo));
-			BrowserActions.pageLoadTimeOut(getDriver(), 5);
+			BrowserActions.pageLoadTimeOut(getDriver(), 10);
 			getDriver().manage().window().maximize();
 			break;
 
