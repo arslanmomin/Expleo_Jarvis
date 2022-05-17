@@ -109,10 +109,16 @@ public class ElementActions extends Base {
 	 * @param keyChar -Keyboard key to be pressed
 	 * @param driver  WebDriver Object
 	 */
-	public static void keyboardOp(WebDriver driver, WebElement ele, String keyChar) {
+	public static void keyboardCtrlOp(WebDriver driver, String keyChar) {
 		Actions ac = new Actions(driver);
 		ac.sendKeys(Keys.chord(Keys.CONTROL, keyChar)).build().perform();
 		ExtentManager.childTest.pass("Key pressed is  :" + Keys.CONTROL + keyChar);
+	}
+	
+	public static void keyboardShiftOp(WebDriver driver, String keyChar) {
+		Actions ac = new Actions(driver);
+		ac.sendKeys(Keys.chord(Keys.SHIFT, keyChar)).build().perform();
+		ExtentManager.childTest.pass("Key pressed is  :" + Keys.SHIFT + keyChar);
 	}
 
 	public static void moveToElement(WebDriver driver, WebElement ele, String eleName) throws Exception {
@@ -225,6 +231,30 @@ public class ElementActions extends Base {
 			ExtentManager.childTest.info(e);
 			throw e;
 		}
+	}
+	
+	/**
+	 * used to retrieve all options from dropdown using Select class
+	 * 
+	 * @param ele  webelement from pageFactory
+	 */
+	public List<WebElement> getAllOptions(WebElement ele) {
+			Select s = new Select(ele);
+			 // Get the size of the Select element
+            List AllOptions = s.getOptions();
+            int OptionSize = AllOptions.size();                                   
+            
+            // Setting up the loop to print all the options
+            for(int i =0; i < OptionSize ; i++)
+            {
+            	// Storing the value of the option
+            	String Options = s.getOptions().get(i).getText();
+            
+            	// Printing the stored value
+            	ExtentManager.childTest.pass("All Selected options from dropbox are:"+AllOptions );
+            }
+				
+		return AllOptions;
 	}
 
 	public void selectByVisibleText(WebElement ele, String VisibleText) {
@@ -464,6 +494,18 @@ public class ElementActions extends Base {
 		ExtentManager.childTest.pass(trimStr + "String is trimmed");
 		return trimStr;
 	}
+	
+	/**
+	 * used to check whether String is starting with particular String or not
+	 * 
+	 * @param text Actual String
+	 * @param startsStr String to be checked for startsWith
+	 */
+	public static boolean startsWithText(String text,String startsStr) {
+		boolean flag = text.startsWith(startsStr);
+		ExtentManager.childTest.pass("String is starts with:"+startsStr);
+		return flag;
+	}
 
 	/**
 	 * used to replace all Special characters and Digits from String
@@ -681,4 +723,4 @@ public class ElementActions extends Base {
 	
 	
 
-}
+
