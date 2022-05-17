@@ -1,7 +1,6 @@
 package jarvis.scripts;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Assert;
@@ -13,7 +12,6 @@ import com.codoid.products.fillo.Fillo;
 import com.codoid.products.fillo.Recordset;
 
 import configs.Base;
-import jarvis.dataproviders.DataProvider;
 import jarvis.pages.HomePage;
 import jarvis.pages.LoginPage;
 import utilities.ConfigurationSupport;
@@ -50,6 +48,7 @@ public class LoginLogout extends Base {
 		}	
 	}
 	
+	@Test
 	public void logout() throws Exception {
 		ExtentManager.childTest = ExtentManager.parentTest.createNode("logout from application");
 		hp =new HomePage();
