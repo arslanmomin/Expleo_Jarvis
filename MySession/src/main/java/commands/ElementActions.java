@@ -502,8 +502,14 @@ public class ElementActions extends Base {
 	 * @param startsStr String to be checked for startsWith
 	 */
 	public static boolean startsWithText(String text,String startsStr) {
-		boolean flag = text.startsWith(startsStr);
-		ExtentManager.childTest.pass("String is starts with:"+startsStr);
+		boolean flag=false;
+		if( text.startsWith(startsStr))
+		{
+			ExtentManager.childTest.pass("String is starts with:"+startsStr);
+			flag=true;
+		}
+		else
+			ExtentManager.childTest.pass("String is not starts with:"+startsStr);
 		return flag;
 	}
 
