@@ -580,5 +580,105 @@ public class ElementActions extends Base {
 		String currentDate = new SimpleDateFormat("yyyy-MM-dd-hhmmss").format(new Date());
 		return currentDate;
 	}
+	
+	public static void DragnDrop(WebDriver driver,WebElement From,WebElement To)					
+    {		
+         
+         Actions ac=new Actions( driver);					
+	
+         ac.dragAndDrop(From, To).build().perform();	
+         ExtentManager.childTest.pass("Object Dragged And Dropped Successfully ");
+	}	
+	
+	public static void WaitForElementClickable(WebDriver driver,WebElement ele)					
+    {		
+		
+		try {	
+			WebDriverWait wait = new WebDriverWait(driver, 5);
+			wait.until(ExpectedConditions.elementToBeClickable( ele));
+			ExtentManager.childTest.pass("Element Clickable");
+	    }catch(Exception e) {
+	    	
+	    	
+	    	ExtentManager.childTest.pass("Element Not Clickable");
+	    	throw e;
+	    }
+	}	
+	public static void WaitForElementToBeSelected(WebDriver driver,WebElement ele)					
+    {		
+		try {	
+			WebDriverWait wait = new WebDriverWait(driver, 5);
+			wait.until(ExpectedConditions.elementToBeSelected( ele));
+			ExtentManager.childTest.pass("Element Selectable");
+	    }catch(Exception e) {
+	    	
+	    	
+	    	ExtentManager.childTest.pass("Element Not Selectable");
+	    	throw e;
+	    }
+	}
+	
+	
+	
+	public static void WaitForElementVisible(WebDriver driver,WebElement ele)					
+    {	try {	
+		WebDriverWait wait = new WebDriverWait(driver, 5);
+		wait.until(ExpectedConditions.visibilityOf( ele));
+		ExtentManager.childTest.pass("Element Visible");
+    }catch(Exception e) {
+    	
+    	
+    	ExtentManager.childTest.pass("Element Not Visible");
+    	throw e;
+    }
+	}	
+	
+	
+	public static void WaitForElementPresent(WebDriver driver,WebElement ele)					
+    {	try {	
+		WebDriverWait wait = new WebDriverWait(driver, 5);
+		By by=toByVal(ele);
+		ExtentManager.childTest.pass(by.toString());
+		wait.until(ExpectedConditions.presenceOfElementLocated(by));
+		ExtentManager.childTest.pass("Element Present");
+    }catch(Exception e) {
+    	
+    	
+    	ExtentManager.childTest.pass("Element Not Present");
+    	throw e;
+    }
+	}	
+	
+	public static By toByVal(WebElement we) {
+	    // By format = "[foundFrom] -> locator: term"
+	    // see RemoteWebElement toString() implementation
+	    String[] data = we.toString().split(" -> ")[1].replace("]", "").split(": ");
+	    String locator = data[0];
+	    String term = data[1];
+
+	    switch (locator) {
+	    case "xpath":
+	        return By.xpath(term);
+	    case "css selector":
+	        return By.cssSelector(term);
+	    case "id":
+	        return By.id(term);
+	    case "tag name":
+	        return By.tagName(term);
+	    case "name":
+	        return By.name(term);
+	    case "link text":
+	        return By.linkText(term);
+	    case "class name":
+	        return By.className(term);
+	    }
+	    return (By) we;
+	}
+	
+
+}
+	
+	
+	
 
 }
