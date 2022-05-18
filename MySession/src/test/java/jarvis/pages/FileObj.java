@@ -23,7 +23,7 @@ public class FileObj extends Base{
 	public void fileDelete(String path) {
 		ExtentManager.childTest = ExtentManager.parentTest.createNode("File Deleted");
 
-		FilesActions.deleteFile( getDriver(), path);
+		
 	}
 
 	
