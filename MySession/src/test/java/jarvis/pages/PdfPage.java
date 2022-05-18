@@ -5,7 +5,7 @@ import java.io.IOException;
 
 import org.openqa.selenium.support.PageFactory;
 
-import commands.PDFActions;
+import commands.FilesActions;
 import configs.Base;
 import utilities.ExtentManager;
 
@@ -20,40 +20,40 @@ public class PdfPage extends Base{
 	
 	public void fileCreate(String path) throws IOException {
 		ExtentManager.childTest = ExtentManager.parentTest.createNode("File Created");
-		PDFActions.createPDF(path);
+		FilesActions.createPDF(path);
 	}
 	public void AddPage(String path, int num) throws IOException {
 		ExtentManager.childTest = ExtentManager.parentTest.createNode("Page Added");
-		PDFActions.AddPageToPdf(path, 5);
+		FilesActions.AddPageToPdf(path, 5);
 
 	}
 	public void RemovePage(String path, int num) throws IOException {
-		ExtentManager.childTest = ExtentManager.parentTest.createNode("Page Added");
-		PDFActions.removePages(path, 5);
+		ExtentManager.childTest = ExtentManager.parentTest.createNode("Page Removed");
+		FilesActions.removePages(path, 5);
 
 	}
 	public void WriteToPdf(String path) throws IOException {
-		ExtentManager.childTest = ExtentManager.parentTest.createNode("Page Added");
-		PDFActions.writeToPdf(path);
+		ExtentManager.childTest = ExtentManager.parentTest.createNode("write ");
+		FilesActions.writeToPdf(path);
 
 	}
 	public void ReadPdf(String path) throws IOException {
 		ExtentManager.childTest = ExtentManager.parentTest.createNode("Page Added");
-		PDFActions.readPDF(path);
+		FilesActions.readPDF(path);
 
 	}
 	public void SplitPdf(String path) throws IOException {
 		ExtentManager.childTest = ExtentManager.parentTest.createNode("Page Added");
-		PDFActions.splitPdf(path);
+		FilesActions.splitPdf(path);
 	}
 	public void MergePdf(String path1,String path2) throws IOException {
 		ExtentManager.childTest = ExtentManager.parentTest.createNode("Page Added");
-		PDFActions.merge2pdf(path1, path2);;
+		FilesActions.merge2pdf(path1, path2);;
 	}
 	
 	public void ReadAssert(String path,String text) throws IOException {
 		ExtentManager.childTest = ExtentManager.parentTest.createNode("Page Added");
-		PDFActions.readAndAssert(path,text);
+		FilesActions.readAndAssert(path,text);
 
 	}
 
