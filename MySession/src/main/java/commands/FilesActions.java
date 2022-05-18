@@ -180,7 +180,7 @@ public class FilesActions extends Base {
 	      
 	      document.save(path);
 	         
-	      System.out.println("PDF created");  
+	      ExtentManager.childTest.pass("PDF created");  
 	    
 	      document.close();
       
@@ -202,13 +202,14 @@ public class FilesActions extends Base {
 	      } 
 	     
 	      document.save(path);
-	      System.out.println("PDF created");
+	      ExtentManager.childTest.pass(" Page Added And PDF created");
 	      
 	  
 	      document.close();
 
 	   }  
 	
+	//Not Working 
 	
 	public static void removePages(String path,int pageno) throws IOException {
 
@@ -218,12 +219,12 @@ public class FilesActions extends Base {
 	       
 	      //Listing the number of existing pages
 	      int noOfPages= document.getNumberOfPages();
-	      System.out.print(noOfPages);
+	      ExtentManager.childTest.pass("No Of Pages: "+noOfPages);
 	       
 	      //Removing the pages
 	      document.removePage(pageno);
 	      
-	      System.out.println("page removed");
+	      ExtentManager.childTest.pass("page removed");
 
 	      //Saving the document
 	      document.save(path);
@@ -233,7 +234,7 @@ public class FilesActions extends Base {
 
 	   }
 	
-	 public static void writeToPdf (String path) throws IOException {
+	 public static void writeToPdf (String path,String text) throws IOException {
 
 	      //Loading an existing document
 	      File file = new File(path);
@@ -246,29 +247,25 @@ public class FilesActions extends Base {
 	      
 	      contentStream.beginText(); 
 	       
-	    
+	    //Here is The Issue
 	  //  contentStream.setFont( PDType1Font.TIMES_ROMAN, 28 );
 
-	      //Setting the position for the line 
+	      
 	      contentStream.newLineAtOffset(25, 500);
 
-	      String text = "This is the sample document and we are adding content to it.";
+	   
 
-	      //Adding text in the form of string 
+	 
 	      contentStream.showText(text);      
-
-	      //Ending the content stream
+	      
 	      contentStream.endText();
 
-	      System.out.println("Content added");
+	      ExtentManager.childTest.pass("Content added");
 
-	      //Closing the content stream
 	      contentStream.close();
 
-	      //Saving the document
-	      document.save(new File("C:/PdfBox_Examples/new.pdf"));
+	      document.save(new File("user.dir") + "\\TestData\\ManagePDF\\New.pdf");
 
-	      //Closing the document
 	      document.close();
 	   }
 	 
@@ -281,9 +278,10 @@ public class FilesActions extends Base {
 	 
 	      PDFTextStripper pdfStripper = new PDFTextStripper();
 
-	     
+	     int pagecount =document.getPages().getCount();
+	     ExtentManager.childTest.info("The Number Of pages In This Documents is :"+pagecount);
 	      String text = pdfStripper.getText(document);
-	      System.out.println(text);
+	      ExtentManager.childTest.info(text);
 
 	      
 	      document.close();
@@ -301,9 +299,14 @@ public class FilesActions extends Base {
 	     
 	      String Pdftext = pdfStripper.getText(document);
 	      
-	      Assert.assertTrue(Pdftext.contains(textToFind));
+	      Assert.assertTrue(Pdftext.contains(textToFind),"Documents contains text specified"); 
+	      
+	      
+	  
+	      int pagecount =document.getPages().getCount();
+		     ExtentManager.childTest.info("The Number Of pages In This Documents is :"+pagecount);
 	     
-	      System.out.println(Pdftext);
+	      ExtentManager.childTest.info(Pdftext);
 
 	      
 	      document.close();
@@ -312,26 +315,21 @@ public class FilesActions extends Base {
 	 
 	 public static void splitPdf(String path) throws IOException {
 
-	      //Loading an existing PDF document
 	      File file = new File(path);
 	      PDDocument document = Loader.loadPDF(file);
 
-	      //Instantiating Splitter class
 	      Splitter splitter = new Splitter();
 
-	      //splitting the pages of a PDF document
 	      List<PDDocument> Pages = splitter.split(document);
 
-	      //Creating an iterator 
 	      Iterator<PDDocument> iterator = Pages.listIterator();
 
-	      //Saving each page as an individual document
 	      int i = 1;
 	      while(iterator.hasNext()) {
 	         PDDocument pd = iterator.next();
 	         pd.save(System.getProperty("user.dir") + "\\TestData\\ManagePDF\\Splitted"+ i++ +".pdf");
 	      }
-	      System.out.println("Multiple PDF’s created");
+	      ExtentManager.childTest.pass("Multiple PDF’s created");
 	      document.close();
 	   }
 
@@ -341,19 +339,16 @@ public class FilesActions extends Base {
 	      File file1 = new File(path1);       
 	      File file2 = new File(path2);    
 			
-	      //Instantiating PDFMergerUtility class
 	      PDFMergerUtility PDFmerger = new PDFMergerUtility();
-			
-	      //Setting the destination file
+
 	      PDFmerger.setDestinationFileName(System.getProperty("user.dir") + "\\TestData\\ManagePDF\\Merged.pdf");
-			
-	      //adding the source files
+
 	      PDFmerger.addSource(file1);
 	      PDFmerger.addSource(file2);
 			
-	      //Merging the two documents
+	  
 	      PDFmerger.mergeDocuments(null);
-	      System.out.println("Documents merged");
+	      ExtentManager.childTest.pass("Documents merged");
 	   }
 
 

@@ -32,9 +32,9 @@ public class PdfPage extends Base{
 		FilesActions.removePages(path, 5);
 
 	}
-	public void WriteToPdf(String path) throws IOException {
+	public void WriteToPdf(String path,String text) throws IOException {
 		ExtentManager.childTest = ExtentManager.parentTest.createNode("write ");
-		FilesActions.writeToPdf(path);
+		FilesActions.writeToPdf(path,text);
 
 	}
 	public void ReadPdf(String path) throws IOException {
