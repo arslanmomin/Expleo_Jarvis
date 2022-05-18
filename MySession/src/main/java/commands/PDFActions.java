@@ -1,7 +1,7 @@
 package commands;
 
+
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
@@ -13,7 +13,7 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.text.PDFTextStripper;
-import org.apache.pdfbox.multipdf.PDFMergerUtility; 
+import org.testng.Assert;
 
 import configs.Base;
 
@@ -33,18 +33,7 @@ public class PDFActions extends Base {
 	}
 	
 	
-	public static void readPDF() throws IOException {
-		
-		 PDFTextStripper ts = new PDFTextStripper();
-       
-        File file = new File("C:/my.pdf");
-        FileInputStream fis= new FileInputStream(file);
-        PDDocument pdDoc=Loader.loadPDF(fis);
-        
-
 	
-        
-	}
 	
 	public static void AddPageToPdf(String path,int numpage) throws IOException {
 	       
@@ -90,21 +79,21 @@ public class PDFActions extends Base {
 
 	   }
 	
-	 public static void main (String args[]) throws IOException {
+	 public static void writeToPdf (String path) throws IOException {
 
 	      //Loading an existing document
-	      File file = new File("C:/PdfBox_Examples/my_doc.pdf");
+	      File file = new File(path);
 	      PDDocument document = Loader.loadPDF(file);
-	       
-	      //Retrieving the pages of the document 
+	      
+	      
 	      PDPage page = document.getPage(1);
 	      PDPageContentStream contentStream = new PDPageContentStream(document, page);
 	      
-	      //Begin the Content stream 
+	      
 	      contentStream.beginText(); 
 	       
-	      //Setting the font to the Content stream  
-	      //contentStream.setFont(PDType1Font.TIMES_ROMAN, 12);
+	    
+	     // contentStream.setFont( "", 28 );
 
 	      //Setting the position for the line 
 	      contentStream.newLineAtOffset(25, 500);
@@ -131,18 +120,38 @@ public class PDFActions extends Base {
 	 
 	 public static void readPDF(String path) throws IOException {
 
-	      //Loading an existing document
+	    
 	      File file = new File(path);
 	      PDDocument document = Loader.loadPDF(file);
 
-	      //Instantiate PDFTextStripper class
+	 
 	      PDFTextStripper pdfStripper = new PDFTextStripper();
 
-	      //Retrieving text from PDF document
+	     
 	      String text = pdfStripper.getText(document);
 	      System.out.println(text);
 
-	      //Closing the document
+	      
+	      document.close();
+
+	   }
+	 public static void readAndAssert(String path,String textToFind) throws IOException {
+
+		    
+	      File file = new File(path);
+	      PDDocument document = Loader.loadPDF(file);
+
+	 
+	      PDFTextStripper pdfStripper = new PDFTextStripper();
+
+	     
+	      String Pdftext = pdfStripper.getText(document);
+	      
+	      Assert.assertTrue(Pdftext.contains(textToFind));
+	     
+	      System.out.println(Pdftext);
+
+	      
 	      document.close();
 
 	   }
@@ -150,7 +159,7 @@ public class PDFActions extends Base {
 	 public static void splitPdf(String path) throws IOException {
 
 	      //Loading an existing PDF document
-	      File file = new File("C:/PdfBox_Examples/sample.pdf");
+	      File file = new File(path);
 	      PDDocument document = Loader.loadPDF(file);
 
 	      //Instantiating Splitter class
@@ -166,7 +175,7 @@ public class PDFActions extends Base {
 	      int i = 1;
 	      while(iterator.hasNext()) {
 	         PDDocument pd = iterator.next();
-	         pd.save("C:/Splitted/"+ i++ +".pdf");
+	         pd.save(System.getProperty("user.dir") + "\\TestData\\ManagePDF\\Splitted"+ i++ +".pdf");
 	      }
 	      System.out.println("Multiple PDF’s created");
 	      document.close();
@@ -174,7 +183,7 @@ public class PDFActions extends Base {
 
 
 	 
-	 public static void main(String path1,String path2) throws IOException {
+	 public static void merge2pdf(String path1,String path2) throws IOException {
 	      File file1 = new File(path1);       
 	      File file2 = new File(path2);    
 			
@@ -182,14 +191,14 @@ public class PDFActions extends Base {
 	      PDFMergerUtility PDFmerger = new PDFMergerUtility();
 			
 	      //Setting the destination file
-	      PDFmerger.setDestinationFileName("C:\\Examples\\merged.pdf");
+	      PDFmerger.setDestinationFileName(System.getProperty("user.dir") + "\\TestData\\ManagePDF\\Merged.pdf");
 			
 	      //adding the source files
 	      PDFmerger.addSource(file1);
 	      PDFmerger.addSource(file2);
 			
 	      //Merging the two documents
-	      //PDFmerger.mergeDocuments();
+	      PDFmerger.mergeDocuments(null);
 	      System.out.println("Documents merged");
 	   }
 
