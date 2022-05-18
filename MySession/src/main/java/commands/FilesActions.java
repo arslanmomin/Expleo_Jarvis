@@ -23,7 +23,7 @@ public class FilesActions extends Base {
 
 	
 
-	public static void Open_File(WebDriver driver,String FilePath) throws IOException {
+	public static void openFile(WebDriver driver,String FilePath) throws IOException {
 
 		File file = new File(FilePath);
 
@@ -50,7 +50,7 @@ public class FilesActions extends Base {
 
 	
 
-	public static void Delete_File(WebDriver driver,String FilePath) {
+	public static void deleteFile(WebDriver driver,String FilePath) {
 
 		File file = new File(FilePath);
 
@@ -92,7 +92,7 @@ public class FilesActions extends Base {
 
 
 
-	public static void Create_File(WebDriver driver,String FilePath) {
+	public static void createFile(WebDriver driver,String FilePath) {
 		try {
 			File myObj = new File(FilePath);
 			if (myObj.createNewFile()) {
@@ -111,7 +111,7 @@ public class FilesActions extends Base {
 
 
 
-	public void CopytoFile(WebDriver driver,String text, String filepath)
+	public void writeToFile(WebDriver driver,String text, String filepath)
 	{
 		// Input custom string
 
