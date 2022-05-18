@@ -4,8 +4,13 @@ import java.io.File;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.text.SimpleDateFormat;
+<<<<<<< HEAD
+=======
 import java.util.Date;
+>>>>>>> 0485d0c7c1b4279ae8bf4a2b37e036aa91e66d19
 import java.time.Duration;
+import java.util.Date;
+
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -421,7 +426,7 @@ public class ElementActions extends Base {
 	public static List<String> extractText(List<WebElement> elements) {
 
 		List<String> texts = elements.stream().map(element -> element.getText()).collect(Collectors.toList());
-		List<String> text = texts.stream().sorted().toList();
+		List<String> text = texts.stream().sorted().toList();	
 		System.out.println(text);
 		return text;
 
@@ -561,4 +566,4 @@ public class ElementActions extends Base {
 		return (By) we;
 	}
 
-}
+
