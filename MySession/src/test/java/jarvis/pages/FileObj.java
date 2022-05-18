@@ -18,12 +18,12 @@ public class FileObj extends Base{
 	
 	public void fileCreate(String path) {
 		ExtentManager.childTest = ExtentManager.parentTest.createNode("File Created");
-		FilesActions.Create_File( getDriver(), path);
+		FilesActions.createFile( getDriver(), path);
 	}
 	public void fileDelete(String path) {
 		ExtentManager.childTest = ExtentManager.parentTest.createNode("File Deleted");
 
-		FilesActions.Delete_File( getDriver(), path);
+		FilesActions.deleteFile( getDriver(), path);
 	}
 
 	
