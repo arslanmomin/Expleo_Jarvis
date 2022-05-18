@@ -9,12 +9,11 @@ import org.openqa.selenium.support.PageFactory;
 
 import commands.ElementActions;
 import configs.Base;
-import utilities.ConfigurationSupport;
 import utilities.ExtentManager;
 
 public class LoginPage extends Base {
 
-	public ConfigurationSupport cs = new ConfigurationSupport("config files//accounts.properties");
+
 	@FindBy(className = "ico-login")
 	private WebElement signinbtn;
 
