@@ -24,39 +24,33 @@ public class FilesActions extends Base {
 
 	// first check if Desktop is supported by Platform or not
 
-<<<<<<< HEAD
+
 	public static void openFile(WebDriver driver,String FilePath) throws IOException {
-=======
-	public static void Open_File(WebDriver driver, String FilePath) throws IOException {
->>>>>>> 0485d0c7c1b4279ae8bf4a2b37e036aa91e66d19
+
 
 		File file = new File(FilePath);
 		if (!Desktop.isDesktopSupported()) {
-			ExtentManager.childTest.info("Desktop is not supported");
-		}
-
-		Desktop desktop = Desktop.getDesktop();
-		if (file.exists()) {
-			desktop.open(file);
-			ExtentManager.childTest.pass("File Opened Sucessfully \r");
+			try {
+				ExtentManager.childTest.info("Desktop is not supported");
+			} catch (Exception e) {
+				// TODOExtentManager.childTest.info("Desktop is not supported");Manager.childTest.pass("File Opened Sucessfully \r");
 		}
 	}
 
-<<<<<<< HEAD
 			ExtentManager.childTest.pass("File Opened Sucessfully \r") ;
 
-	}}
+	}
 
 	// Custom keyword for deleting file - provide file path as a parameter
 
 	
 
-	public static void deleteFile(WebDriver driver,String FilePath) {
-=======
-	// Custom method for deleting file - provide file path as a parameter
->>>>>>> 0485d0c7c1b4279ae8bf4a2b37e036aa91e66d19
 
-	public static void Delete_File(WebDriver driver, String FilePath) {
+
+	// Custom method for deleting file - provide file path as a parameter
+
+
+	public static void deleteFile(WebDriver driver, String FilePath) {
 
 		try {
 			Files.deleteIfExists(Paths.get(FilePath));
@@ -84,13 +78,12 @@ public class FilesActions extends Base {
 
 	}
 
-<<<<<<< HEAD
+
 
 
 	public static void createFile(WebDriver driver,String FilePath) {
-=======
-	public static void Create_File(WebDriver driver, String FilePath) {
->>>>>>> 0485d0c7c1b4279ae8bf4a2b37e036aa91e66d19
+
+
 		try {
 			File myObj = new File(FilePath);
 			if (myObj.createNewFile()) {
@@ -106,11 +99,7 @@ public class FilesActions extends Base {
 	}
 
 	// check
-	public void writeToFile(WebDriver driver, String text, String filepath) {
 
-		Path path = (Path) Paths.get(filepath);
-
-<<<<<<< HEAD
 
 	public void writeToFile(WebDriver driver,String text, String filepath)
 	{
@@ -123,9 +112,9 @@ public class FilesActions extends Base {
 		System.out.println("Path of target file: "+ path.toString());
 
 		// Byte stream whose data is to be copied
-=======
+
 		System.out.println("Path of target file: " + path.toString());
->>>>>>> 0485d0c7c1b4279ae8bf4a2b37e036aa91e66d19
+
 		InputStream inp = new ByteArrayInputStream(text.getBytes());
 
 		try {

@@ -4,10 +4,9 @@ import java.io.File;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.text.SimpleDateFormat;
-<<<<<<< HEAD
-=======
+
 import java.util.Date;
->>>>>>> 0485d0c7c1b4279ae8bf4a2b37e036aa91e66d19
+
 import java.time.Duration;
 import java.util.Date;
 
@@ -565,5 +564,5 @@ public class ElementActions extends Base {
 		}
 		return (By) we;
 	}
-
+}
 
