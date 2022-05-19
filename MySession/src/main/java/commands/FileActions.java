@@ -31,7 +31,7 @@ import configs.Base;
 import utilities.ExtentManager;
 import utilities.Log;
 
-public class FilesActions extends Base {
+public class FileActions extends Base {
 
 	// first check if Desktop is supported by Platform or not
 
@@ -39,7 +39,6 @@ public class FilesActions extends Base {
 	public static void openFile(WebDriver driver,String FilePath) throws IOException {
 
 
-		File file = new File(FilePath);
 		if (!Desktop.isDesktopSupported()) {
 			try {
 				ExtentManager.childTest.info("Desktop is not supported");

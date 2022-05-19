@@ -5,7 +5,7 @@ import java.io.IOException;
 
 import org.openqa.selenium.support.PageFactory;
 
-import commands.FilesActions;
+import commands.FileActions;
 import configs.Base;
 import utilities.ExtentManager;
 
@@ -20,40 +20,40 @@ public class PdfPage extends Base{
 	
 	public void fileCreate(String path) throws IOException {
 		ExtentManager.childTest = ExtentManager.parentTest.createNode("File Created");
-		FilesActions.createPDF(path);
+		FileActions.createPDF(path);
 	}
 	public void AddPage(String path, int num) throws IOException {
 		ExtentManager.childTest = ExtentManager.parentTest.createNode("Page Added");
-		FilesActions.AddPageToPdf(path, 5);
+		FileActions.AddPageToPdf(path, 5);
 
 	}
 	public void RemovePage(String path, int num) throws IOException {
 		ExtentManager.childTest = ExtentManager.parentTest.createNode("Page Removed");
-		FilesActions.removePages(path, 5);
+		FileActions.removePages(path, 5);
 
 	}
 	public void WriteToPdf(String path,String text) throws IOException {
 		ExtentManager.childTest = ExtentManager.parentTest.createNode("write ");
-		FilesActions.writeToPdf(path,text);
+		FileActions.writeToPdf(path,text);
 
 	}
 	public void ReadPdf(String path) throws IOException {
 		ExtentManager.childTest = ExtentManager.parentTest.createNode("Page Added");
-		FilesActions.readPDF(path);
+		FileActions.readPDF(path);
 
 	}
 	public void SplitPdf(String path) throws IOException {
 		ExtentManager.childTest = ExtentManager.parentTest.createNode("Page Added");
-		FilesActions.splitPdf(path);
+		FileActions.splitPdf(path);
 	}
 	public void MergePdf(String path1,String path2) throws IOException {
 		ExtentManager.childTest = ExtentManager.parentTest.createNode("Page Added");
-		FilesActions.merge2pdf(path1, path2);;
+		FileActions.merge2pdf(path1, path2);;
 	}
 	
 	public void ReadAssert(String path,String text) throws IOException {
 		ExtentManager.childTest = ExtentManager.parentTest.createNode("Page Added");
-		FilesActions.readAndAssert(path,text);
+		FileActions.readAndAssert(path,text);
 
 	}
 
