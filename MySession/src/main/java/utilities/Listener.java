@@ -46,7 +46,8 @@ public class Listener extends ExtentManager implements ITestListener {
 					MarkupHelper.createLabel(result.getThrowable() + " - Test Case Failed", ExtentColor.RED));
 			String imgPath = screenShot(Base.getDriver(), result.getName());
 			parentTest.addScreenCaptureFromPath(imgPath);
-			Log.error("Test FAILED");
+			Log.failTestCase(result.getName());
+			
 			 //MediaEntityBuilder.createScreenCaptureFromPath(imgPath).build();
 		}
 	}
@@ -60,17 +61,17 @@ public class Listener extends ExtentManager implements ITestListener {
 	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
 		
 	}
-	@BeforeTest
+	
 	public void onStart(ITestContext context) {
 		
 	}
 
 	public void onFinish(ITestContext context) {
-		Log.info("TEST finished");
+		
 	}
 
-	public String screenShot(WebDriver driver, String filename) {
-		String dateName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+	public static String screenShot(WebDriver driver, String filename) {
+		String dateName = new SimpleDateFormat("hh_mm").format(new Date());
 		String date = new SimpleDateFormat("yyyy_MM_dd").format(new Date());
 		TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
 		File source = takesScreenshot.getScreenshotAs(OutputType.FILE);

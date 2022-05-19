@@ -8,9 +8,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import java.time.Duration;
-import java.util.Date;
-
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -107,7 +104,7 @@ public class ElementActions extends Base {
 			ExtentManager.childTest.pass("success in move to element on  :" + eleName);
 		} catch (Exception e) {
 			ExtentManager.childTest.info("can not  move to element on :" + eleName);
-			ExtentManager.childTest.info(e);
+			Log.exception(" not able to move to element due to exception : ", e);
 			throw e;
 		}
 	}
@@ -198,7 +195,7 @@ public class ElementActions extends Base {
 		List<WebElement> AllOptions = s.getOptions();
 		for (int i = 0; i < AllOptions.size(); i++) {
 			System.out.println(s.getOptions().get(i).getText());
-			ExtentManager.childTest.pass("All Selected options from dropbox are:" + AllOptions);
+			ExtentManager.childTest.pass("got all options from dropdown" );
 		}
 
 		return AllOptions;
@@ -247,18 +244,18 @@ public class ElementActions extends Base {
 		return flag;
 	}
 
-	public void acceptAlert(WebDriver driver) {
+	public static void acceptAlert(WebDriver driver) {
 		try {
 			driver.switchTo().alert().accept();
 			ExtentManager.childTest.pass("alert accept successfully");
 		} catch (Exception e) {
-			ExtentManager.childTest.info("can jnot alert accept");
-			Log.exception("not able to accept alert due to exception : ", e);
+			ExtentManager.childTest.info("can not alert accept");
+			Log.exception( e.getMessage());
 			throw e;
 		}
 	}
 
-	public void cancelAlert(WebDriver driver) {
+	public static void cancelAlert(WebDriver driver) {
 		try {
 			driver.switchTo().alert().dismiss();
 			ExtentManager.childTest.pass("cancel alert");
@@ -273,7 +270,7 @@ public class ElementActions extends Base {
 	public String getAlertText(WebDriver driver) {
 
 		String alertText = driver.switchTo().alert().getText();
-		ExtentManager.childTest.pass("alert text captured : "+alertText);
+		ExtentManager.childTest.pass("alert text captured : " + alertText);
 
 		return alertText;
 
@@ -285,7 +282,7 @@ public class ElementActions extends Base {
 			ExtentManager.childTest.pass("send  data to alert box successfully");
 		} catch (Exception e) {
 			ExtentManager.childTest.info("enter the text in alert box");
-			Log.exception("not able to set text in alert due to exception : ", e);
+			Log.exception( e.getMessage());
 			throw e;
 		}
 	}
@@ -310,13 +307,12 @@ public class ElementActions extends Base {
 		return AttrValue;
 	}
 
-
 	public static void uploadFile(WebElement path, WebElement uploadButton, String FilePath) {
 		try {
 
 			path.sendKeys(FilePath);
 			uploadButton.click();
-			ExtentManager.childTest.pass("File uploaded Successfully" );
+			ExtentManager.childTest.pass("File uploaded Successfully");
 		} catch (Exception e) {
 			Log.exception("not able to upload file due to exception : ", e);
 			throw e;
@@ -326,7 +322,7 @@ public class ElementActions extends Base {
 	// Element Count
 	public static int ElementsCount(List<WebElement> elements) {
 
-		int count=elements.size();
+		int count = elements.size();
 		ExtentManager.childTest.pass("The webelement Count Is" + count);
 
 		return count;
@@ -353,7 +349,7 @@ public class ElementActions extends Base {
 		return flag;
 	}
 
-
+// verify weather substring present
 	public boolean matchSubStringAndVerify(String actualText, String expectedText) {
 
 		boolean flag = false;
@@ -373,12 +369,7 @@ public class ElementActions extends Base {
 		return trimStr;
 	}
 
-	/**
-	 * used to check whether String is starting with particular String or not
-	 * 
-	 * @param text      Actual String
-	 * @param startsStr String to be checked for startsWith
-	 */
+//used to check whether String is starting with particular String or not
 	public static boolean startsWithText(String text, String startsStr) {
 		boolean flag = false;
 		if (text.startsWith(startsStr)) {
@@ -401,10 +392,10 @@ public class ElementActions extends Base {
 		boolean flag = false;
 		String actualText = ele.getText();
 		if (actualText.equals(expectedText)) {
-			ExtentManager.childTest.pass( "both the strings are equal ");
+			ExtentManager.childTest.pass("both the strings are equal ");
 			flag = true;
 		} else {
-			ExtentManager.childTest.info( "both the strings are not equal ");
+			ExtentManager.childTest.info("both the strings are not equal ");
 		}
 		return flag;
 	}
@@ -421,22 +412,23 @@ public class ElementActions extends Base {
 		return a;
 	}
 
-	//extracts text from list of webelements into another list
+	// extracts text from list of webelements into another list
 	public static List<String> extractText(List<WebElement> elements) {
 
 		List<String> texts = elements.stream().map(element -> element.getText()).collect(Collectors.toList());
-		List<String> text = texts.stream().sorted().toList();	
-		System.out.println(text);
+		List<String> text = texts.stream().sorted().toList();
+		System.out.println("extracted list is "+text);
 		return text;
 
 	}
 
-	//comparing two lists by size and content
+	// comparing two lists by size and content
 	public static boolean comapreLists(List<String> text, List<String> expected) {
 		boolean flag = false;
-
-		System.out.println(expected);
-		if (text.equals(expected)) {
+		System.out.println("expected list is:"+expected);
+		List<String> sorted = expected.stream().sorted().toList();
+		System.out.println("sorted list is:"+sorted);
+		if (text.equals(sorted)) {
 			ExtentManager.childTest.pass("two lists are  equal");
 			flag = true;
 		} else
@@ -457,15 +449,16 @@ public class ElementActions extends Base {
 	}
 
 //fluent wait method//check
-	public static void fluentWait(WebDriver driver,  int timeOut) {
-		
-		
-		Wait<WebDriver>	wait = new FluentWait<WebDriver>((WebDriver) driver).withTimeout(Duration.ofSeconds(20))
-					.pollingEvery(Duration.ofSeconds(4)).ignoring(Exception.class);
-	
-		
+	public void fluentWaitforelementvisibility(WebDriver driver, WebElement element, int timeOut) {
+		Wait<WebDriver> wait = null;
+		try {
+			wait = new FluentWait<WebDriver>((WebDriver) driver).withTimeout(Duration.ofSeconds(20))
+					.pollingEvery(Duration.ofSeconds(2)).ignoring(Exception.class);
+			wait.until(ExpectedConditions.visibilityOf(element));
+			element.click();
+		} catch (Exception e) {
 		}
-	
+	}
 
 //used to get current System's time
 	public static String getCurrentTime() {
@@ -473,35 +466,38 @@ public class ElementActions extends Base {
 		return currentDate;
 	}
 
+//drag and drop
 	public static void DragAndDrop(WebDriver driver, WebElement From, WebElement To) {
 		try {
-		Actions ac = new Actions(driver);
-		ac.dragAndDrop(From, To).build().perform();
-		ExtentManager.childTest.pass("Object Dragged And Dropped Successfully ");}
-		catch (Exception e) {
+			Actions ac = new Actions(driver);
+			ac.dragAndDrop(From, To).build().perform();
+			ExtentManager.childTest.pass("Object Dragged And Dropped Successfully ");
+		} catch (Exception e) {
 			Log.exception("not able to drag abd drop  due to exception : ", e);
 			throw e;
 		}
 	}
 
 	// verify element clickable//check
-	public static void verifyeleclickable(WebElement ele, String eleName) {
+	public static boolean verifyeleclickable(WebElement ele, String eleName) {
+
 		try {
 			WebDriverWait wt = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
 			wt.until(ExpectedConditions.elementToBeClickable(ele));
 			ExtentManager.childTest.pass("element is clickable  :" + eleName);
+			return true;
 
 		} catch (Exception e) {
 			ExtentManager.childTest.info("element is not clickable :" + eleName);
 			Log.exception("not able to check element clickable due to :", e);
-			throw e;
+			return false;
 		}
 
 	}
 
 	public static void WaitForElementToBeSelected(WebDriver driver, WebElement ele) {
 		try {
-			WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(5));
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 			wait.until(ExpectedConditions.elementToBeSelected(ele));
 			ExtentManager.childTest.pass("Element Selectable");
 		} catch (Exception e) {
@@ -514,7 +510,7 @@ public class ElementActions extends Base {
 
 	public static void WaitForElementVisible(WebDriver driver, WebElement ele) {
 		try {
-			WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(5));
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 			wait.until(ExpectedConditions.visibilityOf(ele));
 			ExtentManager.childTest.pass("Element Visible");
 		} catch (Exception e) {
@@ -525,44 +521,4 @@ public class ElementActions extends Base {
 		}
 	}
 
-	//check
-	public static void WaitForElementPresent(WebDriver driver, WebElement ele) {
-		try {
-			WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(5));
-			By by = toByVal(ele);
-			ExtentManager.childTest.pass(by.toString());
-			wait.until(ExpectedConditions.presenceOfElementLocated(by));
-			ExtentManager.childTest.pass("Element Present");
-		} catch (Exception e) {
-			ExtentManager.childTest.info("Element Not Present");
-			throw e;
-		}
-	}
-
-	public static By toByVal(WebElement we) {
-		// By format = "[foundFrom] -> locator: term"
-		// see RemoteWebElement toString() implementation
-		String[] data = we.toString().split(" -> ")[1].replace("]", "").split(": ");
-		String locator = data[0];
-		String term = data[1];
-
-		switch (locator) {
-		case "xpath":
-			return By.xpath(term);
-		case "css selector":
-			return By.cssSelector(term);
-		case "id":
-			return By.id(term);
-		case "tag name":
-			return By.tagName(term);
-		case "name":
-			return By.name(term);
-		case "link text":
-			return By.linkText(term);
-		case "class name":
-			return By.className(term);
-		}
-		return (By) we;
-	}
 }
-

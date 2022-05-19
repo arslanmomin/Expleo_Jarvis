@@ -11,11 +11,14 @@ public class Log extends Base{
 	public static Logger Log = Logger.getLogger(Log.class.getName());
 
 	public static void startTestCase(String sTestCaseName){		  
-		 Log.info("====================================="+sTestCaseName+" TEST START=========================================");
+		 Log.info("====================================="+sTestCaseName+"  START=========================================");
 		 }
 	
 	public static void endTestCase(String sTestCaseName){
-		Log.info("====================================="+sTestCaseName+" TEST END=========================================");
+		Log.info("====================================="+sTestCaseName+"  END=========================================");
+		 }
+	public static void failTestCase(String sTestCaseName){
+		Log.info("====================================="+sTestCaseName+"  FAILED=========================================");
 		 }
 	
 	// Need to create below methods, so that they can be called  
@@ -27,7 +30,12 @@ public class Log extends Base{
 			}
 	 public static void exception(String msg,Exception e) {
 
-			Log.info(msg,e);
+			Log.error(msg,e);
+
+			}
+	 public static void exception(String msg) {
+
+			Log.error(msg);
 
 			}
 
@@ -49,10 +57,10 @@ public class Log extends Base{
 
 		}
 
-	 public static void debug(String message) {
-
-	    Log.debug(message);
-
-		}
+//	 public static void debug(String message) {
+//
+//	    Log.debug(message);
+//
+//		}
 	
 }
