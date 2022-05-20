@@ -63,8 +63,6 @@ public class Base {
 				((EdgeOptions) eo).addArguments("headless");
 			eo.merge(dc);
 			driver.set(new EdgeDriver(eo));
-			BrowserActions.pageLoadTimeOut(getDriver(), 10);
-			getDriver().manage().window().maximize();
 			break;
 
 		case "firefox":
@@ -74,8 +72,6 @@ public class Base {
 				((FirefoxOptions) fo).addArguments("headless");
 			fo.merge(dc);
 			driver.set(new FirefoxDriver(fo));
-			BrowserActions.pageLoadTimeOut(getDriver(), 5);
-			getDriver().manage().window().maximize();
 			break;
 
 		case "chrome":
@@ -85,8 +81,6 @@ public class Base {
 				((ChromeOptions) co).addArguments("headless");
 			co.merge(dc);
 			driver.set(new ChromeDriver(co));
-			BrowserActions.pageLoadTimeOut(getDriver(), 5);
-			getDriver().manage().window().maximize();
 			break;
 			
 		case "remote" :
@@ -99,7 +93,7 @@ public class Base {
 			System.out.println("No browser selected");
 
 		}
-
+		getDriver().manage().window().maximize();
 		getDriver().get(cs.getProperty("url"));
 	}
 

@@ -18,7 +18,7 @@ import utilities.ConfigurationSupport;
 import utilities.ExtentManager;
 import utilities.Listener;
 import utilities.Log;
-@Listeners(utilities.Listener.class)
+@Listeners({utilities.Listener.class ,utilities.SuiteListener.class})
 
 public class LoginLogout extends Base {
 	public ConfigurationSupport cs = new ConfigurationSupport("config files//accounts.properties");

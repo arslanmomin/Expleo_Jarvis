@@ -8,6 +8,8 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.testng.ISuite;
+import org.testng.ISuiteListener;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -47,8 +49,7 @@ public class Listener extends ExtentManager implements ITestListener {
 			String imgPath = screenShot(Base.getDriver(), result.getName());
 			parentTest.addScreenCaptureFromPath(imgPath);
 			Log.failTestCase(result.getName());
-			
-			 //MediaEntityBuilder.createScreenCaptureFromPath(imgPath).build();
+
 		}
 	}
 
@@ -87,4 +88,7 @@ public class Listener extends ExtentManager implements ITestListener {
 	}
 		
 	}
+
+
+
 
