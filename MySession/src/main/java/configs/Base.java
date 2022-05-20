@@ -8,7 +8,11 @@ import org.testng.annotations.BeforeTest;
 
 import commands.BrowserActions;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import org.apache.log4j.xml.DOMConfigurator;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -42,7 +46,7 @@ public class Base {
 	}
 
 	@BeforeSuite(alwaysRun = true)
-	public void beforeSuite() {
+	public void beforeSuite() throws MalformedURLException {
 
 		DOMConfigurator.configure("config files//log4j.xml");
 
@@ -84,6 +88,12 @@ public class Base {
 			BrowserActions.pageLoadTimeOut(getDriver(), 5);
 			getDriver().manage().window().maximize();
 			break;
+			
+		case "remote" :
+			dc.setBrowserName(cs.getProperty("remote.browser"));
+			dc.setPlatform(Platform.WIN10);
+			driver.set(new RemoteWebDriver(new URL("https://localhost:4444/wd/hub"),dc));
+			dc.setVersion("98");
 
 		default:
 			System.out.println("No browser selected");
