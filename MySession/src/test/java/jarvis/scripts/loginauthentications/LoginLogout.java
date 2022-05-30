@@ -1,4 +1,4 @@
-package jarvis.scripts;
+package jarvis.scripts.loginauthentications;
 
 
 import java.util.List;
