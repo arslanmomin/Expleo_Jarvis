@@ -3,6 +3,7 @@ package commands;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import configs.Base;
 import utilities.ExtentManager;
@@ -114,6 +115,18 @@ public class BrowserActions extends Base {
 
 	}
 
+//adds cookie to browser site
+	public static void addCookie(Cookie cookie) {
+		getDriver().manage().addCookie(cookie);
+		ExtentManager.childTest.info("cookie add is "+ cookie.getName() +"value "+cookie.getValue());
+	}
+	
+//delete specific cookie from browser	
+	public static void deleteCookie(String cookiename) {
+		getDriver().manage().deleteCookieNamed(cookiename);
+		ExtentManager.childTest.info("cookie deleted is "+ cookiename );
+	}
+	
 //static method to wait till specified time when loading page
 	public static void pageLoadTimeOut(WebDriver driver, int timeOut) {
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(timeOut));
