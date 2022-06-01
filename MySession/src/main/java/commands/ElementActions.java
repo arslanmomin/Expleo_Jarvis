@@ -2,6 +2,8 @@ package commands;
 
 import java.io.File;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.text.SimpleDateFormat;
 
@@ -195,7 +197,7 @@ public class ElementActions extends Base {
 		List<WebElement> AllOptions = s.getOptions();
 		for (int i = 0; i < AllOptions.size(); i++) {
 			System.out.println(s.getOptions().get(i).getText());
-			ExtentManager.childTest.pass("got all options from dropdown" );
+			ExtentManager.childTest.pass("got all options from dropdown");
 		}
 
 		return AllOptions;
@@ -250,7 +252,7 @@ public class ElementActions extends Base {
 			ExtentManager.childTest.pass("alert accept successfully");
 		} catch (Exception e) {
 			ExtentManager.childTest.info("can not alert accept");
-			Log.exception( e.getMessage());
+			Log.exception(e.getMessage());
 			throw e;
 		}
 	}
@@ -282,7 +284,7 @@ public class ElementActions extends Base {
 			ExtentManager.childTest.pass("send  data to alert box successfully");
 		} catch (Exception e) {
 			ExtentManager.childTest.info("enter the text in alert box");
-			Log.exception( e.getMessage());
+			Log.exception(e.getMessage());
 			throw e;
 		}
 	}
@@ -417,7 +419,7 @@ public class ElementActions extends Base {
 
 		List<String> texts = elements.stream().map(element -> element.getText()).collect(Collectors.toList());
 		List<String> text = texts.stream().sorted().toList();
-		System.out.println("extracted list is "+text);
+		System.out.println("extracted list is " + text);
 		return text;
 
 	}
@@ -425,9 +427,9 @@ public class ElementActions extends Base {
 	// comparing two lists by size and content
 	public static boolean comapreLists(List<String> text, List<String> expected) {
 		boolean flag = false;
-		System.out.println("expected list is:"+expected);
+		System.out.println("expected list is:" + expected);
 		List<String> sorted = expected.stream().sorted().toList();
-		System.out.println("sorted list is:"+sorted);
+		System.out.println("sorted list is:" + sorted);
 		if (text.equals(sorted)) {
 			ExtentManager.childTest.pass("two lists are  equal");
 			flag = true;
@@ -521,4 +523,54 @@ public class ElementActions extends Base {
 		}
 	}
 
+//returns number of characters present in given string
+	public static int inputLength(String testData) {
+		int countOfChars = 0;
+		countOfChars = testData.length();
+		ExtentManager.childTest.pass("Number of characters present in " + testData + " data are: " + countOfChars);
+		return countOfChars;
+
+	}
+
+//returns true if there are special characters present in given string
+	public static boolean specialChar(String testData) {
+		boolean flag = false;
+		// The pattern() method of Matcher Class is used to get the pattern to be
+		// matched by this matcher
+		// The compile(String) method of the Pattern class in Java is used to create a
+		// pattern from the regular expression
+		// It is passed as parameter to method.
+		Pattern p = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+		Matcher m = p.matcher(testData);
+		boolean b = m.find();
+
+		if (b) {
+			ExtentManager.childTest.pass("special character present ");
+			flag = true;
+		} else {
+			ExtentManager.childTest.info("no special character present");
+			flag = false;
+		}
+		return flag;
+	}
+
+// Method to get file size
+	public static long getFileSizeinBytes(String filepath) {
+		File file = new File(filepath);
+		if (!file.exists() || !file.isFile()) {
+			ExtentManager.childTest.info("File doesn't exist");
+			return -1;
+		}
+		System.out.println("file size in MB: " + file.length() / 1048576);
+		return file.length();
+
+	}
+	
+//returns last four characters of any String
+	public static String last4Char(String data) {
+		String lastFour = data.substring(data.length() - 4);
+		ExtentManager.childTest.pass("last 4 characters of input are :"+lastFour);
+		return lastFour;
+
+	}
 }
