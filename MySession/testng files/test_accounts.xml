@@ -12,7 +12,7 @@
 		<classes>
 			<class name="jarvis.scripts.accountservices.AccountSummary">
 				<methods>
-					<include name="test_AccountsDashboard" />
+					<exclude name="test_AccountsDashboard" />
 				</methods>
 			</class>
 			<class name="jarvis.scripts.accountservices.AccountWidgets" />
