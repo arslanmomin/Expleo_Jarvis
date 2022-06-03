@@ -8,6 +8,8 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.testng.ISuite;
+import org.testng.ISuiteListener;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -46,8 +48,8 @@ public class Listener extends ExtentManager implements ITestListener {
 					MarkupHelper.createLabel(result.getThrowable() + " - Test Case Failed", ExtentColor.RED));
 			String imgPath = screenShot(Base.getDriver(), result.getName());
 			parentTest.addScreenCaptureFromPath(imgPath);
-			Log.error("Test FAILED");
-			 //MediaEntityBuilder.createScreenCaptureFromPath(imgPath).build();
+			Log.failTestCase(result.getName());
+
 		}
 	}
 
@@ -60,21 +62,21 @@ public class Listener extends ExtentManager implements ITestListener {
 	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
 		
 	}
-	@BeforeTest
+	
 	public void onStart(ITestContext context) {
 		
 	}
 
 	public void onFinish(ITestContext context) {
-		Log.info("TEST finished");
+		
 	}
 
-	public String screenShot(WebDriver driver, String filename) {
-		String dateName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+	public static String screenShot(WebDriver driver, String filename) {
+		String dateName = new SimpleDateFormat("hh_mm").format(new Date());
 		String date = new SimpleDateFormat("yyyy_MM_dd").format(new Date());
 		TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
 		File source = takesScreenshot.getScreenshotAs(OutputType.FILE);
-		String destination = System.getProperty("user.dir") + "\\Report\\"+date +"\\ScreenShots\\"+ filename + "_" + dateName + ".png";
+		String destination = System.getProperty("user.dir") + "\\Reports\\"+date +"\\ScreenShots\\"+ filename + "_" + dateName + ".png";
 
 		try {
 			FileUtils.copyFile(source, new File(destination));
@@ -86,4 +88,7 @@ public class Listener extends ExtentManager implements ITestListener {
 	}
 		
 	}
+
+
+
 

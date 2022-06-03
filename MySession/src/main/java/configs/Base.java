@@ -6,9 +6,13 @@ import utilities.ExtentManager;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 
-import commands.Browser;
+import commands.BrowserActions;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import org.apache.log4j.xml.DOMConfigurator;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -42,7 +46,7 @@ public class Base {
 	}
 
 	@BeforeSuite(alwaysRun = true)
-	public void beforeSuite() {
+	public void beforeSuite() throws MalformedURLException {
 
 		DOMConfigurator.configure("config files//log4j.xml");
 
@@ -59,8 +63,6 @@ public class Base {
 				((EdgeOptions) eo).addArguments("headless");
 			eo.merge(dc);
 			driver.set(new EdgeDriver(eo));
-			Browser.pageLoadTimeOut(getDriver(), 5);
-			getDriver().manage().window().maximize();
 			break;
 
 		case "firefox":
@@ -70,8 +72,6 @@ public class Base {
 				((FirefoxOptions) fo).addArguments("headless");
 			fo.merge(dc);
 			driver.set(new FirefoxDriver(fo));
-			Browser.pageLoadTimeOut(getDriver(), 5);
-			getDriver().manage().window().maximize();
 			break;
 
 		case "chrome":
@@ -81,15 +81,19 @@ public class Base {
 				((ChromeOptions) co).addArguments("headless");
 			co.merge(dc);
 			driver.set(new ChromeDriver(co));
-			Browser.pageLoadTimeOut(getDriver(), 5);
-			getDriver().manage().window().maximize();
 			break;
+			
+		case "remote" :
+			dc.setBrowserName(cs.getProperty("remote.browser"));
+			dc.setPlatform(Platform.WIN10);
+			driver.set(new RemoteWebDriver(new URL("https://localhost:4444/wd/hub"),dc));
+			dc.setVersion("98");
 
 		default:
 			System.out.println("No browser selected");
 
 		}
-
+		getDriver().manage().window().maximize();
 		getDriver().get(cs.getProperty("url"));
 	}
 

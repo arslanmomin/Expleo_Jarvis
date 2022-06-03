@@ -21,7 +21,7 @@ public class ExtentManager extends Base {
 
 		String dateName = new SimpleDateFormat("yyyy_MM_dd hh_mm_ss").format(new Date());
 		String date = new SimpleDateFormat("yyyy_MM_dd").format(new Date());
-		sparkReporter = new ExtentSparkReporter(System.getProperty("user.dir") + "\\Report\\"+date +"\\ExtentReports\\" + dateName + ".html");
+		sparkReporter = new ExtentSparkReporter(System.getProperty("user.dir") + "\\Reports\\"+date +"\\ExtentReports\\" + dateName + ".html");
 		extent = new ExtentReports();
 		extent.attachReporter(sparkReporter);
 		
